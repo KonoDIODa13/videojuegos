@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use App\Repository\UsuarioRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsuarioRepository::class)]
-class Usuario implements UserInterface
+class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +22,7 @@ class Usuario implements UserInterface
     private array $roles = [];
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    private ?string $contra = null;
 
     public function getId(): ?int
     {
@@ -47,7 +48,7 @@ class Usuario implements UserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->username;
+        return (string)$this->username;
     }
 
     /**
@@ -78,15 +79,29 @@ class Usuario implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getEmail(): ?string
+    public function getContra(): ?string
     {
-        return $this->email;
+        return $this->contra;
     }
 
-    public function setEmail(string $email): self
+    public function setContra(string $contra): self
     {
-        $this->email = $email;
+        $this->contra = $contra;
 
+        return $this;
+    }
+
+    /**
+    * @see PasswordAuthenticatedUserInterface
+    */
+    public function getPassword(): ?string
+    {
+        return $this->contra;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->contra = $password;
         return $this;
     }
 }
