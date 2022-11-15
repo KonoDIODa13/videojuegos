@@ -24,7 +24,15 @@ class PerfilController extends AbstractController
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'last_username' => $authenticationUtils->getLastUsername(),
         ]);
+    }
 
+    #[Route('iniciar_sesion', name: 'app_inicio_sesion')]
+    public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
+    {
+        return $this->render('perfil/inicio_sesion.html.twig', [
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+            'last_username' => $authenticationUtils->getLastUsername(),
+        ]);
     }
 
     #[Route(path: '/login', name: 'app_login')]

@@ -2,6 +2,9 @@
 
 namespace App\Security;
 
+use App\Factory\UsuarioFactory;
+use App\Repository\UserRepository;
+use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,60 +18,66 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
-use App\Repository\UsuarioRepository;
 
-class RegistroAuthenticator extends AbstractAuthenticator
+class InicioSesionAuthenticator extends AbstractAuthenticator
 {
     private UsuarioRepository $usuarioRepository;
     private RouterInterface $router;
 
-    public function __construct(UsuarioRepository $usuarioRepository, RouterInterface $router)
+    public function __construct(UsuarioRepository $usuarioRepository,
+                                RouterInterface   $router)
     {
         $this->usuarioRepository = $usuarioRepository;
         $this->router = $router;
     }
 
+
     public function supports(Request $request): ?bool
     {
-        return ($request->getPathInfo() === '/registrarse' && $request->isMethod('POST'));
+        return ($request->getPathInfo() === '/iniciar_sesion' && $request->isMethod('POST'));
     }
 
     public function authenticate(Request $request): Passport
     {
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
-        return new Passport(
+
+        $usuario = UsuarioFactory::createOne(['username' => $nombreUsuario, 'contra' => $contra]);
+
+        dd(new Passport(
             new UserBadge($nombreUsuario, function ($userIdentifier) {
                 $usuario = $this->usuarioRepository->findOneBy(['username' => $userIdentifier]);
 
                 if (!$usuario) {
                     throw new UserNotFoundException();
                 }
+
                 return $usuario;
             }),
             new PasswordCredentials($contra),
             [
                 new CsrfTokenBadge(
                     'authenticate',
-                    $request->get('_csrf_token'),
+                    $request->request->get('_csrf_token'),
                 ),
                 (new RememberMeBadge())->enable(),
             ]
-        );
+
+        ));
+
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): RedirectResponse
     {
         return new RedirectResponse(
             $this->router->generate('app_inicio')
         );
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
-        dd('F registro');
+        dd('F');
     }
-
 
 //    public function start(Request $request, AuthenticationException $authException = null): Response
 //    {
