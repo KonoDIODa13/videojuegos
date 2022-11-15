@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VideojuegoRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VideojuegoRepository::class)]
@@ -15,6 +16,18 @@ class Videojuego
 
     #[ORM\Column(length: 100)]
     private ?string $titulo = null;
+
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $autor = [];
+
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $tema = [];
+
+    #[ORM\Column(length: 4)]
+    private ?string $fechaPublicacion = null;
+
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $desarrollador = [];
 
     public function getId(): ?int
     {
@@ -29,6 +42,55 @@ class Videojuego
     public function setTitulo(string $titulo): self
     {
         $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    public function getAutor(): array
+    {
+        return $this->autor;
+    }
+
+    public function setAutor(array $autor): self
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+    
+
+    public function getTema(): array
+    {
+        return $this->tema;
+    }
+
+    public function setTema(array $tema): self
+    {
+        $this->tema = $tema;
+
+        return $this;
+    }
+
+    public function getFechaPublicacion(): ?string
+    {
+        return $this->fechaPublicacion;
+    }
+
+    public function setFechaPublicacion(string $fechaPublicacion): self
+    {
+        $this->fechaPublicacion = $fechaPublicacion;
+
+        return $this;
+    }
+
+    public function getDesarrollador(): array
+    {
+        return $this->desarrollador;
+    }
+
+    public function setDesarrollador(array $desarrollador): self
+    {
+        $this->desarrollador = $desarrollador;
 
         return $this;
     }

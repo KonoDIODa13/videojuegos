@@ -64,7 +64,7 @@ class RegistroAuthenticator extends AbstractAuthenticator
     {
 
         return new RedirectResponse(
-            $this->router->generate('app_inicio')
+            $this->router->generate('app_perfil')
         );
     }
 

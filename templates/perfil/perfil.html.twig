@@ -1,6 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'perfil/index.html.twig' %}
 
-{% block title %} {{ nombre }} {% endblock %}
+{% block title %} perfil {{ nombre }} {% endblock %}
 
 {% block body %}
+
+    {% block nav %}{{ parent() }}{% endblock %}
+
+    <h1>{{ nombre }}:</h1>
+    <!-- poner mas cosasssasasaas-->
+
+    <a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
 {% endblock %}

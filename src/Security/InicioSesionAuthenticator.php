@@ -69,7 +69,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): RedirectResponse
     {
         return new RedirectResponse(
-            $this->router->generate('app_inicio')
+            $this->router->generate('app_perfil')
         );
     }
 
