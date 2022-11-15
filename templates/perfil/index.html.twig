@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('app_inicio') }}">Game Experience</a>
+                        <a class="nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
                     </li>
                     {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <li class="nav-item active">
@@ -36,5 +36,12 @@
                 {% endif %}
             </div>
         </nav>
+    {% endblock %}
+    {% block text %}
+        <div class="contenedor">
+            <!--<h1>Game Experience</h1><br>-->
+            <h3>¿Qué es Game Experiences?</h3>
+            <p> Game Experiences es ...</p>
+        </div>
     {% endblock %}
 {% endblock %}
