@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
+{% block title %}{{ parent() }}{% endblock %}
+{% block body %}{{ parent() }}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-{% block title %}Hello PerfilController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/jgonzalez/PhpstormProjects/tfg/src/Controller/PerfilController.php'|file_link(0) }}">src/Controller/PerfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/jgonzalez/PhpstormProjects/tfg/templates/perfil/index.html.twig'|file_link(0) }}">templates/perfil/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="container-fluid">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('app_inicio') }}">Game Experience</a>
+                </li>
+                {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item active">
+                        <a class="nav-link"
+                           href="{{ path('app_perfil') }}">Perfil</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ 'logout' }}">logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_registro') }}">Registrarse</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <img src="{{ app.user.avatarUri }}"
+                     alt="{{ app.user.username }} Avatar">
+            {% endif %}
+        </div>
+    </nav>
 {% endblock %}

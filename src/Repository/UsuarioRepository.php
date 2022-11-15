@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -38,6 +39,22 @@ class UsuarioRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /*private function crearQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        $queryBuilder = $queryBuilder ?? $this->createQueryBuilder('usuarios');
+        return $queryBuilder;
+    }
+
+    private function buscarUsuarioPorNombre(string $nombre): QueryBuilder
+    {
+        $querybuilder = $this->createQueryBuilder();
+
+        $querybuilder->andWhere('usuarios.username=:nombre')
+            ->setParameter('nombre', $nombre);
+        return $querybuilder;
+    }*/
+
 
 //    /**
 //     * @return Usuario[] Returns an array of Usuario objects

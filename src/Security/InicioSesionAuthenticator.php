@@ -76,7 +76,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         return new RedirectResponse(
-            $this->router->generate('app_inicio_sesion')
+            $this->router->generate('app_inicio_perfil')
         );
     }
 

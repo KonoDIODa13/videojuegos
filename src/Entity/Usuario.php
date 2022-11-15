@@ -117,4 +117,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         $this->contra = $password;
         return $this;
     }
+
+
+    public function getAvatarUri(int $size = 32): string
+    {
+        return 'https://ui-avatars.com/api/?' . http_build_query([
+                'name' => $this->getUsername(),
+                'size' => $size,
+                'background' => 'random',
+            ]);
+    }
 }
