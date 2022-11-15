@@ -63,13 +63,16 @@ class RegistroAuthenticator extends AbstractAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         return new RedirectResponse(
-            $this->router->generate('app_inicio')
+            $this->router->generate('app_registro')
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        dd('F registro');
+
+        return new RedirectResponse(
+            $this->router->generate('app_inicio')
+        );
     }
 
 

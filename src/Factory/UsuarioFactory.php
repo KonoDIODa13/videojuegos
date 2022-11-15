@@ -48,17 +48,17 @@ final class UsuarioFactory extends ModelFactory
         ];
     }
 
-    /*protected function initialize(): self
+    protected function initialize(): self
     {
         return $this
             ->afterInstantiate(function (Usuario $usuario): void {
-                if ($usuario->getContra()) {
+                if ($usuario->getPassword()) {
                     $usuario->setPassword(
-                        $this->passwordHasher->hashPassword($usuario, $usuario->getContra())
+                        $this->passwordHasher->hashPassword($usuario, $usuario->getPassword())
                     );
                 }
             });
-    }*/
+    }
 
     protected static function getClass(): string
     {

@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         UsuarioFactory::createOne(['username' => 'jaime', 'contra' => 'jgb13']);
-        UsuarioFactory::createMany(5);
+        //UsuarioFactory::createMany(5);
 
         $manager->flush();
     }
