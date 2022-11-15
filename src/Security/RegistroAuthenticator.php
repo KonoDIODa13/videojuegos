@@ -37,13 +37,14 @@ class RegistroAuthenticator extends AbstractAuthenticator
     {
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
-        return new Passport(
-            new UserBadge($nombreUsuario, function ($userIdentifier) {
-                $usuario = $this->usuarioRepository->findOneBy(['username' => $userIdentifier]);
 
+        $pasaporte = new Passport(
+            new UserBadge($nombreUsuario, function ($identificadorUsuario) {
+                $usuario = $this->usuarioRepository->findOneBy(['username' => $identificadorUsuario]);
                 if (!$usuario) {
                     throw new UserNotFoundException();
                 }
+                //dd($usuario);
                 return $usuario;
             }),
             new PasswordCredentials($contra),
@@ -55,6 +56,8 @@ class RegistroAuthenticator extends AbstractAuthenticator
                 (new RememberMeBadge())->enable(),
             ]
         );
+        //dd($pasaporte);
+        return $pasaporte;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response

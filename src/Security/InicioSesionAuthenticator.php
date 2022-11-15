@@ -42,9 +42,9 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
 
-        $usuario = UsuarioFactory::createOne(['username' => $nombreUsuario, 'contra' => $contra]);
+        UsuarioFactory::createOne(['username' => $nombreUsuario, 'contra' => $contra]);
 
-        dd(new Passport(
+        return new Passport(
             new UserBadge($nombreUsuario, function ($userIdentifier) {
                 $usuario = $this->usuarioRepository->findOneBy(['username' => $userIdentifier]);
 
@@ -63,8 +63,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
                 (new RememberMeBadge())->enable(),
             ]
 
-        ));
-
+        );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): RedirectResponse

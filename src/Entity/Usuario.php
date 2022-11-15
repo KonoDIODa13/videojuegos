@@ -41,6 +41,19 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    private $plainPassword;
+
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -92,8 +105,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-    * @see PasswordAuthenticatedUserInterface
-    */
+     * @see PasswordAuthenticatedUserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->contra;
