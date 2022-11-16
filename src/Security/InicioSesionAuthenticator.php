@@ -8,6 +8,7 @@ use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -23,9 +24,12 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
 {
     private UsuarioRepository $usuarioRepository;
     private RouterInterface $router;
+    //private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UsuarioRepository $usuarioRepository,
-                                RouterInterface   $router)
+    public function __construct(UsuarioRepository           $usuarioRepository,
+                                RouterInterface             $router,
+                                //UserPasswordHasherInterface $passwordHasher
+    )
     {
         $this->usuarioRepository = $usuarioRepository;
         $this->router = $router;
@@ -41,10 +45,9 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     {
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
+        //$contra = $this->passwordHasher->hashPassword($password);
 
-        UsuarioFactory::createOne(['username' => $nombreUsuario, 'contra' => $contra]);
-
-        return new Passport(
+        $pasaporte = new Passport(
             new UserBadge($nombreUsuario, function ($userIdentifier) {
                 $usuario = $this->usuarioRepository->findOneBy(['username' => $userIdentifier]);
 
@@ -64,6 +67,8 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
             ]
 
         );
+        //dd($pasaporte);
+        return $pasaporte;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): RedirectResponse
@@ -76,7 +81,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         return new RedirectResponse(
-            $this->router->generate('app_inicio_perfil')
+            $this->router->generate('app_inicio_sesion')
         );
     }
 
