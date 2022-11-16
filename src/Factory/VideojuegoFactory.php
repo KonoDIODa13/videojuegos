@@ -39,17 +39,20 @@ final class VideojuegoFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'titulo' => self::faker()->text(),
+            'titulo' => self::faker()->title(),
+            'autor' => self::faker()->randomElement(['Miyazaki', 'Cory Barlog']),
+            'tema' => self::faker()->randomElement(['RPG', 'Aventura', 'Estrategia', 'Multiplayer']),
+            'fechaPublicacion' => self::faker()->numberBetween(1000, 2022),
+            'desarrollador' => self::faker()->randomElement(['Fromsoftware', 'Santa Monica Studios', 'Ubisoft', 'Annapurna', 'Team Cherry']),
+            'descripcion' => self::faker()->text,
         ];
     }
 
     protected function initialize(): self
     {
         // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this
-            // ->afterInstantiate(function(Videojuego $videojuego): void {})
-        ;
+        return $this// ->afterInstantiate(function(Videojuego $videojuego): void {})
+            ;
     }
 
     protected static function getClass(): string

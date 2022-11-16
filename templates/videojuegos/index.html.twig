@@ -1,8 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'perfil/index.html.twig' %}
 
-{% block title %}Hello VideojuegosController!{% endblock %}
+{% block title %}videojuegos{% endblock %}
 
 {% block body %}
+    {% block nav %}{{ parent() }}{% endblock %}
+
     <a href="{{ path('app_perfil') }}">volver al perfil</a>
+
+    <div class="contenedor">
+        <h2 class="mt-5"> Videojuegos</h2>
+        <div class="row">
+            {% for juego in videojuego %}
+                <div>
+                    <a href="{{ path('app_videojuego', {titulo: juego.titulo}) }}">Titulo: {{ juego.titulo }}</a><br>
+                    <span>Tema:
+                    {% for temas in juego.tema %}
+                        {{ temas }}</span>
+                    {% endfor %}
+                    <br><span>Fecha de publicación: {{ juego.fechaPublicacion }}</span><br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

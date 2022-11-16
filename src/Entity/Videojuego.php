@@ -29,6 +29,9 @@ class Videojuego
     #[ORM\Column(type: Types::ARRAY)]
     private array $desarrollador = [];
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $descripcion = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,7 +60,7 @@ class Videojuego
 
         return $this;
     }
-    
+
 
     public function getTema(): array
     {
@@ -91,6 +94,18 @@ class Videojuego
     public function setDesarrollador(array $desarrollador): self
     {
         $this->desarrollador = $desarrollador;
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(?string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
 
         return $this;
     }
