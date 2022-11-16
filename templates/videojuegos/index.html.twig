@@ -12,7 +12,7 @@
         <div class="row">
             {% for juego in videojuego %}
                 <div>
-                    <a href="{{ path('app_videojuego', {titulo: juego.titulo}) }}">Titulo: {{ juego.titulo }}</a><br>
+                    <a href="{{ path('app_videojuego', {slug: juego.slug}) }}">Titulo: {{ juego.titulo }}</a><br>
                     <span>Tema:
                     {% for temas in juego.tema %}
                         {{ temas }}</span>

@@ -1,6 +1,9 @@
 {% extends 'perfil/index.html.twig' %}
 
 {% block body %}
-    {% block nav %}
-    {% endblock %}
+    {% block nav %}{{ parent() }}{% endblock %}
+
+    <div class="container-fluid rounded">
+        <h1> {{ videojuego.titulo }}</h1>
+    </div>
 {% endblock %}

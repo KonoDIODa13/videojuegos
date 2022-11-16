@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VideojuegoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
 
 #[ORM\Entity(repositoryClass: VideojuegoRepository::class)]
 class Videojuego
@@ -31,6 +32,10 @@ class Videojuego
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descripcion = null;
+
+    #[ORM\Column(length: 50)]
+    #[Slug(fields: ['titulo'])]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -106,6 +111,18 @@ class Videojuego
     public function setDescripcion(?string $descripcion): self
     {
         $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -13,11 +13,13 @@ class AppFixtures extends Fixture
     {
         UsuarioFactory::createOne(['username' => 'jaime', 'contra' => 'jgb13']);
         //UsuarioFactory::createMany(5);
-        VideojuegoFactory::createOne(['titulo' => 'God Of War: Ragnarok',
-            'autor' => ['Cory Barlog'],
+        VideojuegoFactory::createOne([
+            'titulo' => 'God Of War: Ragnarok',
+            'autor' => ['Cory Barlog', 'Eric Williams'],
             'tema' => ['Accion', 'aventura'],
             'fechaPublicacion' => 2022,
-            'desarrollador' => ['Santa Monica Studios'],
+            'desarrollador' => ['Santa-Monica-Studios'],
+            'slug' => 'GodOfWar:Ragnarok'
         ]);
         //VideojuegoFactory::createMany(9);
 

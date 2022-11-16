@@ -45,6 +45,7 @@ final class VideojuegoFactory extends ModelFactory
             'fechaPublicacion' => self::faker()->numberBetween(1000, 2022),
             'desarrollador' => self::faker()->randomElement(['Fromsoftware', 'Santa Monica Studios', 'Ubisoft', 'Annapurna', 'Team Cherry']),
             'descripcion' => self::faker()->text,
+            'slug' => self::faker()->text(),
         ];
     }
 
