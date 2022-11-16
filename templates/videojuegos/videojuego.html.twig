@@ -2,8 +2,44 @@
 
 {% block body %}
     {% block nav %}{{ parent() }}{% endblock %}
+    <div class="contenedor_juego">
+        <div class="row">
+            <div class="juego col">
+                <h2 class="text-center">{{ videojuego.titulo }}</h2><br>
 
-    <div class="container-fluid rounded">
-        <h1> {{ videojuego.titulo }}</h1>
+                <h4>
+                    Autores:
+                    {% for autor in videojuego.autor %}
+                        {{ autor }}
+                    {% endfor %}
+                </h4>
+
+                <h4>
+                    Géneros:
+                    {% for  genero in videojuego.tema %}
+                        {{ genero }}
+                    {% endfor %}
+                </h4>
+
+                <h4>Año de publicación: {{ videojuego.fechaPublicacion }}</h4>
+
+                <h4>
+                    Empresas desarrolladoras:
+                    {% for  desarrollador in videojuego.desarrollador %}
+                        {{ desarrollador }}
+                    {% endfor %}
+                </h4>
+                {% if videojuego.descripcion != null %}
+                    <h4> Descripcion: {{ videojuego.descripcion }}</h4>
+                {% endif %}
+                <div>
+                    <img src="{{ '../../../public/'{{ videojuego.slug }}'.jpeg' }}" alt="{{ videojuego.slug }}">
+                </div>
+            </div>
+            <div class="comentario col">
+                <h2 class="text-center">Comentarios</h2>
+                <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>
+            </div>
+        </div>
     </div>
 {% endblock %}

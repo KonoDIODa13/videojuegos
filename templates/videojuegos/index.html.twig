@@ -7,19 +7,27 @@
 
     <a href="{{ path('app_perfil') }}">volver al perfil</a>
 
-    <div class="contenedor">
-        <h2 class="mt-5"> Videojuegos</h2>
+    <div>
+        <h2 class="text-center text-secondary"> Videojuegos</h2>
         <div class="row">
             {% for juego in videojuego %}
-                <div>
-                    <a href="{{ path('app_videojuego', {slug: juego.slug}) }}">Titulo: {{ juego.titulo }}</a><br>
-                    <span>Tema:
-                    {% for temas in juego.tema %}
-                        {{ temas }}</span>
-                    {% endfor %}
-                    <br><span>Fecha de publicación: {{ juego.fechaPublicacion }}</span><br>
+                <div class="col col-md-4">
+                    <div class="contenedor_videojuegos text-center">
+                        <span>
+                            Titulo:
+                            <a href="{{ path('app_videojuego', {slug: juego.slug}) }}">{{ juego.titulo }}</a><br>
+                        </span>
+
+                        <span>
+                            Temas:
+                            {% for temas in juego.tema %}
+                                {{ temas }}
+                            {% endfor %}
+                        </span>
+                    </div>
                 </div>
             {% endfor %}
+
         </div>
     </div>
 

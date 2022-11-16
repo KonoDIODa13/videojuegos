@@ -54,7 +54,7 @@ CREATE TABLE `usuario` (
   `contra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_2265B05DF85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (79,'jaime','[]','jgb13'),(80,'miguel','[]','123'),(81,'daniel','[]','$2y$13$y0rpdDe6JhC89CivndZs.ORN9EqzllK.ZXstKnws5UOaQbLSCLf5a'),(82,'jorge','[]','$2y$13$YktoeeUaAI/8SGRsZ2ltsOVSUOY60rrZrU2mzHb6qHPANYrA1bJmi');
+INSERT INTO `usuario` VALUES (81,'daniel','[]','$2y$13$y0rpdDe6JhC89CivndZs.ORN9EqzllK.ZXstKnws5UOaQbLSCLf5a'),(82,'jorge','[]','$2y$13$YktoeeUaAI/8SGRsZ2ltsOVSUOY60rrZrU2mzHb6qHPANYrA1bJmi'),(85,'jaime','[]','$2y$13$vUczHCWxf0cLW80TM3fswukTvgYrbxRkASxIv57nYMeXDLM2uZthW');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `videojuego` (
   `descripcion` longtext COLLATE utf8mb4_unicode_ci,
   `slug` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `videojuego` (
 
 LOCK TABLES `videojuego` WRITE;
 /*!40000 ALTER TABLE `videojuego` DISABLE KEYS */;
-INSERT INTO `videojuego` VALUES (5,'God Of War: Ragnarok','a:2:{i:0;s:11:\"Cory Barlog\";i:1;s:13:\"Eric Williams\";}','a:2:{i:0;s:6:\"Accion\";i:1;s:8:\"aventura\";}','2022','a:1:{i:0;s:20:\"Santa-Monica-Studios\";}','Aliquam est placeat iste veniam sint. Facilis alias et earum. Quod laudantium voluptas dolorem atque ullam. Voluptatem qui maiores mollitia et quia harum.','GodOfWar:Ragnarok');
+INSERT INTO `videojuego` VALUES (5,'God Of War: Ragnarok','a:2:{i:0;s:11:\"Cory Barlog\";i:1;s:13:\"Eric Williams\";}','a:2:{i:0;s:6:\"Accion\";i:1;s:8:\"Aventura\";}','2022','a:1:{i:0;s:20:\"Santa Monica Studios\";}','Aliquam est placeat iste veniam sint. Facilis alias et earum. Quod laudantium voluptas dolorem atque ullam. Voluptatem qui maiores mollitia et quia harum.','GodOfWarRagnarok'),(6,'Horizon Forbiden West','a:1:{i:1;s:16:\"Mathijs de Jonge\";}','a:3:{i:1;s:6:\"Accion\";i:2;s:8:\"Aventura\";i:3;s:3:\"Rol\";}','2022','a:1:{i:1;s:15:\"Guerrilla Games\";}',NULL,'HorizonForbidenWest'),(7,'Elden Ring','a:1:{i:1;s:17:\"Hidetaka Miyazaki\";}','a:2:{i:1;s:6:\"Accion\";i:2;s:3:\"Rol\";}','2022','a:1:{i:1;s:12:\"FromSoftware\";}',NULL,'EldenRing'),(8,'Hollow Knight','a:1:{i:1;s:14:\"William Pellen\";}','a:1:{i:1;s:12:\"Metroidvania\";}','2017','a:1:{i:1;s:11:\"Team Cherry\";}',NULL,'HollowKnight'),(9,'Kirby and the Forgotten Land','a:2:{i:1;s:16:\"Tatsuya Kamiyama\";i:2;s:15:\"Shinya Kumazaki\";}','a:1:{i:1;s:11:\"Plataformas\";}','2022','a:1:{i:1;s:14:\"HAL Laboratory\";}',NULL,'KirbyandtheForgottenLand');
 /*!40000 ALTER TABLE `videojuego` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-16 12:49:17
+-- Dump completed on 2022-11-16 14:53:13
