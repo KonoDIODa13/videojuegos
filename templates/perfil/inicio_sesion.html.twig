@@ -16,12 +16,12 @@
                     <div class="col-12">
                         <label for="inputUsername">Nombre de Usuario</label>
                         <input type="text" name="nombreUsuario" id="inputUsername" class="form-control"
-                               value="{{ last_username }}" required autofocus>
+                               value="{{ last_username }}">
                     </div>
 
                     <div class="col-12">
                         <label for="inputPassword">Contraseña</label>
-                        <input type="password" name="contra" id="inputPassword" class="form-control" required>
+                        <input type="password" name="contra" id="inputPassword" class="form-control">
                     </div>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

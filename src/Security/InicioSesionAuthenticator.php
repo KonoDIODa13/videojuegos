@@ -2,17 +2,15 @@
 
 namespace App\Security;
 
-use App\Factory\UsuarioFactory;
-use App\Repository\UserRepository;
 use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
@@ -24,12 +22,8 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
 {
     private UsuarioRepository $usuarioRepository;
     private RouterInterface $router;
-    //private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UsuarioRepository           $usuarioRepository,
-                                RouterInterface             $router,
-                                //UserPasswordHasherInterface $passwordHasher
-    )
+    public function __construct(UsuarioRepository $usuarioRepository, RouterInterface $router)
     {
         $this->usuarioRepository = $usuarioRepository;
         $this->router = $router;
@@ -80,6 +74,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
+        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
         return new RedirectResponse(
             $this->router->generate('app_inicio_sesion')
         );
