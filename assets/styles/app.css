@@ -20,3 +20,24 @@ body {
 .row {
     width: 100%
 }
+
+.card {
+    background: rgb(23, 36, 44);
+    background: linear-gradient(180deg, rgba(23, 36, 44, 1) 1%, rgba(34, 47, 54, 1) 97%);
+    border-radius: 5px;
+}
+
+.imagen {
+    width: 50%;
+    height: 60%;
+}
+
+.izquerda {
+    float: left;
+    max-width: 50%;
+}
+
+.derecha {
+    float: right;
+    max-width: 50%;
+}

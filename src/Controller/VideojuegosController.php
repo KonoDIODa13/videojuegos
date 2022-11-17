@@ -25,8 +25,11 @@ class VideojuegosController extends AbstractController
     public function mostrarVideojuego(VideojuegoRepository $videojuegoRepository, $slug): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
+        //dd($videojuego);
+        $foto = $slug;
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
+            'foto' => $foto,
         ]);
     }
 }

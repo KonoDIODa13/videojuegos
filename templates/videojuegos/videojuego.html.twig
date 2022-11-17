@@ -4,41 +4,50 @@
     {% block nav %}{{ parent() }}{% endblock %}
     <div class="contenedor_juego">
         <div class="row">
-            <div class="juego col">
-                <h2 class="text-center">{{ videojuego.titulo }}</h2><br>
+            <div class="card bg-secondary container-fluid">
+                <div class="card-body bg-secondary">
+                    <h2 class="card-title text-center">{{ videojuego.titulo }}</h2>
+                    <br>
+                    <div class="izquerda d-inline">
+                        <h3 class="card-subtitle ">
+                            Autores:
+                            {% for autor in videojuego.autor %}
+                                {{ autor }} |
+                            {% endfor %}
+                        </h3>
+                        <br>
 
-                <h4>
-                    Autores:
-                    {% for autor in videojuego.autor %}
-                        {{ autor }}
-                    {% endfor %}
-                </h4>
+                        <h3 class="card-subtitle ">
+                            Géneros:
+                            {% for genero in videojuego.tema %}
+                                {{ genero }} |
+                            {% endfor %}
+                        </h3>
+                        <br>
 
-                <h4>
-                    Géneros:
-                    {% for  genero in videojuego.tema %}
-                        {{ genero }}
-                    {% endfor %}
-                </h4>
+                        <h3 class="card-subtitle ">Año de publicación: {{ videojuego.fechaPublicacion }}</h3>
+                        <br>
 
-                <h4>Año de publicación: {{ videojuego.fechaPublicacion }}</h4>
+                        <h3 class="card-subtitle ">
+                            Empresa desarrolladora:
+                            {% for desarrollador in videojuego.desarrollador %}
+                                {{ desarrollador }} |
+                            {% endfor %}
+                        </h3>
+                        {% if videojuego.descripcion != null %}
+                            <br>
+                            <p class="card-subtitle">Descripción: {{ videojuego.descripcion }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="derecha d-inline">
+                        <img class="imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}">
+                    </div>
+                </div>
 
-                <h4>
-                    Empresas desarrolladoras:
-                    {% for  desarrollador in videojuego.desarrollador %}
-                        {{ desarrollador }}
-                    {% endfor %}
-                </h4>
-                {% if videojuego.descripcion != null %}
-                    <h4> Descripción: {{ videojuego.descripcion }}</h4>
-                {% endif %}
-                <!--<div>
-                    <img src="../../auxiliares/fotos/{{ videojuego.slug }}.jpeg" alt="{{ videojuego.slug }}">
-                </div>-->
-                <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>
+                <!-- <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>-->
             </div>
-            <div class="comentario col">
-                <h2 class="text-center">Comentarios</h2>
+            <div class="comentario">
+                <!--<h2 class="text-center">Comentarios</h2>-->
             </div>
         </div>
     </div>

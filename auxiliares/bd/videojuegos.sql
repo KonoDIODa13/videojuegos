@@ -36,7 +36,7 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20221114092455','2022-11-14 10:25:14',172),('DoctrineMigrations\\Version20221114093717','2022-11-14 10:37:40',220),('DoctrineMigrations\\Version20221114095004','2022-11-14 10:50:26',142),('DoctrineMigrations\\Version20221114123808','2022-11-14 13:38:42',383),('DoctrineMigrations\\Version20221115131709','2022-11-15 14:17:31',427),('DoctrineMigrations\\Version20221115132027','2022-11-15 14:20:34',126),('DoctrineMigrations\\Version20221116072747','2022-11-16 08:28:11',242),('DoctrineMigrations\\Version20221116085415','2022-11-16 09:54:30',273);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20221114092455','2022-11-14 10:25:14',172),('DoctrineMigrations\\Version20221114093717','2022-11-14 10:37:40',220),('DoctrineMigrations\\Version20221114095004','2022-11-14 10:50:26',142),('DoctrineMigrations\\Version20221114123808','2022-11-14 13:38:42',383),('DoctrineMigrations\\Version20221115131709','2022-11-15 14:17:31',427),('DoctrineMigrations\\Version20221115132027','2022-11-15 14:20:34',126),('DoctrineMigrations\\Version20221116072747','2022-11-16 08:28:11',242),('DoctrineMigrations\\Version20221116085415','2022-11-16 09:54:30',273),('DoctrineMigrations\\Version20221117073737','2022-11-17 08:37:54',808);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `videojuego` (
   `descripcion` longtext COLLATE utf8mb4_unicode_ci,
   `slug` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `videojuego` (
 
 LOCK TABLES `videojuego` WRITE;
 /*!40000 ALTER TABLE `videojuego` DISABLE KEYS */;
-INSERT INTO `videojuego` VALUES (5,'God Of War: Ragnarok','a:2:{i:0;s:11:\"Cory Barlog\";i:1;s:13:\"Eric Williams\";}','a:2:{i:0;s:6:\"Accion\";i:1;s:8:\"Aventura\";}','2022','a:1:{i:0;s:20:\"Santa Monica Studios\";}','Aliquam est placeat iste veniam sint. Facilis alias et earum. Quod laudantium voluptas dolorem atque ullam. Voluptatem qui maiores mollitia et quia harum.','GodOfWarRagnarok'),(6,'Horizon Forbiden West','a:1:{i:1;s:16:\"Mathijs de Jonge\";}','a:3:{i:1;s:6:\"Accion\";i:2;s:8:\"Aventura\";i:3;s:3:\"Rol\";}','2022','a:1:{i:1;s:15:\"Guerrilla Games\";}',NULL,'HorizonForbidenWest'),(7,'Elden Ring','a:1:{i:1;s:17:\"Hidetaka Miyazaki\";}','a:2:{i:1;s:6:\"Accion\";i:2;s:3:\"Rol\";}','2022','a:1:{i:1;s:12:\"FromSoftware\";}',NULL,'EldenRing'),(8,'Hollow Knight','a:1:{i:1;s:14:\"William Pellen\";}','a:1:{i:1;s:12:\"Metroidvania\";}','2017','a:1:{i:1;s:11:\"Team Cherry\";}',NULL,'HollowKnight'),(9,'Kirby and the Forgotten Land','a:2:{i:1;s:16:\"Tatsuya Kamiyama\";i:2;s:15:\"Shinya Kumazaki\";}','a:1:{i:1;s:11:\"Plataformas\";}','2022','a:1:{i:1;s:14:\"HAL Laboratory\";}',NULL,'KirbyandtheForgottenLand');
+INSERT INTO `videojuego` VALUES (5,'God Of War: Ragnarok','a:2:{i:0;s:11:\"Cory Barlog\";i:1;s:13:\"Eric Williams\";}','a:2:{i:0;s:6:\"Accion\";i:1;s:8:\"Aventura\";}','2022','a:1:{i:0;s:20:\"Santa Monica Studios\";}','Aliquam est placeat iste veniam sint. Facilis alias et earum. Quod laudantium voluptas dolorem atque ullam. Voluptatem qui maiores mollitia et quia harum.','GodOfWarRagnarok'),(6,'Horizon Forbiden West','a:1:{i:1;s:16:\"Mathijs de Jonge\";}','a:3:{i:1;s:6:\"Accion\";i:2;s:8:\"Aventura\";i:3;s:3:\"Rol\";}','2022','a:1:{i:1;s:15:\"Guerrilla Games\";}',NULL,'HorizonForbidenWest'),(7,'Elden Ring','a:1:{i:1;s:17:\"Hidetaka Miyazaki\";}','a:2:{i:1;s:6:\"Accion\";i:2;s:3:\"Rol\";}','2022','a:1:{i:1;s:12:\"FromSoftware\";}',NULL,'EldenRing'),(8,'Hollow Knight','a:1:{i:1;s:14:\"William Pellen\";}','a:1:{i:1;s:12:\"Metroidvania\";}','2017','a:1:{i:1;s:11:\"Team Cherry\";}',NULL,'HollowKnight'),(9,'Kirby and the Forgotten Land','a:2:{i:1;s:16:\"Tatsuya Kamiyama\";i:2;s:15:\"Shinya Kumazaki\";}','a:1:{i:1;s:11:\"Plataformas\";}','2022','a:1:{i:1;s:14:\"HAL Laboratory\";}',NULL,'KirbyandtheForgottenLand'),(10,'Stray','a:2:{i:1;s:11:\"Colas Koola\";i:2;s:21:\"Vivien Mermet-Guyenet\";}','a:1:{i:1;s:8:\"Aventura\";}','2022','a:1:{i:1;s:17:\"BlueTwelve Studio\";}',NULL,'Stray');
 /*!40000 ALTER TABLE `videojuego` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-16 14:53:13
+-- Dump completed on 2022-11-17 10:46:34
