@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('IS_FULLY_AUTHENTICATED')]
 class VideojuegosController extends AbstractController
 {
 
@@ -21,7 +22,6 @@ class VideojuegosController extends AbstractController
     }
 
     #[Route('/videojuegos/{slug}', name: 'app_videojuego')]
-    #[IsGranted('ROLE_USER')]
     public function mostrarVideojuego(VideojuegoRepository $videojuegoRepository, $slug): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
