@@ -4,13 +4,13 @@
 
 {% block body %}
     {% block nav %}{{ parent() }}{% endblock %}
-
-    <a href="{{ path('app_perfil') }}">volver al perfil</a>
-
     <div>
-        <h2 class="text-center text-secondary"> Videojuegos</h2>
-        <div class="row">
+        <h2 class="text-center text-secondary col"> Videojuegos</h2>
+        <!-- <h2 class="text-right col text-secondary">Filtrar por:</h2>-->
+
+        <div class="row row-cols-3">
             {% for juego in videojuego %}
+
                 <div class="col col-md-4">
                     <div class="contenedor_videojuegos text-center">
                         <span>
@@ -27,8 +27,8 @@
                     </div>
                 </div>
             {% endfor %}
-
         </div>
+        <a href="{{ path('app_perfil') }}">volver al perfil</a>
     </div>
-
 {% endblock %}
+

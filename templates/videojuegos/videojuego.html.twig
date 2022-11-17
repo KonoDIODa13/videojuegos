@@ -30,10 +30,10 @@
                     {% endfor %}
                 </h4>
                 {% if videojuego.descripcion != null %}
-                    <h4> Descripcion: {{ videojuego.descripcion }}</h4>
+                    <h4> Descripción: {{ videojuego.descripcion }}</h4>
                 {% endif %}
                 <!--<div>
-                    <img src="../../public/fotos/{{ videojuego.slug }}.jpeg">
+                    <img src="../../auxiliares/fotos/{{ videojuego.slug }}.jpeg" alt="{{ videojuego.slug }}">
                 </div>-->
                 <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>
             </div>

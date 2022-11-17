@@ -5,26 +5,18 @@ body {
 }
 
 .contenedor_videojuegos {
-    background: lightblue;
+    background-color: lightblue;
     border-radius: 5px;
-    margin: 2%;
-    padding: 2%;
-}
-
-.videojuego {
-    border-radius: 5px;
-    padding: 2%;
-    margin: 2%;
+    padding: 1%;
+    margin: 1%;
     font-size: larger;
 }
 
-.nav {
-    width: 100%;
-}
-.contenedor_juego{
+.contenedor_juego {
     padding: 2%;
     margin: 2%;
 }
 
-
-
+.row {
+    width: 100%
+}
