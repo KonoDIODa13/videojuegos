@@ -13,7 +13,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
                     </li>
-                    {% if  is_granted('IS_FULLY_AUTHENTICATED') %}
+                    {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <li class="nav-item active">
                             <a class="nav-link"
                                href="{{ path('app_perfil') }}">Perfil</a>

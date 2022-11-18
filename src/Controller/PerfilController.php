@@ -31,28 +31,4 @@ class PerfilController extends AbstractController
             'nombre' => $usuario->getUsername(),
         ]);
     }
-
-    #[Route('/registrarse', name: 'app_registro')]
-    public function registro(AuthenticationUtils $authenticationUtils): Response
-    {
-        return $this->render('perfil/registro.html.twig', [
-            'error' => $authenticationUtils->getLastAuthenticationError(),
-            'last_username' => $authenticationUtils->getLastUsername(),
-        ]);
-    }
-
-    #[Route('iniciar_sesion', name: 'app_inicio_sesion')]
-    public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
-    {
-        return $this->render('perfil/inicio_sesion.html.twig', [
-            'error' => $authenticationUtils->getLastAuthenticationError(),
-            'last_username' => $authenticationUtils->getLastUsername(),
-        ]);
-    }
-
-    #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
-    {
-        throw new \LogicException();
-    }
 }
