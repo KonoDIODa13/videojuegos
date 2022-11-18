@@ -137,4 +137,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
                 'background' => 'random',
             ]);
     }
+    public function __toString(): string
+    {
+        return $this->getId();
+    }
 }
