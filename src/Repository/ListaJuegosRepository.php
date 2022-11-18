@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\ListaVideojuegos;
+use App\Entity\ListaJuegos;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ListaVideojuegos>
+ * @extends ServiceEntityRepository<ListaJuegos>
  *
- * @method ListaVideojuegos|null find($id, $lockMode = null, $lockVersion = null)
- * @method ListaVideojuegos|null findOneBy(array $criteria, array $orderBy = null)
- * @method ListaVideojuegos[]    findAll()
- * @method ListaVideojuegos[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ListaJuegos|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ListaJuegos|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ListaJuegos[]    findAll()
+ * @method ListaJuegos[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ListaVideojuegosRepository extends ServiceEntityRepository
+class ListaJuegosRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ListaVideojuegos::class);
+        parent::__construct($registry, ListaJuegos::class);
     }
 
-    public function save(ListaVideojuegos $entity, bool $flush = false): void
+    public function save(ListaJuegos $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ListaVideojuegosRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(ListaVideojuegos $entity, bool $flush = false): void
+    public function remove(ListaJuegos $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ListaVideojuegosRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return ListaVideojuegos[] Returns an array of ListaVideojuegos objects
+//     * @return ListaJuegos[] Returns an array of ListaJuegos objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ListaVideojuegosRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ListaVideojuegos
+//    public function findOneBySomeField($value): ?ListaJuegos
 //    {
 //        return $this->createQueryBuilder('l')
 //            ->andWhere('l.exampleField = :val')

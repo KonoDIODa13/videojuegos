@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UsuarioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -47,6 +47,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     private $plainPassword;
+
+    #[ORM\OneToMany(mappedBy: 'idUsuario', targetEntity: ListaJuegos::class, orphanRemoval: true)]
+    private Collection $listaJuegos;
+
+    public function __construct()
+    {
+        $this->listaJuegos = new ArrayCollection();
+    }
 
 
     public function getPlainPassword()
@@ -131,5 +139,35 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
                 'size' => $size,
                 'background' => 'random',
             ]);
+    }
+
+    /**
+     * @return Collection<int, ListaJuegos>
+     */
+    public function getListaJuegos(): Collection
+    {
+        return $this->listaJuegos;
+    }
+
+    public function addListaJuego(ListaJuegos $listaJuego): self
+    {
+        if (!$this->listaJuegos->contains($listaJuego)) {
+            $this->listaJuegos->add($listaJuego);
+            $listaJuego->setIdUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListaJuego(ListaJuegos $listaJuego): self
+    {
+        if ($this->listaJuegos->removeElement($listaJuego)) {
+            // set the owning side to null (unless already changed)
+            if ($listaJuego->getIdUsuario() === $this) {
+                $listaJuego->setIdUsuario(null);
+            }
+        }
+
+        return $this;
     }
 }
