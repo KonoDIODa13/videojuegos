@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\ListaJuegos;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ListaJuegosCrudController extends AbstractCrudController
 {
@@ -12,14 +15,14 @@ class ListaJuegosCrudController extends AbstractCrudController
         return ListaJuegos::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        //yield IdField::new("id");
+        yield AssociationField::new('usuario');
+        yield AssociationField::new('videojuego');
+
+
     }
-    */
+
 }
