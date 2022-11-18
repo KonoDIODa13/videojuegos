@@ -15,23 +15,38 @@ class ListaJuegos
 
     #[ORM\ManyToOne(inversedBy: 'listaJuegos')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Usuario $idUsuario = null;
+    private ?Usuario $usuario = null;
+
+    #[ORM\ManyToOne]
+    private ?Videojuego $videojuego = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdUsuario(): ?Usuario
+    public function getUsuario(): ?Usuario
     {
-        return $this->idUsuario;
+        return $this->usuario;
     }
 
-    public function setIdUsuario(?Usuario $idUsuario): self
+    public function setUsuario(?Usuario $usuario): self
     {
-        $this->idUsuario = $idUsuario;
+        $this->usuario = $usuario;
 
         return $this;
     }
-    
+
+    public function getVideojuego(): ?Videojuego
+    {
+        return $this->videojuego;
+    }
+
+    public function setVideojuego(?Videojuego $videojuego): self
+    {
+        $this->videojuego = $videojuego;
+
+        return $this;
+    }
+
 }

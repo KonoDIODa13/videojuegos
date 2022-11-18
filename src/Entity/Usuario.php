@@ -48,7 +48,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
-    #[ORM\OneToMany(mappedBy: 'idUsuario', targetEntity: ListaJuegos::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'Usuario', targetEntity: ListaJuegos::class, orphanRemoval: true)]
     private Collection $listaJuegos;
 
     public function __construct()
@@ -153,7 +153,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->listaJuegos->contains($listaJuego)) {
             $this->listaJuegos->add($listaJuego);
-            $listaJuego->setIdUsuario($this);
+            $listaJuego->setUsuario($this);
         }
 
         return $this;
@@ -163,8 +163,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->listaJuegos->removeElement($listaJuego)) {
             // set the owning side to null (unless already changed)
-            if ($listaJuego->getIdUsuario() === $this) {
-                $listaJuego->setIdUsuario(null);
+            if ($listaJuego->getUsuario() === $this) {
+                $listaJuego->setUsuario(null);
             }
         }
 
