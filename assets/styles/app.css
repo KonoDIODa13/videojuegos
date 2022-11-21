@@ -41,3 +41,8 @@ body {
     float: right;
     max-width: 50%;
 }
+
+.listaJuego {
+    margin: 1%;
+    padding: 1%;
+}

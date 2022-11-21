@@ -39,8 +39,11 @@
                             <p class="card-subtitle">Descripción: {{ videojuego.descripcion }}</p>
                         {% endif %}
                     </div>
-                    <div class="derecha d-inline">
-                        <img class="imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}">
+                    <div class="derecha d-inline container-fluid">
+                        <img class="imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}"><br>
+                        <a href="{{ path('app_annadir_lista', { slug:videojuego.slug}) }}">
+                            añadir a la lista
+                        </a>
                     </div>
                 </div>
 

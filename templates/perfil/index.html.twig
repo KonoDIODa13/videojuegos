@@ -35,8 +35,8 @@
                     {% endif %}
                 </ul>
                 {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <img src="{{ app.user.avatarUri }}"
-                         alt="{{ app.user.username }} Avatar">
+                    <a href="{{ path('app_ajustes') }}"><img src="{{ app.user.avatarUri }}"
+                         alt="{{ app.user.username }} Avatar"><a>
                 {% endif %}
             </div>
         </nav>

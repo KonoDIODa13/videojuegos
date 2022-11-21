@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Videojuego;
 use App\Repository\VideojuegoRepository;
+use Blackfire\Profile\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted('IS_FULLY_AUTHENTICATED')]
-class VideojuegosController extends AbstractController
+class VideojuegosController extends ControladorBase
 {
 
     #[Route('/videojuegos', name: 'app_videojuegos')]
@@ -32,4 +35,15 @@ class VideojuegosController extends AbstractController
             'foto' => $foto,
         ]);
     }
+
+    #[Route('/videojuegos/{slug}/lista', name: 'app_annadir_lista')]
+    public function annadirLista(VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager, $slug): Response
+    {
+        $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
+        $usuario = $this->getUser();
+        $usuario->addListaJuego($videojuego);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_perfil');
+    }
+
 }

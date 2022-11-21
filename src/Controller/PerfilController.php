@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Repository\UsuarioRepository;
 use App\Repository\VideojuegoRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,15 +25,30 @@ class PerfilController extends ControladorBase
     #[Route('/perfil', name: 'app_perfil')]
     public function perfil(VideojuegoRepository $videojuegoRepository): Response
     {
+
         $usuario = $this->getUser();
         $listaJuegos = $usuario->getListaJuegos();
-        //dd($usuario);
+        $primerJuego = $listaJuegos[0];
+        $segundoJuego = $listaJuegos[1];
+        $juego1 = $videojuegoRepository->findOneBy(['id' => $primerJuego]);
+        $juego2 = $videojuegoRepository->findOneBy(['id' => $segundoJuego]);
 
+        if ($segundoJuego != null) {
+            $arrJuegos = array($juego1, $juego2);
+        } else {
+            $arrJuegos = array($juego1);
+        }
 
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),
-            'lista' => $listaJuegos,
+            'arrjuegos' => $arrJuegos,
         ]);
+    }
+
+    #[Route('/perfil/ajustes', name: 'app_ajustes')]
+    public function ajustes(): Response
+    {
+        return new Response('estos son los ajustes');
     }
 }

@@ -6,11 +6,21 @@
 
     {% block nav %}{{ parent() }}{% endblock %}
 
-    <h1>{{nombre }}:</h1>
+    <h1 class="m-3">{{ nombre }}:</h1>
     <!-- poner mas cosasssasasaas-->
 
-    <a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
+
     <!-- lista de videojuegos -->
     <div class="listaJuego">
+        {% if arrjuegos[0] != null %}
+            {% for juego in arrjuegos %}
+                <span>titulo: {{ juego.titulo }}</span><br>
+                <span>Año de publicación: {{ juego.fechaPublicacion }}</span><br><br>
+            {% endfor %}
+            <a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
+        {% else %}
+            no hay juegos en tu lista.<br>
+            <a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
+        {% endif %}
     </div>
 {% endblock %}
