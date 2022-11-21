@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\VideojuegoRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
@@ -38,7 +36,6 @@ class Videojuego
     #[ORM\Column(length: 50)]
     #[Slug(fields: ['titulo'])]
     private ?string $slug = null;
-
 
     public function getId(): ?int
     {
@@ -134,4 +131,5 @@ class Videojuego
     {
         return $this->getId();
     }
+
 }

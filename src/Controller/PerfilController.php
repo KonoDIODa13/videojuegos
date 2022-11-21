@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 
-use App\Repository\ListaJuegosRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\VideojuegoRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class PerfilController extends ControladorBase
 {
@@ -28,14 +25,15 @@ class PerfilController extends ControladorBase
     public function perfil(VideojuegoRepository $videojuegoRepository): Response
     {
         $usuario = $this->getUser();
-        $listaJuegos = $usuario->getListaJuegos();
-        dd($listaJuegos);
-        
+        //$listaJuegos = $usuario->getListaJuegos();
+        //dd($listaJuegos);
+        //$juego = $usuario->getJuego();
+
 //$juegos= $videojuegoRepository->findOneBy();
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),
-            'lista' => $listaJuegos,
+            //'lista' => $listaJuegos,
 
         ]);
     }

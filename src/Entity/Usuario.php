@@ -29,6 +29,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $contra = null;
 
+    private $plainPassword;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,11 +48,10 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    private $plainPassword;
-
-    #[ORM\OneToOne(mappedBy: 'usuario', cascade: ['persist', 'remove'])]
-    private ?ListaJuegos $listaJuegos = null;
-
+    public function __construct()
+    {
+        $this->listaJuegos = new ArrayCollection();
+    }
 
     public function getPlainPassword()
     {
@@ -140,21 +141,5 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->getId();
     }
-
-    public function getListaJuegos(): ?ListaJuegos
-    {
-        return $this->listaJuegos;
-    }
-
-    public function setListaJuegos(ListaJuegos $listaJuegos): self
-    {
-        // set the owning side of the relation if necessary
-        if ($listaJuegos->getUsuario() !== $this) {
-            $listaJuegos->setUsuario($this);
-        }
-
-        $this->listaJuegos = $listaJuegos;
-
-        return $this;
-    }
+    
 }
