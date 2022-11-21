@@ -48,11 +48,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->listaJuegos = new ArrayCollection();
-    }
-
     public function getPlainPassword()
     {
         return $this->plainPassword;
