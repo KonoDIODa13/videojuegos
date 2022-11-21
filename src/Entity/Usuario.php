@@ -31,6 +31,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
+    #[ORM\ManyToMany(targetEntity: Videojuego::class)]
+    private Collection $listaJuegos;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +143,30 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return $this->getId();
+    }
+
+    /**
+     * @return Collection<int, Videojuego>
+     */
+    public function getListaJuegos(): Collection
+    {
+        return $this->listaJuegos;
+    }
+
+    public function addListaJuego(Videojuego $listaJuego): self
+    {
+        if (!$this->listaJuegos->contains($listaJuego)) {
+            $this->listaJuegos->add($listaJuego);
+        }
+
+        return $this;
+    }
+
+    public function removeListaJuego(Videojuego $listaJuego): self
+    {
+        $this->listaJuegos->removeElement($listaJuego);
+
+        return $this;
     }
     
 }
