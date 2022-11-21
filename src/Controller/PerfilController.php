@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class PerfilController extends AbstractController
+class PerfilController extends ControladorBase
 {
 
     #[Route('/', name: 'app_inicio')]
@@ -25,15 +25,18 @@ class PerfilController extends AbstractController
     }
 
     #[Route('/perfil', name: 'app_perfil')]
-    public function perfil(UserInterface $usuario, ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository): Response
+    public function perfil(VideojuegoRepository $videojuegoRepository): Response
     {
-        $juego = $videojuegoRepository->findOneBy(['id' => 5]);
-        $lista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId(), 'videojuego' => $juego]);
-        //dd($lista);
-
+        $usuario = $this->getUser();
+        $listaJuegos = $usuario->getListaJuegos();
+        dd($listaJuegos);
+        
+//$juegos= $videojuegoRepository->findOneBy();
         return $this->render('perfil/perfil.html.twig', [
+            'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),
-            'lista' => $lista,
+            'lista' => $listaJuegos,
+
         ]);
     }
 }

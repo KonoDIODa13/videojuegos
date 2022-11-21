@@ -6,9 +6,15 @@
 
     {% block nav %}{{ parent() }}{% endblock %}
 
-    <h1>{{ nombre }}:</h1>
+    <h1>{{nombre }}:</h1>
     <!-- poner mas cosasssasasaas-->
 
     <a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
     <!-- lista de videojuegos -->
+    <div class="listaJuego">
+        <p>juegos</p>
+        {% for juegos in  lista %}
+           juegos:  {{ juegos }}
+        {% endfor %}
+    </div>
 {% endblock %}

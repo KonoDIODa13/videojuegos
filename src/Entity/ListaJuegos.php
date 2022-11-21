@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ListaJuegosRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ListaJuegosRepository::class)]
@@ -13,13 +14,12 @@ class ListaJuegos
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'listaJuegos')]
+    #[ORM\OneToOne(inversedBy: 'listaJuegos', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Usuario $usuario = null;
 
-    #[ORM\ManyToOne(inversedBy: 'listaJuegos')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Videojuego $videojuego = null;
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $videojuegos = [];
 
     public function getId(): ?int
     {
@@ -31,21 +31,21 @@ class ListaJuegos
         return $this->usuario;
     }
 
-    public function setUsuario(?Usuario $usuario): self
+    public function setUsuario(Usuario $usuario): self
     {
         $this->usuario = $usuario;
 
         return $this;
     }
 
-    public function getVideojuego(): ?Videojuego
+    public function getVideojuegos(): array
     {
-        return $this->videojuego;
+        return $this->videojuegos;
     }
 
-    public function setVideojuego(?Videojuego $videojuego): self
+    public function setVideojuegos(array $videojuegos): self
     {
-        $this->videojuego = $videojuego;
+        $this->videojuegos = $videojuegos;
 
         return $this;
     }
