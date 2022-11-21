@@ -25,16 +25,14 @@ class PerfilController extends ControladorBase
     public function perfil(VideojuegoRepository $videojuegoRepository): Response
     {
         $usuario = $this->getUser();
-        //$listaJuegos = $usuario->getListaJuegos();
-        //dd($listaJuegos);
-        //$juego = $usuario->getJuego();
+        $listaJuegos = $usuario->getListaJuegos();
+        //dd($usuario);
 
-//$juegos= $videojuegoRepository->findOneBy();
+
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),
-            //'lista' => $listaJuegos,
-
+            'lista' => $listaJuegos,
         ]);
     }
 }
