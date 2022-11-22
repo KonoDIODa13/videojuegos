@@ -45,7 +45,7 @@ class PerfilController extends ControladorBase
                 }
             }
         }
-        dd($arrComentarios);
+        //dd($arrComentarios);
 
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,

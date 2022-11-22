@@ -22,11 +22,21 @@
 				<span>titulo:
 					{{ juego.titulo }}</span><br>
 				<span>Año de publicación:
-					{{ juego.fechaPublicacion }}</span><br><br>
-		{% endfor %}
-		<a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
-	{% else %}
-		no hay juegos en tu lista.<br>
-		<a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
-	{% endif %}
-</div>{% endblock %}
+					{{ juego.fechaPublicacion }}</span><br>
+				{% if arrComentarios != null %}
+					{%  for comentario in arrComentarios %}
+						{% if comentario != null %}
+							<span>{{comentario}}</span><br><br>
+						{% endif %}
+					{% endfor %}
+					{% else %}
+
+				{% endif %}
+			{% endfor %}
+			<a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
+		{% else %}
+			no hay juegos en tu lista.<br>
+			<a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
+		{% endif %}
+	</div>
+{% endblock %}

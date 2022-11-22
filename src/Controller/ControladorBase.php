@@ -9,7 +9,6 @@ use App\Entity\ListaJuegos;
 
 /**
  * @method Usuario getUser()
- * @method ListaJuegos getListaJuegos()
  */
 class ControladorBase extends AbstractController
 {

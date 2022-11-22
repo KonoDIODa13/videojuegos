@@ -2,15 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Videojuego;
+use App\Entity\ListaJuegos;
 use App\Repository\VideojuegoRepository;
-use Blackfire\Profile\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\ListaJuegos;
 
 #[IsGranted('IS_FULLY_AUTHENTICATED')]
 class VideojuegosController extends ControladorBase
@@ -43,11 +40,15 @@ class VideojuegosController extends ControladorBase
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
-        $lista=new ListaJuegos($usuario, $videojuego);
+        //dd($usuario->getListaJuegos());
+        $lista = new ListaJuegos();
+        //dd($lista->getId());
+        $lista->setUsuario($usuario);
+        $lista->setVideojuego($videojuego);
         //dd($lista);
-        //$lista = $usuario->addListaJuego($usuario->getId(), $videojuego->getId());
+        /*$lista=$listaJuegos->crearLista($usuario, $videojuego);
         $usuario->addListajuego($lista);
-        $videojuego->addListajuego($lista);
+        $videojuego->addListajuego($lista);*/
         $entityManager->persist($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');

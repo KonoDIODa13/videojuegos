@@ -24,12 +24,6 @@ class ListaJuegos
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comentario = null;
-    
-    /*public function __construct($usuario, $videojuego)
-    {
-        $this->usuario = $usuario;
-        $this->videojuego = $videojuego;
-    }*/
 
     public function getId(): ?int
     {
