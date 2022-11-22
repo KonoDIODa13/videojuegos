@@ -1,0 +1,11 @@
+ //este codigo es de perfil html twig para mostrar la lista de juegos
+ {% if arrjuegos[0] != null %}
+            {% for juego in arrjuegos %}
+                <span>titulo: {{ juego.titulo }}</span><br>
+                <span>Año de publicación: {{ juego.fechaPublicacion }}</span><br><br>
+            {% endfor %}
+            <a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
+        {% else %}
+            no hay juegos en tu lista.<br>
+            <a href="{{ path ('app_videojuegos') }}">buscar videojuegos</a>
+        {% endif %}

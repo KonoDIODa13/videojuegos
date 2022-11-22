@@ -27,7 +27,7 @@ class PerfilController extends ControladorBase
     {
 
         $usuario = $this->getUser();
-        $listaJuegos = $usuario->getListaJuegos();
+       /* $listaJuegos = $usuario->getListaJuegos();
         $primerJuego = $listaJuegos[0];
         $segundoJuego = $listaJuegos[1];
         $juego1 = $videojuegoRepository->findOneBy(['id' => $primerJuego]);
@@ -37,12 +37,12 @@ class PerfilController extends ControladorBase
             $arrJuegos = array($juego1, $juego2);
         } else {
             $arrJuegos = array($juego1);
-        }
+        }*/
 
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),
-            'arrjuegos' => $arrJuegos,
+            //'arrjuegos' => $arrJuegos,
         ]);
     }
 
