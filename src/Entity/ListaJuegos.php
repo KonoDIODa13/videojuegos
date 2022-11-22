@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ListaJuegosRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ListaJuegosRepository::class)]
@@ -20,6 +21,15 @@ class ListaJuegos
     #[ORM\ManyToOne(inversedBy: 'listajuegos')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Videojuego $videojuego = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $comentario = null;
+    
+    /*public function __construct($usuario, $videojuego)
+    {
+        $this->usuario = $usuario;
+        $this->videojuego = $videojuego;
+    }*/
 
     public function getId(): ?int
     {
@@ -46,6 +56,18 @@ class ListaJuegos
     public function setVideojuego(?Videojuego $videojuego): self
     {
         $this->videojuego = $videojuego;
+
+        return $this;
+    }
+
+    public function getComentario(): ?string
+    {
+        return $this->comentario;
+    }
+
+    public function setComentario(?string $comentario): self
+    {
+        $this->comentario = $comentario;
 
         return $this;
     }

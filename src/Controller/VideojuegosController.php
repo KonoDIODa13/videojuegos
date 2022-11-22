@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ListaJuegos;
-use ContainerEnFVncp\getListaJuegosService;
 
 #[IsGranted('IS_FULLY_AUTHENTICATED')]
 class VideojuegosController extends ControladorBase
@@ -29,9 +28,10 @@ class VideojuegosController extends ControladorBase
     #[Route('/videojuegos/{slug}', name: 'app_videojuego')]
     public function mostrarVideojuego(VideojuegoRepository $videojuegoRepository, $slug): Response
     {
+        //dd($videojuegoRepository);
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
-        //dd($videojuego);
         $foto = $slug;
+
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'foto' => $foto,
@@ -43,17 +43,13 @@ class VideojuegosController extends ControladorBase
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
-        $listaJuegos=$videojuego->getListaJuegos();
-        /*dd($listaJuegos);
-
-        //$usuario->addListaJuego($videojuego);
-        $lista = new ListaJuegos($listaJuegos->getUsuario(), $listaJuegos->getVideojuego());
-        dd($lista);
+        $lista=new ListaJuegos($usuario, $videojuego);
+        //dd($lista);
+        //$lista = $usuario->addListaJuego($usuario->getId(), $videojuego->getId());
+        $usuario->addListajuego($lista);
+        $videojuego->addListajuego($lista);
         $entityManager->persist($lista);
-        $entityManager->flush();*/
-        //dd($videojuego->getListaJuegos());
-        $videojuego->addListajuego($listaJuegos);
-
+        $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
     }
 }

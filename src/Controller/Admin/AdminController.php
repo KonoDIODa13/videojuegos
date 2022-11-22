@@ -13,10 +13,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted ('ROLE_USER')]
+#[IsGranted('ROLE_USER')]
 class AdminController extends AbstractDashboardController
 {
-    #[IsGranted ('ROLE_USER')]
+    #[IsGranted('ROLE_USER')]
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -51,6 +51,7 @@ class AdminController extends AbstractDashboardController
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('usuario', 'fas fa-list', Usuario::class);
         yield MenuItem::linkToCrud('videojuego', 'fas fa-list', Videojuego::class);
+        yield MenuItem::linkToCrud('listaJuegos', 'fas fa-list', ListaJuegos::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
