@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
 	{% block nav %}
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="nav navbar navbar-expand-lg navbar-light bg-light flex-column">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -42,16 +42,17 @@
 	{% endblock %}
 	{% block text %}
 		<div
-			class="contenedor">
+			class="contenedor flex-column">
 			<!--<h1>Game Experience</h1><br>-->
 			<h3>¿Qué es Game Experiences?</h3>
 			<p>
 				Game Experiences es ...</p>
 		</div>
 	{% endblock %}
+
 	{% block footer %}
-		<div class="footer mt-2">
-			<div class="text-center p-4">
+		<div class="footer flex-column">
+			<div class="p-3">
 				© 2021 Copyright:
 				<strong>Jaime González Bravo</strong>.
 			</div>
