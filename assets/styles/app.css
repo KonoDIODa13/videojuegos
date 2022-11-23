@@ -12,37 +12,25 @@ body {
     font-size: larger;
 }
 
-.contenedor_juego {
-    padding: 2%;
-    margin: 2%;
-}
-
-.row {
-    width: 100%
-}
 
 .card {
     background: rgb(23, 36, 44);
     background: linear-gradient(180deg, rgba(23, 36, 44, 1) 1%, rgba(34, 47, 54, 1) 97%);
     border-radius: 5px;
+    margin: 2%;
 }
 
 .imagen {
-    width: 50%;
-    height: 60%;
-}
-
-.izquerda {
-    float: left;
-    max-width: 50%;
-}
-
-.derecha {
-    float: right;
-    max-width: 50%;
+    width: 40%;
+    height: 40%;
 }
 
 .listaJuego {
     margin: 1%;
     padding: 1%;
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 42%
 }

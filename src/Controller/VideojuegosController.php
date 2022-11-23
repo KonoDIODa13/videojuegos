@@ -27,11 +27,17 @@ class VideojuegosController extends ControladorBase
     {
         //dd($videojuegoRepository);
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
+        $autores = $videojuego->getAutor();
+        $generos = $videojuego->getTema();
+        $desarrolladores = $videojuego->getDesarrollador();
         $foto = $slug;
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'foto' => $foto,
+            'autores' => $autores,
+            'generos' => $generos,
+            'desarrolladores' => $desarrolladores,
         ]);
     }
 

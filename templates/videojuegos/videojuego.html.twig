@@ -1,57 +1,128 @@
 {% extends 'perfil/index.html.twig' %}
 
 {% block body %}
-    {% block nav %}{{ parent() }}{% endblock %}
-    <div class="contenedor_juego">
-        <div class="row">
-            <div class="card bg-secondary container-fluid">
-                <div class="card-body bg-secondary">
-                    <h2 class="card-title text-center">{{ videojuego.titulo }}</h2>
-                    <br>
-                    <div class="izquerda d-inline">
-                        <h3 class="card-subtitle ">
-                            Autores:
-                            {% for autor in videojuego.autor %}
-                                {{ autor }} |
-                            {% endfor %}
-                        </h3>
-                        <br>
+	{% block nav %}
+		{{ parent() }}
+	{% endblock %}
 
-                        <h3 class="card-subtitle ">
-                            Géneros:
-                            {% for genero in videojuego.tema %}
-                                {{ genero }} |
-                            {% endfor %}
-                        </h3>
-                        <br>
+	<div class="m-2 p-2 card">
+		<div class="card-body bg-secondary">
+			<h2 class="card-title text-center">{{videojuego.titulo}}</h2>
+			<div class="d-flex align-items-center">
+				<div class="flex-grow-1 ms-2">
 
-                        <h3 class="card-subtitle ">Año de publicación: {{ videojuego.fechaPublicacion }}</h3>
-                        <br>
 
-                        <h3 class="card-subtitle ">
-                            Empresa desarrolladora:
-                            {% for desarrollador in videojuego.desarrollador %}
-                                {{ desarrollador }} |
-                            {% endfor %}
-                        </h3>
-                        {% if videojuego.descripcion != null %}
-                            <br>
-                            <p class="card-subtitle">Descripción: {{ videojuego.descripcion }}</p>
-                        {% endif %}
-                    </div>
-                    <div class="derecha d-inline container-fluid">
-                        <img class="imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}"><br>
-                        <a href="{{ path('app_annadir_lista', { slug:videojuego.slug}) }}">
-                            añadir a la lista
-                        </a>
-                    </div>
-                </div>
+					{% if autores !=null %}
+						<h4>Autores:</h4>
+						{% for autor in autores %}
+							<ul>
+								<li>{{autor}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay autores.</span>
+					{% endif %}
 
-                <!-- <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>-->
-            </div>
-            <div class="comentario">
-                <!--<h2 class="text-center">Comentarios</h2>-->
-            </div>
-        </div>
-    </div>
+					{% if generos !=null %}
+						<h4>Géneros:</h4>
+						{% for genero in generos %}
+							<ul>
+								<li>{{genero}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay géneros.</span>
+					{% endif %}
+
+					<h4>Año de publicación:</h4>
+					<ul>
+						<li>{{videojuego.fechaPublicacion}}</li>
+					</ul>
+
+					{% if desarrolladores != null %}
+						<h4>Empresa desarrolladora:</h4>
+						{% for desarrollador in desarrolladores %}
+							<ul>
+								<li>{{desarrollador}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay desarrolladores.</span>
+					{% endif %}
+
+					{% if videojuego.descripcion != null %}
+						<h4>Descripcion:</h4>
+						<ul>
+							<li>{{videojuego.descripcion}}</li>
+						</ul>
+					{% endif %}
+					<a class="btn btn-primary" href="{{ path('app_annadir_lista', { slug:videojuego.slug}) }}">
+						añadir a la lista
+					</a>
+				</div>
+				<div class="flex-shrink-0 ms-2">
+					<img class="img-fluid imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}">
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block bloque %}
+	<div class="contenedor_juego">
+		<div class="row">
+			<div class="card bg-secondary container-fluid">
+				<div class="card-body bg-secondary">
+					<h2 class="card-title text-center">{{ videojuego.titulo }}</h2>
+					<br>
+					<div class="izquerda d-inline">
+						<h3 class="card-subtitle ">
+							Autores:
+							{% for autor in videojuego.autor %}
+								{{ autor }}
+								|
+							{% endfor %}
+						</h3>
+						<br>
+
+						<h3 class="card-subtitle ">
+							Géneros:
+							{% for genero in videojuego.tema %}
+								{{ genero }}
+								|
+							{% endfor %}
+						</h3>
+						<br>
+
+						<h3 class="card-subtitle ">Año de publicación:
+							{{ videojuego.fechaPublicacion }}</h3>
+						<br>
+
+						<h3 class="card-subtitle ">
+							Empresa desarrolladora:
+							{% for desarrollador in videojuego.desarrollador %}
+								{{ desarrollador }}
+								|
+							{% endfor %}
+						</h3>
+						{% if videojuego.descripcion != null %}
+							<br>
+							<p class="card-subtitle">Descripción:
+								{{ videojuego.descripcion }}</p>
+						{% endif %}
+					</div>
+					<div class="derecha d-inline container-fluid">
+						<img class="imagen" src="{{ asset('fotos/'~ foto ~ '.jpeg') }}"><br>
+						<a href="{{ path('app_annadir_lista', { slug:videojuego.slug}) }}">
+							añadir a la lista
+						</a>
+					</div>
+				</div>
+
+				<!-- <a href="{{ path('app_videojuegos') }}">volver a buscar videojuegos</a>-->
+			</div>
+			<div
+				class="comentario"><!--<h2 class="text-center">Comentarios</h2>-->
+			</div>
+		</div>
+	</div>
 {% endblock %}
