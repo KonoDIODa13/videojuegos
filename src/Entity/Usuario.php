@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[ORM\Entity(repositoryClass: UsuarioRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
@@ -111,8 +113,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setContra(string $contra): self
     {
-        $this->contra = $contra;
-
+        $this->contra = password_hash($contra, $this->plainPassword);
         return $this;
     }
 
@@ -126,7 +127,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): self
     {
-        $this->contra = $password;
+        $this->contra = password_hash($password, $this->plainPassword);
         return $this;
     }
 
@@ -134,10 +135,10 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function getAvatarUri(int $size = 32): string
     {
         return 'https://ui-avatars.com/api/?' . http_build_query([
-                'name' => $this->getUsername(),
-                'size' => $size,
-                'background' => 'random',
-            ]);
+            'name' => $this->getUsername(),
+            'size' => $size,
+            'background' => 'random',
+        ]);
     }
 
     public function __toString(): string
@@ -168,5 +169,4 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 }
