@@ -31,12 +31,12 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
-    #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ListaJuegos::class, orphanRemoval: true)]
-    private Collection $ListaJuegos;
+    #[ORM\ManyToMany(targetEntity: Videojuego::class)]
+    private Collection $videojuegos;
 
     public function __construct()
     {
-        $this->ListaJuegos = new ArrayCollection();
+        $this->videojuegos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,26 +153,28 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->ListaJuegos;
     }
 
-    public function addListajuego(ListaJuegos $listajuego): self
+    /**
+     * @return Collection<int, Videojuego>
+     */
+    public function getVideojuegos(): Collection
     {
-        if (!$this->ListaJuegos->contains($listajuego)) {
-            $this->ListaJuegos->add($listajuego);
-            $listajuego->setUsuario($this);
+        return $this->videojuegos;
+    }
+
+    public function addVideojuego(Videojuego $videojuego): self
+    {
+        if (!$this->videojuegos->contains($videojuego)) {
+            $this->videojuegos->add($videojuego);
         }
 
         return $this;
     }
 
-    public function removeListajuego(ListaJuegos $listajuego): self
+    public function removeVideojuego(Videojuego $videojuego): self
     {
-        if ($this->ListaJuegos->removeElement($listajuego)) {
-            // set the owning side to null (unless already changed)
-            if ($listajuego->getUsuario() === $this) {
-                $listajuego->setUsuario(null);
-            }
-        }
+        $this->videojuegos->removeElement($videojuego);
 
         return $this;
     }
-    
+
 }

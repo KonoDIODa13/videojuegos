@@ -23,15 +23,7 @@
 					{{ juego.titulo }}</span><br>
 				<span>Año de publicación:
 					{{ juego.fechaPublicacion }}</span><br>
-				{% if arrComentarios != null %}
-					{%  for comentario in arrComentarios %}
-						{% if comentario != null %}
-							<span>{{comentario}}</span><br><br>
-						{% endif %}
-					{% endfor %}
-					{% else %}
-
-				{% endif %}
+				mostrarComentarios({{arrComentarios}});
 			{% endfor %}
 			<a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
 		{% else %}

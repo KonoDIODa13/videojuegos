@@ -39,14 +39,6 @@ class Videojuego
     #[Slug(fields: ['titulo'])]
     private ?string $slug = null;
 
-    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: listaJuegos::class, orphanRemoval: true)]
-    private Collection $listajuegos;
-
-    public function __construct()
-    {
-        $this->listajuegos = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -140,36 +132,6 @@ class Videojuego
     public function __toString(): string
     {
         return $this->getId();
-    }
-
-    /**
-     * @return Collection<int, listaJuegos>
-     */
-    public function getListajuegos(): Collection
-    {
-        return $this->listajuegos;
-    }
-
-    public function addListajuego(listaJuegos $listajuego): self
-    {
-        if (!$this->listajuegos->contains($listajuego)) {
-            $this->listajuegos->add($listajuego);
-            $listajuego->setVideojuego($this);
-        }
-
-        return $this;
-    }
-
-    public function removeListajuego(listaJuegos $listajuego): self
-    {
-        if ($this->listajuegos->removeElement($listajuego)) {
-            // set the owning side to null (unless already changed)
-            if ($listajuego->getVideojuego() === $this) {
-                $listajuego->setVideojuego(null);
-            }
-        }
-
-        return $this;
     }
 
 }
