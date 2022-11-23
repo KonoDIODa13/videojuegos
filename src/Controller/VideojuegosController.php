@@ -40,16 +40,7 @@ class VideojuegosController extends ControladorBase
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
-        //dd($usuario->getListaJuegos());
-        $lista = new ListaJuegos();
-        //dd($lista->getId());
-        $lista->setUsuario($usuario);
-        $lista->setVideojuego($videojuego);
-        //dd($lista);
-        /*$lista=$listaJuegos->crearLista($usuario, $videojuego);
-        $usuario->addListajuego($lista);
-        $videojuego->addListajuego($lista);*/
-        $entityManager->persist($lista);
+        $entityManager->persist($usuario->addVideojuego($videojuego));
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
     }

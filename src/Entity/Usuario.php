@@ -146,14 +146,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, ListaJuegos>
-     */
-    public function getListaJuegos(): Collection
-    {
-        return $this->ListaJuegos;
-    }
-
-    /**
      * @return Collection<int, Videojuego>
      */
     public function getVideojuegos(): Collection
