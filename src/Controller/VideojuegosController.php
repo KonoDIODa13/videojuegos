@@ -35,10 +35,9 @@ class VideojuegosController extends ControladorBase
         ]);
     }
 
-    #[Route('/videojuegos/{slug}/lista', name: 'app_annadir_a_lista')]
-    public function annadirLista(VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager, $slug): Response
+    #[Route('/videojuegos/{videojuego}/lista', name: 'app_annadir_a_lista')]
+    public function annadirLista(VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager, Videojuego $videojuego): Response
     {
-        $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
         $lista = $usuario->addVideojuego($videojuego);
         $entityManager->persist($lista);
