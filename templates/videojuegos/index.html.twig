@@ -1,32 +1,39 @@
-{% extends 'perfil/index.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}videojuegos{% endblock %}
-
-{% block body %}
-    {% block nav %}{{ parent() }}{% endblock %}
-    <div>
-        <h2 class="text-center text-secondary col"> Videojuegos</h2>
-        <!-- <h2 class="text-right col text-secondary">Filtrar por:</h2>-->
-        <div class="row row-cols-3">
-            {% for juego in videojuego %}
-                <div class="col col-md-4">
-                    <div class="contenedor_videojuegos text-center">
-                        <span>
-                            Titulo:
-                            <a href="{{ path('app_videojuego', {slug: juego.slug}) }}">{{ juego.titulo }}</a><br>
-                        </span>
-
-                        <span>
-                            Temas:
-                            {% for temas in juego.tema %}
-                                {{ temas }}
-                            {% endfor %}
-                        </span>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-        <a href="{{ path('app_perfil') }}">volver al perfil</a>
-    </div>
+{% block title %}videojuegos
 {% endblock %}
 
+{% block body %}
+	{% block nav %}
+		{{ parent() }}
+	{% endblock %}
+	<div>
+		<h2 class="text-center text-secondary col">
+			Videojuegos</h2>
+		<!-- <h2 class="text-right col text-secondary">Filtrar por:</h2>-->
+		<div class="row row-cols-3">
+			{% for juego in videojuego %}
+				<div class="col col-md-4">
+					<div class="contenedor_videojuegos text-center">
+						<span>
+							Titulo:
+							<a href="{{ path('app_videojuego', {slug: juego.slug}) }}">{{ juego.titulo }}</a><br>
+						</span>
+
+						<span>
+							Temas:
+							{% for temas in juego.tema %}
+								{{ temas }}
+							{% endfor %}
+						</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<a href="{{ path('app_perfil') }}">volver al perfil</a>
+	</div>
+
+	{% block footer %}
+		{{parent() }}
+	{% endblock %}
+{% endblock %}

@@ -1,39 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Iniciar Sesion {% endblock %}
+{% block title %}
+	Iniciar Sesion
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="login-form bg-light mt-4 p-4">
-                <form method="post" class="row g-3">
-                    <h1 class="h3 text-secondary mb-3">INICIO SESION:</h1>
-                    {% if error %}
-                        <div class="alert-danger">
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        </div>
-                    {% endif %}
-                    <div class="col-12">
-                        <label for="inputUsername">Nombre de Usuario</label>
-                        <input type="text" name="nombreUsuario" id="inputUsername" class="form-control"
-                               value="{{ last_username }}">
-                    </div>
 
-                    <div class="col-12">
-                        <label for="inputPassword">Contraseña</label>
-                        <input type="password" name="contra" id="inputPassword" class="form-control">
-                    </div>
+{% block nav %}
+	{{parent()}}
+{% endblock %}
 
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	<div class="container">
+		<div class="row">
+			<div class="login-form bg-light mt-4 p-4">
+				<form method="post" class="row g-3">
+					<h1 class="h3 text-secondary mb-3">INICIO SESION:</h1>
+					{% if error %}
+						<div class="alert-danger">
+							{{ error.messageKey|trans(error.messageData, 'security') }}
+						</div>
+					{% endif %}
+					<div class="col-12">
+						<label for="inputUsername">Nombre de Usuario</label>
+						<input type="text" name="nombreUsuario" id="inputUsername" class="form-control" value="{{ last_username }}">
+					</div>
 
-                    <div class="col-12">
-                        <button class="btn btn-lg btn-primary float-end" type="submit">
-                            Iniciar Sesion
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+					<div class="col-12">
+						<label for="inputPassword">Contraseña</label>
+						<input type="password" name="contra" id="inputPassword" class="form-control">
+					</div>
 
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="col-12">
+						<button class="btn btn-lg btn-primary float-end" type="submit">
+							Iniciar Sesion
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	{% block footer %}
+		{{parent() }}
+	{% endblock %}
 {% endblock %}

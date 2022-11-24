@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}tfg{% endblock %}</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}tfg
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-</head>
-<body>
-{% block body %}
-{% endblock %}
-</body>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			{% block nav %}
+				<nav class="nav navbar navbar-expand-lg navbar-light bg-light flex-column">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="container-fluid">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
+							</li>
+							{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ path('app_perfil') }}">Perfil</a>
+								</li>
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ 'logout' }}">logout</a>
+								</li>
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ 'admin' }}">Admin</a>
+								</li>
+							{% else %}
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ path('app_register') }}">Registrar</a>
+								</li>
+
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
+								</li>
+							{% endif %}
+							<li class="nav-item active">
+								<a class="nav-link" href="{{path('app_videojuegos')}}">Videojuegos</a>
+							</li>
+						</ul>
+						{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+							<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
+						{% endif %}
+					</div>
+				</nav>
+			{% endblock %}
+
+			{% block text %}{% endblock %}
+
+			{% block footer %}
+				<div class="p-3 fixed-bottom bg-secondary text-center">
+					© 2021 Copyright:
+					<strong>Jaime González Bravo</strong>.
+				</div>
+			{% endblock %}
+		{% endblock %}
+	</body>
 </html>

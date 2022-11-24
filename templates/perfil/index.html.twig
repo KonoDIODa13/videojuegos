@@ -3,62 +3,22 @@
 	{{ parent() }}
 {% endblock %}
 {% block body %}
+
 	{% block nav %}
-		<nav class="nav navbar navbar-expand-lg navbar-light bg-light flex-column">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="container-fluid">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
-					</li>
-					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('app_perfil') }}">Perfil</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ 'logout' }}">logout</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ 'admin' }}">Admin</a>
-						</li>
-					{% else %}
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('app_register') }}">Registrar</a>
-						</li>
-
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
-						</li>
-					{% endif %}
-					<li class="nav-item active">
-						<a class="nav-link" href="{{path('app_videojuegos')}}">Videojuegos</a>
-					</li>
-				</ul>
-				{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-					<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
-				{% endif %}
-			</div>
-		</nav>
+		{{parent()}}
 	{% endblock %}
+
 	{% block text %}
 		<div
 			class="contenedor flex-column">
 			<!--<h1>Game Experience</h1><br>-->
 			<h3>¿Qué es Game Experiences?</h3>
-			<p>
-				Game Experiences es ...</p>
+			<p>Game Experiences es ...</p>
 		</div>
 	{% endblock %}
 
 	{% block footer %}
-		<div class="footer flex-column">
-			<div class="p-3">
-				© 2021 Copyright:
-				<strong>Jaime González Bravo</strong>.
-			</div>
-		</div>
+		{{parent()}}
 	{% endblock %}
+
 {% endblock %}
