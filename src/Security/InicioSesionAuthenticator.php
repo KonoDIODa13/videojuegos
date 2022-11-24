@@ -39,7 +39,6 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     {
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
-        //$contra = $this->passwordHasher->hashPassword($password);
 
         $pasaporte = new Passport(
             new UserBadge($nombreUsuario, function ($userIdentifier) {
@@ -80,14 +79,14 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
         );
     }
 
-//    public function start(Request $request, AuthenticationException $authException = null): Response
-//    {
-//        /*
-//         * If you would like this class to control what happens when an anonymous user accesses a
-//         * protected page (e.g. redirect to /login), uncomment this method and make this class
-//         * implement Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface.
-//         *
-//         * For more details, see https://symfony.com/doc/current/security/experimental_authenticators.html#configuring-the-authentication-entry-point
-//         */
-//    }
+    //    public function start(Request $request, AuthenticationException $authException = null): Response
+    //    {
+    //        /*
+    //         * If you would like this class to control what happens when an anonymous user accesses a
+    //         * protected page (e.g. redirect to /login), uncomment this method and make this class
+    //         * implement Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface.
+    //         *
+    //         * For more details, see https://symfony.com/doc/current/security/experimental_authenticators.html#configuring-the-authentication-entry-point
+    //         */
+    //    }
 }
