@@ -6,6 +6,7 @@ use App\Repository\VideojuegoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Videojuego;
 
 class VideojuegosController extends ControladorBase
 {
@@ -14,22 +15,20 @@ class VideojuegosController extends ControladorBase
     public function index(VideojuegoRepository $videojuegoRepository): Response
     {
         return $this->render('videojuegos/index.html.twig', [
-            'videojuego' => $videojuegoRepository->findAll(),
+            'videojuegos' => $videojuegoRepository->findAll(),
         ]);
     }
 
-    #[Route('/videojuegos/{slug}', name: 'app_videojuego')]
-    public function mostrarVideojuego(VideojuegoRepository $videojuegoRepository, $slug): Response
+    #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
+    public function mostrarVideojuego(Videojuego $videojuego): Response
     {
-        //dd($videojuegoRepository);
-        $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $autores = $videojuego->getAutor();
         $generos = $videojuego->getTema();
         $desarrolladores = $videojuego->getDesarrollador();
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
-            'slug' => $slug,
+            'slug' => $videojuego->getSlug(),
             'autores' => $autores,
             'generos' => $generos,
             'desarrolladores' => $desarrolladores,
