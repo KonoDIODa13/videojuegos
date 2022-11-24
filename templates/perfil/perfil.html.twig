@@ -17,9 +17,10 @@
 
 	<!-- lista de videojuegos -->
 	<div class="listaJuego">
+	<h2>Tus juegos</h2>
 		{% if arrjuegos != null %}
 			{% for juego in arrjuegos %}
-				<span>titulo:
+				<span>Titulo:
 					{{ juego.titulo }}</span><br>
 				<span>Año de publicación:
 					{{ juego.fechaPublicacion }}</span><br><br>

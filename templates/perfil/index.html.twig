@@ -33,6 +33,9 @@
 							<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
 						</li>
 					{% endif %}
+					<li class="nav-item active">
+						<a class="nav-link" href="{{path('app_videojuegos')}}">Videojuegos</a>
+					</li>
 				</ul>
 				{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 					<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">

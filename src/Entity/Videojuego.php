@@ -5,9 +5,11 @@ namespace App\Entity;
 use App\Repository\VideojuegoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation\Slug;
 
 #[ORM\Entity(repositoryClass: VideojuegoRepository::class)]
+#[UniqueEntity('slug')]
 class Videojuego
 {
     #[ORM\Id]
@@ -18,22 +20,22 @@ class Videojuego
     #[ORM\Column(length: 100)]
     private ?string $titulo = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $autor = [];
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $tema = [];
 
-    #[ORM\Column(length: 4)]
+    #[ORM\Column(length: 4, nullable: true)]
     private ?string $fechaPublicacion = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $desarrollador = [];
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descripcion = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, unique: true)]
     #[Slug(fields: ['titulo'])]
     private ?string $slug = null;
 
@@ -131,5 +133,4 @@ class Videojuego
     {
         return $this->getId();
     }
-
 }

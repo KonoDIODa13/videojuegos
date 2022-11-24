@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\UsuarioRepository;
-use App\Repository\VideojuegoRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,14 +20,11 @@ class PerfilController extends ControladorBase
     }
 
     #[Route('/perfil', name: 'app_perfil')]
-    public function perfil(VideojuegoRepository $videojuegoRepository): Response
+    public function perfil(): Response
     {
-        $juegos = $videojuegoRepository->findAll();
         $usuario = $this->getUser();
         $lista = $usuario->getVideojuegos();
-        
         $arrJuegos = array();
-
         for ($i = 0; $i < count($lista); $i++) {
             if ($lista[$i] != null) {
                 $juego = $lista[$i];
@@ -43,11 +37,5 @@ class PerfilController extends ControladorBase
             'nombre' => $usuario->getUsername(),
             'arrjuegos' => $arrJuegos,
         ]);
-    }
-
-    #[Route('/perfil/ajustes', name: 'app_ajustes')]
-    public function ajustes(): Response
-    {
-        return new Response('estos son los ajustes');
     }
 }

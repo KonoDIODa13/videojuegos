@@ -2,19 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\ListaJuegos;
 use App\Repository\VideojuegoRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted('IS_FULLY_AUTHENTICATED')]
 class VideojuegosController extends ControladorBase
 {
 
     #[Route('/videojuegos', name: 'app_videojuegos')]
-    #[IsGranted('ROLE_USER')]
     public function index(VideojuegoRepository $videojuegoRepository): Response
     {
         return $this->render('videojuegos/index.html.twig', [
@@ -30,23 +26,23 @@ class VideojuegosController extends ControladorBase
         $autores = $videojuego->getAutor();
         $generos = $videojuego->getTema();
         $desarrolladores = $videojuego->getDesarrollador();
-        $foto = $slug;
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
-            'foto' => $foto,
+            'slug' => $slug,
             'autores' => $autores,
             'generos' => $generos,
             'desarrolladores' => $desarrolladores,
         ]);
     }
 
-    #[Route('/videojuegos/{slug}/lista', name: 'app_annadir_lista')]
+    #[Route('/videojuegos/{slug}/lista', name: 'app_annadir_a_lista')]
     public function annadirLista(VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager, $slug): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
-        $entityManager->persist($usuario->addVideojuego($videojuego));
+        $lista = $usuario->addVideojuego($videojuego);
+        $entityManager->persist($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
     }

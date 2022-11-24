@@ -53,6 +53,9 @@
 						<li>{{videojuego.descripcion}}</li>
 					</ul>
 				{% endif %}
+
+				<a class="btn btn-primary" href="{{path('app_annadir_a_lista',{slug: videojuego.slug})}}">
+					añadir a la lista</a>
 			</div>
 		</div>
 	</div>
