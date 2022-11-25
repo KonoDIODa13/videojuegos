@@ -22,14 +22,14 @@ class VideojuegosController extends ControladorBase
     #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
     public function mostrarVideojuego(Videojuego $videojuego): Response
     {
-        $autores = $videojuego->getAutor();
-        $generos = $videojuego->getTema();
+        $directores = $videojuego->getDirector();
+        $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getDesarrollador();
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'slug' => $videojuego->getSlug(),
-            'autores' => $autores,
+            'directores' => $directores,
             'generos' => $generos,
             'desarrolladores' => $desarrolladores,
         ]);

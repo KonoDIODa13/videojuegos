@@ -9,15 +9,15 @@
 			<div class="p-2 card-body bg-secondary">
 				<h2 class="text-center card-title">{{videojuego.titulo}}</h2>
 				<div class="m-5">
-					{% if autores != null %}
-						<h4>Autores:</h4>
-						{% for autor in autores %}
+					{% if direcores != null %}
+						<h4>Directores:</h4>
+						{% for autor in direcores %}
 							<ul>
 								<li>{{autor}}</li>
 							</ul>
 						{% endfor %}
 					{% else %}
-						<span>no hay autores.</span>
+						<span>no hay direcores.</span>
 					{% endif %}
 
 					{% if generos != null %}

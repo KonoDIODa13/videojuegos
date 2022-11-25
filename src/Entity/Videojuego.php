@@ -21,10 +21,10 @@ class Videojuego
     private ?string $titulo = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private array $autor = [];
+    private array $director = [];
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private array $tema = [];
+    private array $genero = [];
 
     #[ORM\Column(length: 4, nullable: true)]
     private ?string $fechaPublicacion = null;
@@ -56,27 +56,27 @@ class Videojuego
         return $this;
     }
 
-    public function getAutor(): array
+    public function getdirector(): array
     {
-        return $this->autor;
+        return $this->director;
     }
 
-    public function setAutor(array $autor): self
+    public function setdirector(array $director): self
     {
-        $this->autor = $autor;
+        $this->director = $director;
 
         return $this;
     }
 
 
-    public function getTema(): array
+    public function getgenero(): array
     {
-        return $this->tema;
+        return $this->genero;
     }
 
-    public function setTema(array $tema): self
+    public function setgenero(array $genero): self
     {
-        $this->tema = $tema;
+        $this->genero = $genero;
 
         return $this;
     }

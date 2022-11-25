@@ -19,14 +19,14 @@ class VideojuegoCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setSearchFields(['titulo', 'autor', 'tema', 'fechaPublicacion', 'desarrollador', 'descripcion', 'slug']);
+            ->setSearchFields(['titulo', 'director', 'genero', 'fechaPublicacion', 'desarrollador', 'descripcion', 'slug']);
     }
 
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('titulo');
-        yield ArrayField::new('autor');
-        yield ArrayField::new('tema');
+        yield ArrayField::new('director');
+        yield ArrayField::new('genero');
         yield TextField::new('fechaPublicacion');
         yield ArrayField::new('desarrollador');
         yield TextareaField::new('descripcion')

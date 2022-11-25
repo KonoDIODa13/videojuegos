@@ -35,7 +35,7 @@
 									<a class="link-dark" href="{{path('app_videojuego', {videojuego: juego.id})}}">{{juego.titulo}}</a>
 								</td>
 								<td class="text-center">
-									{% for genero in juego.tema %}
+									{% for genero in juego.genero %}
 										{{genero}}
 									{% endfor %}
 								</td>
