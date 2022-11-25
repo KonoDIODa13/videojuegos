@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
     #[Route('iniciar_sesion', name: 'app_inicio_sesion')]
     public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('perfil/inicio_sesion.html.twig', [
+        return $this->render('registration/inicio_sesion.html.twig', [
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'last_username' => $authenticationUtils->getLastUsername(),
         ]);

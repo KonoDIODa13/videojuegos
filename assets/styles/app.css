@@ -11,7 +11,7 @@ body {
 .contenedor_videojuegos {
     border-radius: 5px;
     font-size: larger;
-    background-color:silver;
+    background-color: silver;
 }
 
 .row {
@@ -30,11 +30,6 @@ body {
 .imagen {
     width: 40%;
     height: 40%;
-}
-
-.listaJuego {
-    margin: 1%;
-    padding: 1%;
 }
 
 .footer {

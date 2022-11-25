@@ -22,6 +22,14 @@ class VideojuegosController extends ControladorBase
     #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
     public function mostrarVideojuego(Videojuego $videojuego): Response
     {
+        $usuario = $this->getUser();
+        $juegosLista = $usuario->getVideojuegos();
+        $mismoJuego = false;
+        foreach ($juegosLista as $juego) {
+            if ($juego == $videojuego) {
+                $mismoJuego = true;
+            }
+        }
         $directores = $videojuego->getDirector();
         $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getDesarrollador();
@@ -32,6 +40,7 @@ class VideojuegosController extends ControladorBase
             'directores' => $directores,
             'generos' => $generos,
             'desarrolladores' => $desarrolladores,
+            'mismoJuego' => $mismoJuego,
         ]);
     }
 
