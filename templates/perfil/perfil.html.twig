@@ -14,41 +14,46 @@
 	{% block text %}
 		<div class="listaJuego">
 			<h2 class="text-center">Tus Juegos</h2>
-						{% if arrjuegos != null %}
-						<div class="table-responsive">
-				<table class="table table-hover border border-dark">
-					<thead>
-						<tr>
-							<td></td>
-							<td class="text-center">
-							<strong>Título<strong></td>
-							<td class="text-center">
-							<strong>Géneros<strong></td>
-							<td></td>
-						</tr>		
-					</thead>
-					{% for key, juego in arrjuegos %}
-						<tr>
-							<th scope="row">{{key ++1}}</th>
-							<td class="text-center">{{juego.titulo}}</td>
-							<td class="text-center">
-							{% for genero in juego.tema %}
-								{{genero}}
-							{% endfor %}
-							</td>
-							<td class="text-end">
-								<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {videojuego: juego.id})}}">remover de la lista</a>
-							</td>
-						</tr>
-					{% endfor %}
-				</table>
-			</div>
-			<a href="{{ path ('app_videojuegos') }}">añadir mas videojuegos</a>
-							{% else %}
-								<h3>Aun no hay juegos en la lista.</h3>
-								<p>¿Quieres añadir un juego?</p>
-								<a class="btn btn-primary" href="{{ path ('app_videojuegos') }}">pulsa aqui</a>
-							{% endif %}
+			{% if arrjuegos != null %}
+				<div class="table-responsive">
+					<table class="table table-hover border border-dark">
+						<thead>
+							<tr>
+								<td></td>
+								<td class="text-center">
+									<strong>Título<strong></td>
+								<td class="text-center">
+									<strong>Géneros<strong></td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody>
+						{% for indice, juego in arrjuegos %}
+							<tr>
+								<td scope="row"><strong>{{indice ++1}}</strong></td>
+								<td class="text-center">
+									<a class="link-dark" href="{{path('app_videojuego', {videojuego: juego.id})}}">{{juego.titulo}}</a>
+								</td>
+								<td class="text-center">
+									{% for genero in juego.tema %}
+										{{genero}}
+									{% endfor %}
+								</td>
+								<td class="text-end">
+									<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {videojuego: juego.id})}}">remover de la lista</a>
+								</td>													
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<p>¿Quieres añadir más videojuegos? </p>
+				<a class="btn btn-primary" href="{{ path ('app_videojuegos') }}">Pulse aquí</a>
+			{% else %}
+				<h3>Aun no hay juegos en la lista.</h3>
+				<p>¿Quieres añadir un juego?</p>
+				<a class="btn btn-primary" href="{{ path ('app_videojuegos') }}">pulsa aquí</a>
+			{% endif %}
 		</div>
 	{% endblock %}
 

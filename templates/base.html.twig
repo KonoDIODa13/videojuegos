@@ -20,16 +20,14 @@
 	<body>
 		{% block body %}
 			{% block nav %}
-				<nav class="nav navbar navbar-expand-lg navbar-light bg-light flex-column">
+				<nav class="nav navbar navbar-expand-lg navbar-light bg-light p-2">
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
+					<div class="d-flex container-fluid">
+						<a class="navbar-brand flex-start" href="{{ path('app_inicio') }}">Game Experiences</a>
 
-					<div class="container-fluid">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
-							</li>
+						<ul class="navbar-nav flex-center">
 							{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 								<li class="nav-item active">
 									<a class="nav-link" href="{{ path('app_perfil') }}">Perfil</a>
@@ -54,7 +52,9 @@
 							</li>
 						</ul>
 						{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
+							<div class="nav-item flex-end">
+								<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar" class="text-end">
+							</div>
 						{% endif %}
 					</div>
 				</nav>

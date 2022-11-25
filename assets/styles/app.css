@@ -9,11 +9,9 @@ body {
 }
 
 .contenedor_videojuegos {
-    background-color: lightblue;
     border-radius: 5px;
-    padding: 1%;
-    margin: 1%;
     font-size: larger;
+    background-color:silver;
 }
 
 .row {
@@ -51,8 +49,14 @@ body {
 
 .nav {
     height: 10%;
+    max-width: 100%;
 }
 
-td{
+td {
     font-size: larger;
+}
+
+a:link,
+:visited {
+    text-decoration: none;
 }

@@ -4,61 +4,63 @@
 	{% block nav %}
 		{{ parent() }}
 	{% endblock %}
+	{% block text %}
+		<div class="d-flex flex-column card p-2">
+			<div class="p-2 card-body bg-secondary">
+				<h2 class="text-center card-title">{{videojuego.titulo}}</h2>
+				<div class="m-5">
+					{% if autores != null %}
+						<h4>Autores:</h4>
+						{% for autor in autores %}
+							<ul>
+								<li>{{autor}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay autores.</span>
+					{% endif %}
 
-	<div class="d-flex flex-column card p-2">
-		<div class="p-2 card-body bg-secondary">
-			<h2 class="text-center card-title">{{videojuego.titulo}}</h2>
-			<div class="m-5">
-				{% if autores != null %}
-					<h4>Autores:</h4>
-					{% for autor in autores %}
-						<ul>
-							<li>{{autor}}</li>
-						</ul>
-					{% endfor %}
-				{% else %}
-					<span>no hay autores.</span>
-				{% endif %}
+					{% if generos != null %}
+						<h4>Géneros:</h4>
+						{% for genero in generos %}
+							<ul>
+								<li>{{genero}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay géneros.</span>
+					{% endif %}
 
-				{% if generos != null %}
-					<h4>Géneros:</h4>
-					{% for genero in generos %}
-						<ul>
-							<li>{{genero}}</li>
-						</ul>
-					{% endfor %}
-				{% else %}
-					<span>no hay géneros.</span>
-				{% endif %}
-
-				<h4>Año de publicación:</h4>
-				<ul>
-					<li>{{videojuego.fechaPublicacion}}</li>
-				</ul>
-
-				{% if desarrolladores != null %}
-					<h4>Empresa desarrolladora:</h4>
-					{% for desarrollador in desarrolladores %}
-						<ul>
-							<li>{{desarrollador}}</li>
-						</ul>
-					{% endfor %}
-				{% else %}
-					<span>no hay desarrolladores.</span>
-				{% endif %}
-
-				{% if videojuego.descripcion != null %}
-					<h4>Descripcion:</h4>
+					<h4>Año de publicación:</h4>
 					<ul>
-						<li>{{videojuego.descripcion}}</li>
+						<li>{{videojuego.fechaPublicacion}}</li>
 					</ul>
-				{% endif %}
 
-				<a class="btn btn-primary" href="{{path('app_annadir_a_lista',{videojuego: videojuego})}}">
-					añadir a la lista</a>
+					{% if desarrolladores != null %}
+						<h4>Empresa desarrolladora:</h4>
+						{% for desarrollador in desarrolladores %}
+							<ul>
+								<li>{{desarrollador}}</li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						<span>no hay desarrolladores.</span>
+					{% endif %}
+
+					{% if videojuego.descripcion != null %}
+						<h4>Descripcion:</h4>
+						<ul>
+							<li>{{videojuego.descripcion}}</li>
+						</ul>
+					{% endif %}
+					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+						<a class="btn btn-primary" href="{{path('app_annadir_a_lista',{videojuego: videojuego})}}">
+							añadir a la lista</a>
+					{% endif %}
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endblock %}
 
 	{% block footer %}
 		{{parent() }}

@@ -4,19 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Videojuego;
 use App\Repository\UsuarioRepository;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
 class PerfilController extends ControladorBase
 {
-    /*private Request $request;
-
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }*/
 
     #[Route('/', name: 'app_inicio')]
     public function inicio(UsuarioRepository $usuarioRepository): Response
