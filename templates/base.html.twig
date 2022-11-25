@@ -53,22 +53,56 @@
 							</li>
 						</ul>
 						{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<div class="nav-item flex-end">
-								<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar" class="text-end">
-							</div>
-						{% endif %}
+							<div class="nav-item">
+								<div class="dropdown">
+									<button class="menu btn dropdown-toggle dropbtn" type="button" onclick="dropdown()" style="margin-right:20%;">
+										<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
+									</button>
+									<ul class="dropdown-menu" id="lista">
+										<li>
+											<a class="dropdown-content" href="{{'admin'}}">Admin</a>
+										</li>
+										<li>
+											<a class="dropdown-content" href="{{'logout'}}">Cerrar sesión</a>
+										</li>
+									</ul>
+								</div>
+							{% endif %}
+						</div>
+					</nav>
+				{% endblock %}
+
+				{% block text %}{% endblock %}
+
+				{% block footer %}
+					<div class="p-3 fixed-bottom bg-secondary text-center">
+						© 2021 Copyright:
+						<strong>Jaime González Bravo</strong>.
 					</div>
-				</nav>
+				{% endblock %}
 			{% endblock %}
-
-			{% block text %}{% endblock %}
-
-			{% block footer %}
-				<div class="p-3 fixed-bottom bg-secondary text-center">
-					© 2021 Copyright:
-					<strong>Jaime González Bravo</strong>.
-				</div>
-			{% endblock %}
-		{% endblock %}
+		</body>
 	</body>
 </html>
+
+<script>
+	/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function dropdown() {
+document.getElementById("lista").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+if (! event.target.matches('.dropbtn')) {
+var dropdowns = document.getElementsByClassName("dropdown-menu");
+var i;
+for (i = 0; i < dropdowns.length; i++) {
+var openDropdown = dropdowns[i];
+if (openDropdown.classList.contains('show')) {
+openDropdown.classList.remove('show');
+}
+}
+}
+}
+</script>

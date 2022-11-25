@@ -55,3 +55,7 @@ a:link,
 :visited {
     text-decoration: none;
 }
+
+menu{
+    margin-right: 10%;
+}
