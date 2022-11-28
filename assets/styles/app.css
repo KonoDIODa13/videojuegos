@@ -56,6 +56,7 @@ a:link,
     text-decoration: none;
 }
 
-menu{
-    margin-right: 10%;
+.menu {
+    margin-left: 58%;
+    margin-right: 5%;
 }

@@ -15,60 +15,53 @@
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
+			<script defer src="{{asset('js/main.js')}}"></script>
 		{% endblock %}
 	</head>
 	<body>
 		{% block body %}
 			{% block nav %}
 				<nav class="nav navbar navbar-expand-lg navbar-light bg-light p-2">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="container-fluid d-flex">
+					<div class="d-inline inline-flex m-2 p-2">
 						<ul class="navbar-nav">
 							<li class="nav-item">
 								<a class="navbar-brand flex-start nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
 							</li>
-							{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-								<li class="nav-item active">
-									<a class="nav-link" href="{{ path('app_perfil') }}">Perfil</a>
-								</li>
-								<li class="nav-item active">
-									<a class="nav-link" href="{{ 'logout' }}">logout</a>
-								</li>
-								<li class="nav-item active">
-									<a class="nav-link" href="{{ 'admin' }}">Admin</a>
-								</li>
-							{% else %}
-								<li class="nav-item active">
-									<a class="nav-link" href="{{ path('app_register') }}">Registrar</a>
-								</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="{{ path('app_register') }}">Registrar</a>
+							</li>
 
-								<li class="nav-item active">
-									<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
-								</li>
-							{% endif %}
+							<li class="nav-item active">
+								<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
+							</li>
+
 							<li class="nav-item active">
 								<a class="nav-link" href="{{path('app_videojuegos')}}">Videojuegos</a>
 							</li>
 						</ul>
-						{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-							<div class="nav-item">
-								<div class="dropdown">
-									<button class="menu btn dropdown-toggle dropbtn" type="button" onclick="dropdown()" style="margin-right:20%;">
-										<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
-									</button>
-									<ul class="dropdown-menu" id="lista">
+					</div>
+					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+						<div class="menu nav-item d-inline inline-flex float-right">
+							<div class="dropdown">
+								<button class="btn dropdown-toggle dropbtn" type="button" onclick="dropdown()" style="margin-right:20%;">
+									<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
+								</button>
+								<ul class="dropdown-menu" id="lista">
+									{% if is_granted('ROLE_ADMIN') %}
 										<li>
-											<a class="dropdown-content" href="{{'admin'}}">Admin</a>
+											<a class="dropdown-content text-secondary" href="{{'admin'}}">Admin</a>
 										</li>
-										<li>
-											<a class="dropdown-content" href="{{'logout'}}">Cerrar sesión</a>
-										</li>
-									</ul>
-								</div>
-							{% endif %}
-						</div>
+									{% endif %}
+									<li>
+										<a class="dropdown-content text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
+									</li>
+
+									<li>
+										<a class="dropdown-content text-secondary" href="{{'logout'}}">Cerrar sesión</a>
+									</li>
+								</ul>
+							</div>
+						{% endif %}
 					</nav>
 				{% endblock %}
 
@@ -84,9 +77,7 @@
 		</body>
 	</body>
 </html>
-
-<script>
-	/* When the user clicks on the button, 
+<!--<script>/* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function dropdown() {
 document.getElementById("lista").classList.toggle("show");
@@ -104,5 +95,4 @@ openDropdown.classList.remove('show');
 }
 }
 }
-}
-</script>
+}</script>-->

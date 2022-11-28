@@ -26,7 +26,6 @@ class PerfilController extends ControladorBase
     {
         $usuario = $this->getUser();
         $lista = $usuario->getVideojuegos();
-        //dd($lista);
         $arrJuegos = array();
         for ($i = 0; $i < count($lista); $i++) {
             if ($lista[$i] != null) {

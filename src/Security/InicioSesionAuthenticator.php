@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Factory\UsuarioFactory;
 use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -66,6 +67,14 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): RedirectResponse
     {
+        $nombre = $request->get("nombreUsuario");
+        $usuario = $this->usuarioRepository->findOneBy(["username" => $nombre]);
+        
+        if($usuario->getUsername()=="admin"){
+            return new RedirectResponse(
+                $this->router->generate('admin')
+            );
+        }
         return new RedirectResponse(
             $this->router->generate('app_perfil')
         );
