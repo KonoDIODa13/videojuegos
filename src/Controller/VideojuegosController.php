@@ -23,13 +23,18 @@ class VideojuegosController extends ControladorBase
     public function mostrarVideojuego(Videojuego $videojuego): Response
     {
         $usuario = $this->getUser();
-        $juegosLista = $usuario->getVideojuegos();
         $mismoJuego = false;
-        foreach ($juegosLista as $juego) {
-            if ($juego == $videojuego) {
-                $mismoJuego = true;
+        
+        if ($usuario != null) {
+            $juegosLista = $usuario->getVideojuegos();
+            $mismoJuego = false;
+            foreach ($juegosLista as $juego) {
+                if ($juego == $videojuego) {
+                    $mismoJuego = true;
+                }
             }
         }
+
         $directores = $videojuego->getDirector();
         $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getDesarrollador();
