@@ -15,7 +15,6 @@
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
-			<script defer src="{{asset('js/main.js')}}"></script>
 		{% endblock %}
 	</head>
 	<body>
@@ -61,38 +60,21 @@
 									</li>
 								</ul>
 							</div>
-						{% endif %}
-					</nav>
-				{% endblock %}
+						<div>
+					{% endif %}
+				</nav>
+					{% endblock %}
 
-				{% block text %}{% endblock %}
+					{% block text %}{% endblock %}
 
-				{% block footer %}
-					<div class="p-3 fixed-bottom bg-secondary text-center">
-						© 2021 Copyright:
-						<strong>Jaime González Bravo</strong>.
-					</div>
+					{% block footer %}
+						<div class="p-3 fixed-bottom bg-secondary text-center">
+							© 2021 Copyright:
+							<strong>Jaime González Bravo</strong>.
+						</div>
+					{% endblock %}
 				{% endblock %}
-			{% endblock %}
+			</body>
 		</body>
 	</body>
 </html>
-<!--<script>/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function dropdown() {
-document.getElementById("lista").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-if (! event.target.matches('.dropbtn')) {
-var dropdowns = document.getElementsByClassName("dropdown-menu");
-var i;
-for (i = 0; i < dropdowns.length; i++) {
-var openDropdown = dropdowns[i];
-if (openDropdown.classList.contains('show')) {
-openDropdown.classList.remove('show');
-}
-}
-}
-}</script>-->
