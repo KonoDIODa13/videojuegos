@@ -31,12 +31,13 @@ class PerfilController extends ControladorBase
         $usuario = $this->getUser();
         //$lista = new ListaJuegos();
 
-        $lista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
+        $listado = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
         $arrJuegos = array();
 
-        for ($i = 0; $i < count($lista); $i++) {
+        for ($i = 0; $i < count($listado); $i++) {
+            $lista = $listado[$i];
             if ($lista != null) {
-                $juego = $videojuegoRepository->findOneBy(['id' => $lista[$i]->getVideojuego()]);
+                $juego = $videojuegoRepository->findOneBy(['id' => $lista->getVideojuego()]);
 
                 array_push($arrJuegos, $juego);
             }
