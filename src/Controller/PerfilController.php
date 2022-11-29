@@ -34,6 +34,8 @@ class PerfilController extends ControladorBase
             }
         }
 
+    dd($arrJuegos);
+
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),

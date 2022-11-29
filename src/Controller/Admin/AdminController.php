@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Director;
 use App\Entity\Usuario;
 use App\Entity\Videojuego;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -50,6 +51,7 @@ class AdminController extends AbstractDashboardController
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('usuario', 'fas fa-list', Usuario::class);
         yield MenuItem::linkToCrud('videojuego', 'fas fa-list', Videojuego::class);
+        yield MenuItem::linkToCrud('director', 'fas fa-list', Director::class);
         //contra admin. ad69mi69n
     }
 }

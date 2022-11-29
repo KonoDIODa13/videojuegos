@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VideojuegoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -19,20 +21,29 @@ class Videojuego
     #[ORM\Column(length: 100)]
     private ?string $titulo = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $director = [];
+    /*#[ORM\Column(type: Types::ARRAY)]
+    private array $director = [];*/
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $genero = [];
+    /*#[ORM\Column(type: Types::ARRAY)]
+    private array $genero = [];*/
 
     #[ORM\Column(length: 4)]
     private ?string $fechaPublicacion = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $desarrollador = [];
+    /* #[ORM\Column(type: Types::ARRAY)]
+    private array $desarrollador = [];*/
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descripcion = null;
+
+    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: Director::class)]
+    private Collection $director;
+
+    public function __construct()
+    {
+        $this->director = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -51,7 +62,7 @@ class Videojuego
         return $this;
     }
 
-    public function getdirector(): array
+    /*public function getdirector(): array
     {
         return $this->director;
     }
@@ -61,10 +72,10 @@ class Videojuego
         $this->director = $director;
 
         return $this;
-    }
+    }*/
 
 
-    public function getgenero(): array
+    /*public function getgenero(): array
     {
         return $this->genero;
     }
@@ -74,7 +85,7 @@ class Videojuego
         $this->genero = $genero;
 
         return $this;
-    }
+    }*/
 
     public function getFechaPublicacion(): ?string
     {
@@ -88,7 +99,7 @@ class Videojuego
         return $this;
     }
 
-    public function getDesarrollador(): array
+    /*public function getDesarrollador(): array
     {
         return $this->desarrollador;
     }
@@ -98,7 +109,7 @@ class Videojuego
         $this->desarrollador = $desarrollador;
 
         return $this;
-    }
+    }*/
 
     public function getDescripcion(): ?string
     {
@@ -116,4 +127,36 @@ class Videojuego
     {
         return $this->getId();
     }
+
+    /**
+     * @return Collection<int, Director>
+     */
+    public function getDirector(): Collection
+    {
+        return $this->director;
+    }
+
+    public function addDirector(Director $director): self
+    {
+        if (!$this->director->contains($director)) {
+            $this->director->add($director);
+            $director->setVideojuego($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDirector(Director $director): self
+    {
+        if ($this->director->removeElement($director)) {
+            // set the owning side to null (unless already changed)
+            if ($director->getVideojuego() === $this) {
+                $director->setVideojuego(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

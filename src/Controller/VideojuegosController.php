@@ -36,15 +36,14 @@ class VideojuegosController extends ControladorBase
         }
 
         $directores = $videojuego->getDirector();
-        $generos = $videojuego->getGenero();
-        $desarrolladores = $videojuego->getDesarrollador();
+        //$generos = $videojuego->getGenero();
+        //$desarrolladores = $videojuego->getDesarrollador();
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
-            'slug' => $videojuego->getSlug(),
             'directores' => $directores,
-            'generos' => $generos,
-            'desarrolladores' => $desarrolladores,
+            //'generos' => $generos,
+            //'desarrolladores' => $desarrolladores,
             'mismoJuego' => $mismoJuego,
         ]);
     }

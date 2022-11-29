@@ -26,9 +26,9 @@ class VideojuegoCrudController extends AbstractCrudController
     {
         yield TextField::new('titulo');
         yield ArrayField::new('director');
-        yield ArrayField::new('genero');
+        //yield ArrayField::new('genero');
         yield TextField::new('fechaPublicacion');
-        yield ArrayField::new('desarrollador');
+        //yield ArrayField::new('desarrollador');
         yield TextareaField::new('descripcion')
             ->hideOnIndex();
     }
