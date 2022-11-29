@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 #[ORM\Entity(repositoryClass: VideojuegoRepository::class)]
@@ -21,17 +20,8 @@ class Videojuego
     #[ORM\Column(length: 100)]
     private ?string $titulo = null;
 
-    /*#[ORM\Column(type: Types::ARRAY)]
-    private array $director = [];*/
-
-    /*#[ORM\Column(type: Types::ARRAY)]
-    private array $genero = [];*/
-
     #[ORM\Column(length: 4)]
     private ?string $fechaPublicacion = null;
-
-    /* #[ORM\Column(type: Types::ARRAY)]
-    private array $desarrollador = [];*/
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descripcion = null;
@@ -48,7 +38,9 @@ class Videojuego
     public function __construct()
     {
         $this->director = new ArrayCollection();
+
         $this->genero = new ArrayCollection();
+        
         $this->empresaDesarrolladora = new ArrayCollection();
     }
 
@@ -188,6 +180,4 @@ class Videojuego
 
         return $this;
     }
-
-
 }
