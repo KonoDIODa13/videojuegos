@@ -31,6 +31,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
+    #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ListaJuegos::class)]
+    private Collection $listaJuegos;
+
+    public function __construct()
+    {
+        $this->listaJuegos = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +142,36 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return $this->getId();
+    }
+
+    /**
+     * @return Collection<int, ListaJuegos>
+     */
+    public function getListaJuegos(): Collection
+    {
+        return $this->listaJuegos;
+    }
+
+    public function addListaJuego(ListaJuegos $listaJuego): self
+    {
+        if (!$this->listaJuegos->contains($listaJuego)) {
+            $this->listaJuegos->add($listaJuego);
+            $listaJuego->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListaJuego(ListaJuegos $listaJuego): self
+    {
+        if ($this->listaJuegos->removeElement($listaJuego)) {
+            // set the owning side to null (unless already changed)
+            if ($listaJuego->getUsuario() === $this) {
+                $listaJuego->setUsuario(null);
+            }
+        }
+
+        return $this;
     }
 
 }

@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\ListaJuegos;
 use App\Repository\VideojuegoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Videojuego;
+use App\Repository\ListaJuegosRepository;
 
 class VideojuegosController extends ControladorBase
 {
@@ -20,16 +22,17 @@ class VideojuegosController extends ControladorBase
     }
 
     #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
-    public function mostrarVideojuego(Videojuego $videojuego): Response
+    public function mostrarVideojuego(Videojuego $videojuego, ListaJuegosRepository $listaJuegosRepository): Response
     {
         $usuario = $this->getUser();
         $mismoJuego = false;
 
         if ($usuario != null) {
-            $juegosLista = $usuario->getVideojuegos();
+            $juegosLista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
             $mismoJuego = false;
             foreach ($juegosLista as $juego) {
-                if ($juego == $videojuego) {
+
+                if ($juego->getVideojuego() == $videojuego) {
                     $mismoJuego = true;
                 }
             }
@@ -52,7 +55,11 @@ class VideojuegosController extends ControladorBase
     public function annadirLista(EntityManagerInterface $entityManager, Videojuego $videojuego): Response
     {
         $usuario = $this->getUser();
-        $lista = $usuario->addVideojuego($videojuego);
+
+        $lista = new ListaJuegos();
+        $lista->setUsuario($usuario);
+        $lista->setVideojuego($videojuego);
+
         $entityManager->persist($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');

@@ -35,6 +35,9 @@ class Videojuego
     #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: EmpresaDesarrolladora::class)]
     private Collection $empresaDesarrolladora;
 
+    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: ListaJuegos::class)]
+    private Collection $listaJuegos;
+
     public function __construct()
     {
         $this->director = new ArrayCollection();
@@ -42,6 +45,8 @@ class Videojuego
         $this->genero = new ArrayCollection();
         
         $this->empresaDesarrolladora = new ArrayCollection();
+        
+        $this->listaJuegos = new ArrayCollection();
     }
 
 
@@ -175,6 +180,36 @@ class Videojuego
             // set the owning side to null (unless already changed)
             if ($empresaDesarrolladora->getVideojuego() === $this) {
                 $empresaDesarrolladora->setVideojuego(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ListaJuegos>
+     */
+    public function getListaJuegos(): Collection
+    {
+        return $this->listaJuegos;
+    }
+
+    public function addListaJuego(ListaJuegos $listaJuego): self
+    {
+        if (!$this->listaJuegos->contains($listaJuego)) {
+            $this->listaJuegos->add($listaJuego);
+            $listaJuego->setVideojuego($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListaJuego(ListaJuegos $listaJuego): self
+    {
+        if ($this->listaJuegos->removeElement($listaJuego)) {
+            // set the owning side to null (unless already changed)
+            if ($listaJuego->getVideojuego() === $this) {
+                $listaJuego->setVideojuego(null);
             }
         }
 
