@@ -42,7 +42,7 @@
 					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 						<div class="menu nav-item d-inline inline-flex float-right">
 							<div class="dropdown">
-								<button class="btn dropdown-toggle dropbtn" type="button" onclick="dropdown()" style="margin-right:20%;">
+								<button class="btn dropdown-toggle dropbtn click-dropdown" type="button">
 									<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
 								</button>
 								<ul class="dropdown-menu" id="lista">
