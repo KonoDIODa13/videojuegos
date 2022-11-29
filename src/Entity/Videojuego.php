@@ -38,7 +38,9 @@ class Videojuego
     public function __construct()
     {
         $this->director = new ArrayCollection();
+
         $this->genero = new ArrayCollection();
+        
         $this->empresaDesarrolladora = new ArrayCollection();
     }
 

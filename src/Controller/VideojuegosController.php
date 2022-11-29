@@ -24,7 +24,7 @@ class VideojuegosController extends ControladorBase
     {
         $usuario = $this->getUser();
         $mismoJuego = false;
-        
+
         if ($usuario != null) {
             $juegosLista = $usuario->getVideojuegos();
             $mismoJuego = false;
@@ -36,14 +36,14 @@ class VideojuegosController extends ControladorBase
         }
 
         $directores = $videojuego->getDirector();
-        //$generos = $videojuego->getGenero();
-        //$desarrolladores = $videojuego->getDesarrollador();
+        $generos = $videojuego->getGenero();
+        $desarrolladores = $videojuego->getEmpresaDesarrolladora();
 
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'directores' => $directores,
-            //'generos' => $generos,
-            //'desarrolladores' => $desarrolladores,
+            'generos' => $generos,
+            'desarrolladores' => $desarrolladores,
             'mismoJuego' => $mismoJuego,
         ]);
     }
