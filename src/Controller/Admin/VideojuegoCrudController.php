@@ -6,6 +6,7 @@ use App\Entity\Videojuego;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -26,9 +27,9 @@ class VideojuegoCrudController extends AbstractCrudController
     {
         yield TextField::new('titulo');
         yield ArrayField::new('director');
-        //yield ArrayField::new('genero');
+        yield ArrayField::new('genero');
         yield TextField::new('fechaPublicacion');
-        //yield ArrayField::new('desarrollador');
+        yield ArrayField::new('empresaDesarrolladora');
         yield TextareaField::new('descripcion')
             ->hideOnIndex();
     }

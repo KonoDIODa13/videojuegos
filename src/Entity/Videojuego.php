@@ -39,9 +39,17 @@ class Videojuego
     #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: Director::class)]
     private Collection $director;
 
+    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: Genero::class)]
+    private Collection $genero;
+
+    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: EmpresaDesarrolladora::class)]
+    private Collection $empresaDesarrolladora;
+
     public function __construct()
     {
         $this->director = new ArrayCollection();
+        $this->genero = new ArrayCollection();
+        $this->empresaDesarrolladora = new ArrayCollection();
     }
 
 
@@ -62,31 +70,6 @@ class Videojuego
         return $this;
     }
 
-    /*public function getdirector(): array
-    {
-        return $this->director;
-    }
-
-    public function setdirector(array $director): self
-    {
-        $this->director = $director;
-
-        return $this;
-    }*/
-
-
-    /*public function getgenero(): array
-    {
-        return $this->genero;
-    }
-
-    public function setgenero(array $genero): self
-    {
-        $this->genero = $genero;
-
-        return $this;
-    }*/
-
     public function getFechaPublicacion(): ?string
     {
         return $this->fechaPublicacion;
@@ -98,18 +81,6 @@ class Videojuego
 
         return $this;
     }
-
-    /*public function getDesarrollador(): array
-    {
-        return $this->desarrollador;
-    }
-
-    public function setDesarrollador(array $desarrollador): self
-    {
-        $this->desarrollador = $desarrollador;
-
-        return $this;
-    }*/
 
     public function getDescripcion(): ?string
     {
@@ -152,6 +123,66 @@ class Videojuego
             // set the owning side to null (unless already changed)
             if ($director->getVideojuego() === $this) {
                 $director->setVideojuego(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Genero>
+     */
+    public function getGenero(): Collection
+    {
+        return $this->genero;
+    }
+
+    public function addGenero(Genero $genero): self
+    {
+        if (!$this->genero->contains($genero)) {
+            $this->genero->add($genero);
+            $genero->setVideojuego($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGenero(Genero $genero): self
+    {
+        if ($this->genero->removeElement($genero)) {
+            // set the owning side to null (unless already changed)
+            if ($genero->getVideojuego() === $this) {
+                $genero->setVideojuego(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EmpresaDesarrolladora>
+     */
+    public function getEmpresaDesarrolladora(): Collection
+    {
+        return $this->empresaDesarrolladora;
+    }
+
+    public function addEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
+    {
+        if (!$this->empresaDesarrolladora->contains($empresaDesarrolladora)) {
+            $this->empresaDesarrolladora->add($empresaDesarrolladora);
+            $empresaDesarrolladora->setVideojuego($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
+    {
+        if ($this->empresaDesarrolladora->removeElement($empresaDesarrolladora)) {
+            // set the owning side to null (unless already changed)
+            if ($empresaDesarrolladora->getVideojuego() === $this) {
+                $empresaDesarrolladora->setVideojuego(null);
             }
         }
 

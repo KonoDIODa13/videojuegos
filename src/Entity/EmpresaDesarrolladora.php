@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\DirectorRepository;
+use App\Repository\EmpresaDesarrolladoraRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DirectorRepository::class)]
-class Director
+#[ORM\Entity(repositoryClass: EmpresaDesarrolladoraRepository::class)]
+class EmpresaDesarrolladora
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,9 +14,9 @@ class Director
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nombre = null;
+    private ?string $desarrolladora = null;
 
-    #[ORM\ManyToOne(inversedBy: 'director')]
+    #[ORM\ManyToOne(inversedBy: 'empresaDesarrolladora')]
     private ?Videojuego $videojuego = null;
 
     public function getId(): ?int
@@ -24,14 +24,14 @@ class Director
         return $this->id;
     }
 
-    public function getNombre(): ?string
+    public function getDesarrolladora(): ?string
     {
-        return $this->nombre;
+        return $this->desarrolladora;
     }
 
-    public function setNombre(string $nombre): self
+    public function setDesarrolladora(string $desarrolladora): self
     {
-        $this->nombre = $nombre;
+        $this->desarrolladora = $desarrolladora;
 
         return $this;
     }
@@ -47,9 +47,8 @@ class Director
 
         return $this;
     }
-
     public function __toString()
     {
-        return $this->nombre;
+        return $this->desarrolladora;
     }
 }

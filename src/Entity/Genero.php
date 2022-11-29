@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\DirectorRepository;
+use App\Repository\GeneroRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DirectorRepository::class)]
-class Director
+#[ORM\Entity(repositoryClass: GeneroRepository::class)]
+class Genero
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,9 +14,9 @@ class Director
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nombre = null;
+    private ?string $genero = null;
 
-    #[ORM\ManyToOne(inversedBy: 'director')]
+    #[ORM\ManyToOne(inversedBy: 'genero')]
     private ?Videojuego $videojuego = null;
 
     public function getId(): ?int
@@ -24,14 +24,14 @@ class Director
         return $this->id;
     }
 
-    public function getNombre(): ?string
+    public function getGenero(): ?string
     {
-        return $this->nombre;
+        return $this->genero;
     }
 
-    public function setNombre(string $nombre): self
+    public function setGenero(string $genero): self
     {
-        $this->nombre = $nombre;
+        $this->genero = $genero;
 
         return $this;
     }
@@ -50,6 +50,6 @@ class Director
 
     public function __toString()
     {
-        return $this->nombre;
+        return $this->genero;
     }
 }

@@ -2,22 +2,21 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Director;
+use App\Entity\Genero;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class DirectorCrudController extends AbstractCrudController
+class GeneroCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Director::class;
+        return Genero::class;
     }
-
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('nombre');
+        yield TextField::new('genero');
         yield AssociationField::new('videojuego');
     }
 }
