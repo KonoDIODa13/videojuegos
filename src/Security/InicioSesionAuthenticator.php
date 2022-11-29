@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Factory\UsuarioFactory;
 use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -18,9 +18,7 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            # entry_point: App\Security\RegistroAuthenticator
             custom_authenticator:
-                # - App\Security\RegistroAuthenticator
                 - App\Security\InicioSesionAuthenticator
             logout:
                 path: app_logout
