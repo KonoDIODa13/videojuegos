@@ -27,9 +27,7 @@ class PerfilController extends ControladorBase
     #[Route('/perfil', name: 'app_perfil')]
     public function perfil(VideojuegoRepository $videojuegoRepository, ListaJuegosRepository $listaJuegosRepository): Response
     {
-        //$juegos = $videojuegoRepository->findAll();
         $usuario = $this->getUser();
-        //$lista = new ListaJuegos();
 
         $listado = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
         $arrJuegos = array();
@@ -42,7 +40,6 @@ class PerfilController extends ControladorBase
                 array_push($arrJuegos, $juego);
             }
         }
-        //dd($arrJuegos);
 
 
         return $this->render('perfil/perfil.html.twig', [
@@ -52,10 +49,11 @@ class PerfilController extends ControladorBase
         ]);
     }
     #[Route('perfil/remover_juego/{videojuego}', name: 'app_remover_juego_lista')]
-    public function remover(Videojuego $videojuego, EntityManagerInterface $entityManager): Response
+    public function remover(Videojuego $videojuego, EntityManagerInterface $entityManager, ListaJuegosRepository $listaJuegosRepository): Response
     {
         $usuario = $this->getUser();
-        $usuario->removeVideojuego($videojuego);
+        $lista = $listaJuegosRepository->findOneBy(["usuario" => $usuario->getId(), "videojuego" => $videojuego]);
+        $entityManager->remove($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
     }
