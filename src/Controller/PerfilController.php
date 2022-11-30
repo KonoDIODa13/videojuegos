@@ -39,11 +39,12 @@ class PerfilController extends ControladorBase
             'listado' => $listado,
         ]);
     }
-    #[Route('perfil/remover_juego/{videojuego}', name: 'app_remover_juego_lista')]
-    public function remover(Videojuego $videojuego, EntityManagerInterface $entityManager, ListaJuegosRepository $listaJuegosRepository): Response
+    #[Route('perfil/remover_juego/{lista}', name: 'app_remover_juego_lista')]
+    public function remover(ListaJuegos $lista, EntityManagerInterface $entityManager): Response
     {
+        //dd($lista);
         $usuario = $this->getUser();
-        $lista = $listaJuegosRepository->findOneBy(["usuario" => $usuario->getId(), "videojuego" => $videojuego]);
+        //$lista = $listaJuegosRepository->findOneBy(["usuario" => $usuario->getId(), "videojuego" => $videojuego]);
         $entityManager->remove($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');

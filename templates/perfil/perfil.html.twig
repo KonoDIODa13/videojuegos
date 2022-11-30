@@ -12,7 +12,7 @@
 	{% endblock %}
 
 	{% block text %}
-		<div class="p-2 m-3">
+		<div class="text p-3">
 			<h2 class="text-center p-2">Tus Juegos</h2>
 			{% if listado != null %}
 				<div class="table-responsive">
@@ -21,40 +21,37 @@
 							<tr>
 								<td></td>
 								<td class="text-center">
-									<strong>Título<strong></td>
-										<td class="text-center">
-											<strong>Géneros<strong></td>
-												<td class="text-center">
-													<strong>Comentarios</strong>
-												</td>
-												<td></td>
-											</tr>
-										</td>
-									</thead>
+									<strong>Título</strong>
 								</td>
+								<!--<td class="text-center">
+									<strong>Géneros</strong>
+								</td>-->
+								<td class="text-center">
+									<strong>Comentarios</strong>
+								</td>
+								<td></td>
 							</tr>
 						</thead>
 						<tbody>
 							{% for indice, lista in listado %}
 								<tr>
-									<td scope="row">
-										<strong>{{indice ++1}}</strong>
+									<td>
+										<strong class="p-2">{{indice ++1}}</strong>
 									</td>
 									<td class="text-center">
-										<a class="link-dark" href="{{path('app_videojuego', {videojuego: lista.videojuego.id})}}">{{lista.videojuego.titulo}}</a>
+										<a class="link-dark p-2" href="{{path('app_videojuego', {videojuego: lista.videojuego.id})}}">{{lista.videojuego.titulo}}</a>
 									</td>
-									<td class="text-center">
+									<!--<td class="text-center">
 										{% for genero in lista.videojuego.genero %}
 											{{genero}}
 										{% endfor %}
-									</td>
-									<td class="text-center inline-flex">
+									</td>-->
+									<td class="text-center">
 										{% if lista.comentario != null %}
 											{{lista.comentario}}
 										{% else %}
-											<form action="{{path('app_comentario')}}" method="POST">
-												<label>¿quieres añadir un comentario?</label>
-												<input type="text" name="comentario" id="inputComentario">
+											<form action="{{path('app_comentario')}}" method="POST" class="p-2 d-inline">
+												<input type="text" name="comentario" id="inputComentario" placeholder="añadir comentario">
 												<input type="hidden" value="{{lista.videojuego}}" name="videojuego" id="videojuego">
 												<button class="btn btn-primary" type="submit">enviar comentario</button>
 											</form>
@@ -63,7 +60,7 @@
 
 									</td>
 									<td class="text-end">
-										<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {videojuego: lista.videojuego.id})}}">remover de la lista</a>
+										<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {lista: lista.id})}}">remover de la lista</a>
 									</td>
 								</tr>
 							{% endfor %}
@@ -79,10 +76,8 @@
 				<p>¿Quieres añadir un juego?</p>
 				<a class="btn btn-primary" href="{{ path ('app_videojuegos') }}">pulsa aquí</a>
 			{% endif %}
-
 		</div>
 	{% endblock %}
-
 	{% block footer %}
 		{{parent()}}
 	{% endblock %}

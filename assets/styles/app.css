@@ -45,6 +45,7 @@ body {
 .nav {
     height: 10%;
     max-width: 100%;
+    font-size: larger;
 }
 
 td {
@@ -54,4 +55,21 @@ td {
 a:link,
 :visited {
     text-decoration: none;
+}
+
+.menu {
+    margin-left: 70%;
+}
+
+.text{
+    margin-top: 6%;
+    margin-bottom: 5%;
+}
+
+.contenedorG{
+    width: 70%;
+}
+
+.contenedorP{
+    width: 30%;
 }
