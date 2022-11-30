@@ -165,7 +165,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeListaJuego(ListaJuegos $listaJuego): self
     {
         if ($this->listaJuegos->removeElement($listaJuego)) {
-            // set the owning side to null (unless already changed)
             if ($listaJuego->getUsuario() === $this) {
                 $listaJuego->setUsuario(null);
             }

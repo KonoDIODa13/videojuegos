@@ -60,7 +60,6 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
             ]
 
         );
-        //dd($pasaporte);
         return $pasaporte;
     }
 

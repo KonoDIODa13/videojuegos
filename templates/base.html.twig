@@ -5,6 +5,7 @@
 		<title>
 			{% block title %}tfg
 			{% endblock %}
+
 		</title>
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
@@ -16,6 +17,7 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
+		
 	</head>
 	<body>
 		{% block body %}
@@ -62,28 +64,26 @@
 									</li>
 								</ul>
 							</div>
-							<div>
-							{% endif %}
-						</nav>
-					{% endblock %}
+						<div>
+					{% endif %}
+				</nav>
+			{% endblock %}
 
-					{% block text %}
-						<div class="text"></div>
-					{% endblock %}
+			{% block text %}
+				<div class="text"></div>
+			{% endblock %}
 
-					{% block footer %}
-						<div class="p-3 fixed-bottom bg-secondary text-center">
-							© 2021 Copyright:
-							<strong>Jaime González Bravo</strong>.
-						</div>
-					{% endblock %}
-				{% endblock %}
+			{% block footer %}
+				<div class="p-3 fixed-bottom bg-secondary text-center">
+					© 2021 Copyright:
+					<strong>Jaime González Bravo</strong>.
+				</div>
+			{% endblock %}
 
-				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-			</body>
+		{% endblock %}
 
-		</html>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>

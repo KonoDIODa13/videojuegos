@@ -43,9 +43,9 @@ class Videojuego
         $this->director = new ArrayCollection();
 
         $this->genero = new ArrayCollection();
-        
+
         $this->empresaDesarrolladora = new ArrayCollection();
-        
+
         $this->listaJuegos = new ArrayCollection();
     }
 
@@ -117,7 +117,6 @@ class Videojuego
     public function removeDirector(Director $director): self
     {
         if ($this->director->removeElement($director)) {
-            // set the owning side to null (unless already changed)
             if ($director->getVideojuego() === $this) {
                 $director->setVideojuego(null);
             }
@@ -147,7 +146,6 @@ class Videojuego
     public function removeGenero(Genero $genero): self
     {
         if ($this->genero->removeElement($genero)) {
-            // set the owning side to null (unless already changed)
             if ($genero->getVideojuego() === $this) {
                 $genero->setVideojuego(null);
             }
@@ -177,7 +175,6 @@ class Videojuego
     public function removeEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
     {
         if ($this->empresaDesarrolladora->removeElement($empresaDesarrolladora)) {
-            // set the owning side to null (unless already changed)
             if ($empresaDesarrolladora->getVideojuego() === $this) {
                 $empresaDesarrolladora->setVideojuego(null);
             }
@@ -207,7 +204,6 @@ class Videojuego
     public function removeListaJuego(ListaJuegos $listaJuego): self
     {
         if ($this->listaJuegos->removeElement($listaJuego)) {
-            // set the owning side to null (unless already changed)
             if ($listaJuego->getVideojuego() === $this) {
                 $listaJuego->setVideojuego(null);
             }

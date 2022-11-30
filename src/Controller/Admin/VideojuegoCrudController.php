@@ -6,7 +6,7 @@ use App\Entity\Videojuego;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -20,11 +20,12 @@ class VideojuegoCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setSearchFields(['titulo', 'director', 'genero', 'fechaPublicacion', 'desarrollador', 'descripcion', 'slug']);
+            ->setSearchFields(['titulo', 'director', 'genero', 'fechaPublicacion', 'desarrollador', 'descripcion']);
     }
 
     public function configureFields(string $pageName): iterable
     {
+        yield IdField::new('id')->hideOnForm();
         yield TextField::new('titulo');
         yield ArrayField::new('director');
         yield ArrayField::new('genero');

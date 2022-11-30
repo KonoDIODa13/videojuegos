@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Director;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class DirectorCrudController extends AbstractCrudController
@@ -17,6 +18,7 @@ class DirectorCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        yield IdField::new('id')->hideOnForm();
         yield TextField::new('nombre');
         yield AssociationField::new('videojuego');
     }

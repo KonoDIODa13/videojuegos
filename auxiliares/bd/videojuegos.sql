@@ -174,7 +174,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (86,'jaime','[\"ROLE_USER\"]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[\"ROLE_USER\"]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\", \"ROLE_USER\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu'),(96,'daniel','[]','$2y$10$IEEmTOqw2d23nI.vsmtiPeytfzjLMHPovRsna9JB7G36GtsotlLNC'),(97,'javier','[]','$2y$10$I2vXVTPj5avAejY9WT7quO/JoifVJ3JlPCS4uZSpyNK0NNdUHOpvq');
+INSERT INTO `usuario` VALUES (86,'jaime','[]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu'),(96,'daniel','[]','$2y$10$IEEmTOqw2d23nI.vsmtiPeytfzjLMHPovRsna9JB7G36GtsotlLNC'),(97,'javier','[]','$2y$10$I2vXVTPj5avAejY9WT7quO/JoifVJ3JlPCS4uZSpyNK0NNdUHOpvq');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-30 14:07:51
+-- Dump completed on 2022-11-30 14:52:00

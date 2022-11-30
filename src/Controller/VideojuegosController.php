@@ -28,6 +28,7 @@ class VideojuegosController extends ControladorBase
         $usuario = $this->getUser();
         $mismoJuego = false;
         $arrComentarios = array();
+        
         if ($usuario != null) {
             $juegosLista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
             $mismoJuego = false;
@@ -43,12 +44,11 @@ class VideojuegosController extends ControladorBase
 
 
             $listas = $listaJuegosRepository->findBy(['videojuego' => $videojuego]);
-            $usuarios= $usuarioRepository->findAll();
+            $usuarios = $usuarioRepository->findAll();
             foreach ($listas as $lista) {
                 if ($lista->getComentario() != null) {
 
                     if ($lista->getComentario() != $comentario) {
-                        //dd($lista->getUsuario());
                         $array = ['usuario' => $lista->getUsuario(), 'comentario' => $lista->getComentario()];
                         array_push($arrComentarios, $array);
                     }
@@ -58,7 +58,6 @@ class VideojuegosController extends ControladorBase
                 }
             }
         }
-        //dd($arrComentarios);
         $directores = $videojuego->getDirector();
         $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getEmpresaDesarrolladora();

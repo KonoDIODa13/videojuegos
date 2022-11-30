@@ -23,9 +23,6 @@
 								<td class="text-center">
 									<strong>Título</strong>
 								</td>
-								<!--<td class="text-center">
-									<strong>Géneros</strong>
-								</td>-->
 								<td class="text-center">
 									<strong>Comentarios</strong>
 								</td>
@@ -41,11 +38,6 @@
 									<td class="text-center">
 										<a class="link-dark p-2" href="{{path('app_videojuego', {videojuego: lista.videojuego.id})}}">{{lista.videojuego.titulo}}</a>
 									</td>
-									<!--<td class="text-center">
-										{% for genero in lista.videojuego.genero %}
-											{{genero}}
-										{% endfor %}
-									</td>-->
 									<td class="text-center">
 										{% if lista.comentario != null %}
 											{{lista.comentario}}
@@ -56,15 +48,12 @@
 												<button class="btn btn-primary" type="submit">enviar comentario</button>
 											</form>
 										{% endif %}
-
-
 									</td>
 									<td class="text-end">
 										<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {lista: lista.id})}}">remover de la lista</a>
 									</td>
 								</tr>
 							{% endfor %}
-
 						</tbody>
 					</table>
 				</div>
