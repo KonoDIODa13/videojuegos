@@ -42,27 +42,27 @@
 					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 						<div class="menu nav-item d-inline inline-flex float-right">
 							<div class="dropdown">
-								<button class="btn dropdown-toggle dropbtn click-dropdown" type="button">
+								<button class="btn dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown">
 									<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
 								</button>
 								<ul class="dropdown-menu" id="lista">
 									{% if is_granted('ROLE_ADMIN') %}
 										<li>
-											<a class="dropdown-content text-secondary" href="{{'admin'}}">Admin</a>
+											<a class="dropdown-item text-secondary" href="{{'admin'}}">Admin</a>
 										</li>
 									{% endif %}
 									<li>
-										<a class="dropdown-content text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
+										<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
 									</li>
 
 									<li>
-										<a class="dropdown-content text-secondary" href="{{'logout'}}">Cerrar sesión</a>
+										<a class="dropdown-item text-secondary" href="{{'logout'}}">Cerrar sesión</a>
 									</li>
 								</ul>
 							</div>
-						<div>
-					{% endif %}
-				</nav>
+							<div>
+							{% endif %}
+						</nav>
 					{% endblock %}
 
 					{% block text %}{% endblock %}
@@ -74,7 +74,9 @@
 						</div>
 					{% endblock %}
 				{% endblock %}
+
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 			</body>
-		</body>
-	</body>
 </html>
