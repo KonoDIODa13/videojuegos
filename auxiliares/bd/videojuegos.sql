@@ -138,7 +138,7 @@ CREATE TABLE `lista_juegos` (
   KEY `IDX_F6AD149B82925A85` (`videojuego_id`),
   CONSTRAINT `FK_F6AD149B82925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`),
   CONSTRAINT `FK_F6AD149BDB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `lista_juegos` (
 
 LOCK TABLES `lista_juegos` WRITE;
 /*!40000 ALTER TABLE `lista_juegos` DISABLE KEYS */;
-INSERT INTO `lista_juegos` VALUES (1,NULL,86,5),(2,NULL,86,6),(3,NULL,86,7);
+INSERT INTO `lista_juegos` VALUES (4,'Eso si que no me lo esperaba',86,5),(5,'Muy bonito todo',86,6),(6,NULL,86,7),(8,'esto es un comentario',96,5),(9,'como mola',97,5);
 /*!40000 ALTER TABLE `lista_juegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +165,7 @@ CREATE TABLE `usuario` (
   `contra` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_2265B05DF85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (86,'jaime','[\"ROLE_USER\"]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[\"ROLE_USER\"]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\", \"ROLE_USER\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu');
+INSERT INTO `usuario` VALUES (86,'jaime','[\"ROLE_USER\"]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[\"ROLE_USER\"]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\", \"ROLE_USER\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu'),(96,'daniel','[]','$2y$10$IEEmTOqw2d23nI.vsmtiPeytfzjLMHPovRsna9JB7G36GtsotlLNC'),(97,'javier','[]','$2y$10$I2vXVTPj5avAejY9WT7quO/JoifVJ3JlPCS4uZSpyNK0NNdUHOpvq');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-29 14:33:39
+-- Dump completed on 2022-11-30 14:07:51
