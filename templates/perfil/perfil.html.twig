@@ -14,40 +14,60 @@
 	{% block text %}
 		<div class="p-2 m-3">
 			<h2 class="text-center p-2">Tus Juegos</h2>
-			{% if arrjuegos != null %}
+			{% if listado != null %}
 				<div class="table-responsive">
 					<table class="table table-hover border border-dark">
 						<thead>
 							<tr>
 								<td></td>
 								<td class="text-center">
-									<strong>Título<strong>
+									<strong>Título<strong></td>
+										<td class="text-center">
+											<strong>Géneros<strong></td>
+												<td class="text-center">
+													<strong>Comentarios</strong>
+												</td>
+												<td></td>
+											</tr>
+										</td>
+									</thead>
 								</td>
-								<td class="text-center">
-									<strong>Géneros<strong>
-								</td>
-								<td></td>
 							</tr>
 						</thead>
 						<tbody>
-							{% for indice, juego in arrjuegos %}
+							{% for indice, lista in listado %}
 								<tr>
 									<td scope="row">
 										<strong>{{indice ++1}}</strong>
 									</td>
 									<td class="text-center">
-										<a class="link-dark" href="{{path('app_videojuego', {videojuego: juego.id})}}">{{juego.titulo}}</a>
+										<a class="link-dark" href="{{path('app_videojuego', {videojuego: lista.videojuego.id})}}">{{lista.videojuego.titulo}}</a>
 									</td>
 									<td class="text-center">
-										{% for genero in juego.genero %}
+										{% for genero in lista.videojuego.genero %}
 											{{genero}}
 										{% endfor %}
 									</td>
+									<td class="text-center inline-flex">
+										{% if lista.comentario != null %}
+											{{lista.comentario}}
+										{% else %}
+											<form action="{{path('app_comentario')}}" method="POST">
+												<label>¿quieres añadir un comentario?</label>
+												<input type="text" name="comentario" id="inputComentario">
+												<input type="hidden" value="{{lista.videojuego}}" name="videojuego" id="videojuego">
+												<button class="btn btn-primary" type="submit">enviar comentario</button>
+											</form>
+										{% endif %}
+
+
+									</td>
 									<td class="text-end">
-										<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {videojuego: juego.id})}}">remover de la lista</a>
+										<a class="btn btn-secondary p-1" href="{{path('app_remover_juego_lista', {videojuego: lista.videojuego.id})}}">remover de la lista</a>
 									</td>
 								</tr>
 							{% endfor %}
+
 						</tbody>
 					</table>
 				</div>
