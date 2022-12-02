@@ -35,7 +35,6 @@ body {
 .footer {
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
-    margin-top: 10%;
 }
 
 .nav {
@@ -54,20 +53,32 @@ a:link,
     text-decoration: none;
 }
 
-.menu {
-    margin-left: 70%;
-}
-
-.text {
-    margin-top: 6%;
-    margin-bottom: 5%;
-}
-
 img {
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
 }
-.contenerdor-imagen{
-    margin-top: 7.5%;
-    margin-left: 10%;
+
+.contenerdor-imagen {
+    margin: 10%;
+}
+
+.link-navegador {
+    font-size: larger;
+}
+
+.datos {
+    font-size: large;
+    color: black;
+}
+
+.contenedorP {
+    width: 30%;
+   margin-left: 35%;
+}
+
+.contenedorG {
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 1%;
 }

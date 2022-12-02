@@ -17,55 +17,63 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-		
+
 	</head>
 	<body>
 		{% block body %}
 			{% block nav %}
-				<nav class="nav navbar navbar-expand-lg navbar-light bg-light p-2 fixed-top">
-					<div class="d-inline inline-flex m-2 p-2">
-						<ul class="navbar-nav">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex">
+					<div class="container-fluid">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="navbar-brand flex-start nav-link" href="{{ path('app_inicio') }}">Game Experiences</a>
+								<a class="nav-link active" href="{{path('app_inicio')}}">
+									<span class="link-navegador">Game Experiences</span>
+								</a>
 							</li>
-							{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-								{% else %}
-									<li class="nav-item active">
-										<a class="nav-link" href="{{ path('app_register') }}">Registrar</a>
-									</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="{{path('app_videojuegos')}}">
+									<span class="link-navegador">Videojuegos</span>
+								</a>
+							</li>
+							{% if is_granted("ROLE_USER")!= true %}
+								<li class="nav-item">
+									<a class="nav-link active" href="{{ path('app_register') }}">
+										<span class="link-navegador">
+											Registrar
+										</span>
+									</a>
+								</li>
 
-									<li class="nav-item active">
-										<a class="nav-link" href="{{ path('app_inicio_sesion') }}">Iniciar Sesion</a>
-									</li>
+								<li class="nav-item">
+									<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
+										<span class="link-navegador">
+											Inciar Sesión
+										</span>
+									</a>
+								</li>
+							{% else %}
+								<div class="dropdown">
+									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
+									</button>
+									<ul class="dropdown-menu">
+										{% if is_granted('ROLE_ADMIN') %}
+											<li>
+												<a class="dropdown-item text-secondary" href="{{'admin'}}">Admin</a>
+											</li>
+										{% endif %}
+										<li>
+											<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
+										</li>
+
+										<li>
+											<a class="dropdown-item text-secondary" href="{{'logout'}}">Cerrar sesión</a>
+										</li>
+									</ul>
+								</div>
 							{% endif %}
-							<li class="nav-item active">
-								<a class="nav-link" href="{{path('app_videojuegos')}}">Videojuegos</a>
-							</li>
 						</ul>
 					</div>
-					{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-						<div class="menu nav-item d-inline inline-flex float-right">
-							<div class="dropdown">
-								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
-								</button>
-								<ul class="dropdown-menu">
-									{% if is_granted('ROLE_ADMIN') %}
-										<li>
-											<a class="dropdown-item text-secondary" href="{{'admin'}}">Admin</a>
-										</li>
-									{% endif %}
-									<li>
-										<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
-									</li>
-
-									<li>
-										<a class="dropdown-item text-secondary" href="{{'logout'}}">Cerrar sesión</a>
-									</li>
-								</ul>
-							</div>
-						<div>
-					{% endif %}
 				</nav>
 			{% endblock %}
 
@@ -86,4 +94,4 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
-</html>
+</html></body></html></body></html></body></html>

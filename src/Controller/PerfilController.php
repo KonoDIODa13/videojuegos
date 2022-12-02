@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\ListaJuegos;
 use App\Repository\ListaJuegosRepository;
 use App\Repository\UsuarioRepository;
-use App\Repository\VideojuegoRepository;;
+use App\Repository\VideojuegoRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,11 +15,14 @@ class PerfilController extends ControladorBase
 {
 
     #[Route('/', name: 'app_inicio')]
-    public function inicio(UsuarioRepository $usuarioRepository): Response
+    public function inicio(UsuarioRepository $usuarioRepository, Request $request): Response
     {
+        $mensaje = $request->get('mensaje');
+        //dd($mensaje);
         $usuarios = $usuarioRepository->findAll();
         return $this->render('perfil/index.html.twig', [
             'usuario' => $usuarios,
+            'mensaje' => $mensaje,
         ]);
     }
 

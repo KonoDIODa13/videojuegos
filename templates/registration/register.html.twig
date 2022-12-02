@@ -8,21 +8,26 @@
 		{{ parent() }}
 	{% endblock %}
 	<div class="text">
-		<div class="container">
-			<div class="row">
-				<div class="bg-light mt-4 p-4">
-					<h1>Registro</h1>
+		<div class="contenedorG text-center">
+			<h1>Registro</h1>
+			<div class="contenedorP">
+				{% if error != null %}
+					<span class="text-danger">
+						{{error}}
+					</span>
+				{% endif %}
+				<div class="row">
+					<div class="text-center">
+						<div class="bg-light mt-3 p-4">
+							{{ form_start(registrationForm) }}
+							{{ form_row(registrationForm.username)}}
+							{{ form_row(registrationForm.contra)}}
+							{{ form_row(registrationForm.plainPassword)}}
 
-					{{ form_start(registrationForm) }}
-					{{ form_row(registrationForm.username,{
-                    label: 'Nombre del usuario'
-                }) }}
-					{{ form_row(registrationForm.plainPassword, {
-                    label: 'Contraseña'
-                }) }}
-
-					<button type="submit" class="bg-primary btn">Registrar</button>
-					{{ form_end(registrationForm) }}
+							<button type="submit" class="bg-primary btn align-self-center">Registrar</button>
+							{{ form_end(registrationForm) }}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -30,5 +35,4 @@
 	{% block footer %}
 		{{ parent()}}
 	{% endblock %}
-
 {% endblock %}

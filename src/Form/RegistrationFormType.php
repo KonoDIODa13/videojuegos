@@ -15,8 +15,16 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-            ->add('plainPassword', PasswordType::class, [
+            ->add('username', null, [
+                'label' => 'Nombre de usuario',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Escriba un nombre de usuario por favor'
+                    ]),
+                ]
+            ])
+            ->add('contra', PasswordType::class, [
+                'label' => 'Contraseña',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -25,11 +33,27 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'su contraseña tiene que tener como mínimo de 6 caracteres.',
+                        'minMessage' => 'Su contraseña tiene que tener como mínimo de 6 caracteres.',
                         'max' => 4096,
                     ]),
                 ],
-            ]);
+            ])
+            ->add('plainPassword', PasswordType::class, [
+                'label' => 'Repite la contraseña',
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Escriba una contraseña por favor.',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Su contraseña tiene que tener como mínimo de 6 caracteres.',
+                        'max' => 4096,
+                    ]),
+                ],
+            ]); 
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

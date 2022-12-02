@@ -31,6 +31,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
+    private $repeatPassword;
+
     #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ListaJuegos::class)]
     private Collection $listaJuegos;
 
@@ -173,4 +175,13 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getRepeatPassword()
+    {
+        return $this->repeatPassword;
+    }
+
+    public function setRepeatPassword($repeatPassword): void
+    {
+        $this->plainPassword = $repeatPassword;
+    }
 }
