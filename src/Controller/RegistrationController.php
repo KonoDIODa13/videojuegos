@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use function Zenstruck\Foundry\create;
+
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
@@ -19,16 +21,25 @@ class RegistrationController extends AbstractController
         $user = new Usuario();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        $error = null;
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setContra($form->get('plainPassword')->getData());
-            $entityManager->persist($user);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_inicio');
+            if ($form->get('contra')->getData() == $form->get('plainPassword')->getData()) {
+                $user->setContra($form->get('contra')->getData());
+                $entityManager->persist($user);
+                $entityManager->flush();
+                Request::create(
+                    'POST',
+                    "usuario creado",
+                );
+                return $this->redirectToRoute('app_inicio');
+            } else {
+                $error = "Las contraseñas no coinciden";
+            }
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'error' => $error,
         ]);
     }
 

@@ -15,12 +15,10 @@ class UsuarioCrudController extends AbstractCrudController
         return Usuario::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('username');
-        yield TextField::new('contra');
         yield ArrayField::new('roles')->hideOnForm();
     }
 }
