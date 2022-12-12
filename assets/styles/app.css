@@ -27,9 +27,8 @@ body {
     margin: 2%;
 }
 
-.imagen {
-    width: 40%;
-    height: 40%;
+.text {
+    margin-top: 5%;
 }
 
 .footer {
@@ -73,7 +72,7 @@ img {
 
 .contenedorP {
     width: 30%;
-   margin-left: 35%;
+    margin-left: 35%;
 }
 
 .contenedorG {
@@ -81,4 +80,13 @@ img {
     margin-left: 25%;
     margin-right: 25%;
     padding: 1%;
+}
+
+.imagen {
+    width: 60%;
+    height: 60%;
+}
+
+.opciones {
+    margin-right: 5%;
 }

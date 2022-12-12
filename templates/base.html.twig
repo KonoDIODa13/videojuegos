@@ -22,76 +22,73 @@
 	<body>
 		{% block body %}
 			{% block nav %}
-				<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex fixed-top">
 					<div class="container-fluid">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" href="{{path('app_inicio')}}">
-									<span class="link-navegador">Game Experiences</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active" href="{{path('app_videojuegos')}}">
-									<span class="link-navegador">Videojuegos</span>
-								</a>
-							</li>
-							{% if is_granted("ROLE_USER")!= true %}
+						<div>
+							<ul class="navbar-nav">
 								<li class="nav-item">
-									<a class="nav-link active" href="{{ path('app_register') }}">
-										<span class="link-navegador">
-											Registrar
-										</span>
+									<a class="nav-link active" href="{{path('app_inicio')}}">
+										<span class="link-navegador">Game Experiences</span>
 									</a>
 								</li>
-
 								<li class="nav-item">
-									<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
-										<span class="link-navegador">
-											Inciar Sesión
-										</span>
+									<a class="nav-link active" href="{{path('app_videojuegos')}}">
+										<span class="link-navegador">Videojuegos</span>
 									</a>
 								</li>
-							{% else %}
-								<div class="dropdown">
-									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
-									</button>
-									<ul class="dropdown-menu">
-										{% if is_granted('ROLE_ADMIN') %}
-											<li>
-												<a class="dropdown-item text-secondary" href="{{'admin'}}">Admin</a>
-											</li>
-										{% endif %}
-										<li>
-											<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
-										</li>
+								{% if is_granted("ROLE_USER")!= true %}
+									<li class="nav-item">
+										<a class="nav-link active" href="{{ path('app_register') }}">
+											<span class="link-navegador">
+												Registrar
+											</span>
+										</a>
+									</li>
 
-										<li>
-											<a class="dropdown-item text-secondary" href="{{'logout'}}">Cerrar sesión</a>
-										</li>
-									</ul>
+									<li class="nav-item">
+										<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
+											<span class="link-navegador">
+												Inciar Sesión
+											</span>
+										</a>
+									</li>
 								</div>
-							{% endif %}
-						</ul>
-					</div>
-				</nav>
-			{% endblock %}
+						{% else %}
+							</div>
+							<div class="dropdown opciones">
+								<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar" class="imagen">
+								</button>
+								<ul class="dropdown-menu">
+									{% if is_granted('ROLE_ADMIN') %}
+										<li>
+											<a class="dropdown-item text-secondary" href="{{'admin'}}">Admin</a>
+										</li>
+									{% endif %}
+									<li>
+										<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
+									</li>
 
-			{% block text %}
-				<div class="text"></div>
-			{% endblock %}
-
-			{% block footer %}
-				<div class="footer p-3 bg-secondary text-center fixed-bottom">
-					© 2021 Copyright:
-					<strong>Jaime González Bravo</strong>.
+									<li>
+										<a class="dropdown-item text-secondary" href="{{'logout'}}">Cerrar sesión</a>
+									</li>
+								</ul>
+							</div>
+						{% endif %}
+					</ul>
 				</div>
-			{% endblock %}
+			</body>
+		</html>
+	</nav>
+{% endblock %}
 
-		{% endblock %}
+{% block text %}
+	<div class="text"></div>
+{% endblock %}
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	</body>
-</html></body></html></body></html></body></html>
+{% block footer %}
+	<div class="footer p-3 bg-secondary text-center fixed-bottom">
+		© 2021 Copyright:
+		<strong>Jaime González Bravo</strong>.
+	</div>
+{% endblock %}{% endblock %}<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></body></html></body></html></body></html></body></html>
