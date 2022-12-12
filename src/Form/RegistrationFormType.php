@@ -16,15 +16,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', null, [
-                'label' => 'Nombre de usuario',
+                'label' => 'Nombre de usuario:',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Escriba un nombre de usuario por favor'
                     ]),
                 ]
             ])
-            ->add('contra', PasswordType::class, [
-                'label' => 'Contraseña',
+            ->add('password', PasswordType::class, [
+                'label' => 'Contraseña:',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -39,7 +39,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                'label' => 'Repite la contraseña',
+                'label' => 'Repite la contraseña:',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

@@ -19,6 +19,7 @@ class UsuarioCrudController extends AbstractCrudController
     {
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('username');
+        yield TextField::new('password')->hideOnIndex();
         yield ArrayField::new('roles')->hideOnForm();
     }
 }

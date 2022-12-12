@@ -27,14 +27,12 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(length: 255)]
-    private ?string $contra = null;
-
-    private $plainPassword;
-
-    private $repeatPassword;
+    private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ListaJuegos::class)]
     private Collection $listaJuegos;
+
+    private string $plainPassword;
 
     public function __construct()
     {
@@ -57,6 +55,22 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        //$this->setPlainPassword($password);
+        $this->password = password_hash($password, null);
+        return $this;
+    }
+
 
     public function getPlainPassword()
     {
@@ -106,32 +120,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getContra(): ?string
-    {
-        return $this->contra;
-    }
-
-    public function setContra(string $contra): self
-    {
-        $this->contra = password_hash($contra, $this->plainPassword);
-        return $this;
-    }
-
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): ?string
-    {
-        return $this->contra;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->contra = password_hash($password, $this->plainPassword);
-        return $this;
-    }
-
-
     public function getAvatarUri(int $size = 32): string
     {
         return 'https://ui-avatars.com/api/?' . http_build_query([
@@ -173,15 +161,5 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
-    }
-
-    public function getRepeatPassword()
-    {
-        return $this->repeatPassword;
-    }
-
-    public function setRepeatPassword($repeatPassword): void
-    {
-        $this->plainPassword = $repeatPassword;
     }
 }
