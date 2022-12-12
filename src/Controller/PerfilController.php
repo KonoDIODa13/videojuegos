@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 use App\Entity\ListaJuegos;
 use App\Repository\ListaJuegosRepository;
 use App\Repository\UsuarioRepository;
@@ -17,11 +21,16 @@ class PerfilController extends ControladorBase
     #[Route('/', name: 'app_inicio')]
     public function inicio(UsuarioRepository $usuarioRepository): Response
     {
-        
+        if (isset($_SESSION['mensaje'])) {
+            $mensaje = $_SESSION['mensaje'];
+        } else {
+            $mensaje = null;
+        }
+        //dd($mensaje);
         $usuarios = $usuarioRepository->findAll();
         return $this->render('perfil/index.html.twig', [
             'usuario' => $usuarios,
-            //'mensaje' => $mensaje,
+            'mensaje' => $mensaje,
         ]);
     }
 

@@ -2,6 +2,12 @@
 
 namespace App\Controller;
 
+if (!isset($_SESSION)) {
+    session_start();
+}else{
+    session_abort();
+}
+
 use App\Entity\Usuario;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,6 +31,9 @@ class RegistrationController extends AbstractController
                 $user->setPassword($form->get('password')->getData());
                 $entityManager->persist($user);
                 $entityManager->flush();
+
+                $_SESSION["mensaje"]="usuario creado";
+
                 return $this->redirectToRoute('app_inicio');
             } else {
                 $error = "Las contraseñas no coinciden";

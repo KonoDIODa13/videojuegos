@@ -10,6 +10,10 @@
 
 	{% block text %}
 		<div class="contenedor text">
+
+			{% if mensaje != null %}
+				<p>Ya has creado el usuario felicidades, ahora para poder empezar a utilizar las funcionalidades del programa tienes que iniciar la sesión.</p>
+			{% endif %}
 			<h3>¿Qué es Game Experiences?</h3>
 			<p>Game Experiences es ...</p>
 		</div>
