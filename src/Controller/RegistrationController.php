@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-use function Zenstruck\Foundry\create;
-
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
@@ -23,8 +21,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         $error = null;
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($form->get('contra')->getData() == $form->get('plainPassword')->getData()) {
-                $user->setContra($form->get('contra')->getData());
+            if ($form->get('password')->getData() == $form->get('plainPassword')->getData()) {
+                $user->setPassword($form->get('password')->getData());
                 $entityManager->persist($user);
                 $entityManager->flush();
                 Request::create(
