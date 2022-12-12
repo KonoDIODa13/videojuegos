@@ -18,16 +18,9 @@
 						<div class="contenedor_videojuegos text-center p-2 m-3">
 							<a class="text-link link-dark" href="{{ path('app_videojuego', {videojuego: juego}) }}">
 								<span>
-									Titulo:
 									{{ juego.titulo }}<br>
 								</span>
 							</a>
-							<span>
-								Generos:
-								{% for generos in juego.genero %}
-									{{ generos }}
-								{% endfor %}
-							</span>
 						</div>
 					</div>
 				{% endfor %}

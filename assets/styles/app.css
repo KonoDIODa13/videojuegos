@@ -29,6 +29,7 @@ body {
 
 .text {
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .footer {
@@ -89,4 +90,8 @@ img {
 
 .opciones {
     margin-right: 5%;
+}
+.titulo{
+    font-size: larger;
+    text-decoration: underline;
 }
