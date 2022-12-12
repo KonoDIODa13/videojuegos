@@ -15,14 +15,13 @@ class PerfilController extends ControladorBase
 {
 
     #[Route('/', name: 'app_inicio')]
-    public function inicio(UsuarioRepository $usuarioRepository, Request $request): Response
+    public function inicio(UsuarioRepository $usuarioRepository): Response
     {
-        $mensaje = $request->get('mensaje');
-        //dd($mensaje);
+        
         $usuarios = $usuarioRepository->findAll();
         return $this->render('perfil/index.html.twig', [
             'usuario' => $usuarios,
-            'mensaje' => $mensaje,
+            //'mensaje' => $mensaje,
         ]);
     }
 

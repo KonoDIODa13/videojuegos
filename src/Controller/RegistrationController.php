@@ -25,10 +25,6 @@ class RegistrationController extends AbstractController
                 $user->setPassword($form->get('password')->getData());
                 $entityManager->persist($user);
                 $entityManager->flush();
-                Request::create(
-                    'POST',
-                    "usuario creado",
-                );
                 return $this->redirectToRoute('app_inicio');
             } else {
                 $error = "Las contraseñas no coinciden";
