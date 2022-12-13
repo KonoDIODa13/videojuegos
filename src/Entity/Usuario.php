@@ -66,7 +66,6 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): self
     {
-        //$this->setPlainPassword($password);
         $this->password = password_hash($password, null);
         return $this;
     }

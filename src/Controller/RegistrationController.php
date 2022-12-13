@@ -13,6 +13,9 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class RegistrationController extends AbstractController
 {
+
+    // Aqui con el fomulario ya creado, solo falta de comprobar si el nombre y las contraseñas son válidas para de nuevo, que entity manager cree el usuario.
+
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +45,8 @@ class RegistrationController extends AbstractController
             'error' => $error,
         ]);
     }
+    // A diferencia del registro, el formulario de inicio de sesión no esta creado por una clase.
+    // Aqui solo mostramos el formulario, el que lo controla esta en /Security
 
     #[Route('iniciar_sesion', name: 'app_inicio_sesion')]
     public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
@@ -51,6 +56,8 @@ class RegistrationController extends AbstractController
             'last_username' => $authenticationUtils->getLastUsername(),
         ]);
     }
+
+    // Este método se encarga de cerrar la sesión del usuario.
 
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
