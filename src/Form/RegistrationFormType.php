@@ -33,7 +33,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Su contraseña tiene que tener como mínimo de 6 caracteres.',
+                        'minMessage' => 'Su contraseña a de tener como mínimo de 6 caracteres.',
                         'max' => 4096,
                     ]),
                 ],
@@ -48,7 +48,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Su contraseña tiene que tener como mínimo de 6 caracteres.',
+                        'minMessage' => 'Su contraseña a de tener como mínimo de 6 caracteres.',
                         'max' => 4096,
                     ]),
                 ],

@@ -75,14 +75,26 @@ img {
 }
 
 .contenedorP {
-    width: 30%;
-    margin-left: 35%;
+    width: 40%;
+    margin-left: 30%;
 }
 
 .contenedorG {
     margin-top: 5%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 1%;
+}
+
+.contenedorPeque {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.contenedorGrande {
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 35%;
     padding: 1%;
 }
 

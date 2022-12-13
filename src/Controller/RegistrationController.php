@@ -16,7 +16,6 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, EntityManagerInterface $entityManager): Response
     {
-        //dd($request->getSession());
         $user = new Usuario();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -25,13 +24,11 @@ class RegistrationController extends AbstractController
             if ($form->get('password')->getData() == $form->get('plainPassword')->getData()) {
                 $user->setPassword($form->get('password')->getData());
                 $creado = $request->get('usuarioCreado');
-                //dd($creado);
                 if (isset($_SESSION)) {
                     session_abort();
                 }
                 session_start();
                 $_SESSION["mensaje"] = $creado;
-                //dd($_SESSION["mensaje"]);
                 $entityManager->persist($user);
                 $entityManager->flush();
                 return $this->redirectToRoute('app_inicio');

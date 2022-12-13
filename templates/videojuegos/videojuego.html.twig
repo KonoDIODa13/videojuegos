@@ -117,11 +117,11 @@
 							<div class="d-flex">
 								<div class="m-5 flex-column">
 									{% if directores != null %}
-										<h4>Director/Directores:</h4>
+										<h4>Directores:</h4>
 										{% for director in directores %}
 											<ul>
 												<li>
-													{{director}}.
+													<span class="datos">{{director}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -130,11 +130,11 @@
 									{% endif %}
 
 									{% if generos != null %}
-										<h4>Género/Géneros:</h4>
+										<h4>Géneros:</h4>
 										{% for genero in generos %}
 											<ul>
 												<li>
-													{{genero}}.
+													<span class="datos">{{genero}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -145,16 +145,16 @@
 									<h4>Año de publicación:</h4>
 									<ul>
 										<li>
-											{{videojuego.fechaPublicacion}}.
+											<span class="datos">{{videojuego.fechaPublicacion}}.</span>
 										</li>
 									</ul>
 
 									{% if desarrolladores != null %}
-										<h4>Empresa desarrolladora/Empresas desarrolladoras:</h4>
+										<h4>Empresas desarrolladoras:</h4>
 										{% for desarrollador in desarrolladores %}
 											<ul>
 												<li>
-													{{desarrollador}}.
+													<span class="datos">{{desarrollador}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -166,7 +166,7 @@
 										<h4>Descripción:</h4>
 										<ul>
 											<li>
-												{{videojuego.descripcion}}.
+												<span class="datos">{{videojuego.descripcion}}.</span>
 											</li>
 										</ul>
 									{% endif %}
