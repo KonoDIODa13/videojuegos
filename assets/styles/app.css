@@ -28,14 +28,16 @@ body {
 }
 
 .text {
-    margin-top: 5%;
     margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .footer {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: darkblue;
     text-align: center;
     margin-top: 5%;
+    color: white;
 }
 
 .nav {
@@ -92,7 +94,21 @@ img {
 .opciones {
     margin-right: 5%;
 }
-.titulo{
+
+.titulo {
     font-size: larger;
     text-decoration: underline;
+}
+
+.contenedor-inicio {
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+}
+
+.contenedor-final {
+    margin-bottom: 10%;
+}
+
+.parrafo {
+    text-align: justify;
 }

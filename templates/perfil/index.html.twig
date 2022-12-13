@@ -9,13 +9,37 @@
 	{% endblock %}
 
 	{% block text %}
-		<div class="container text">
-
+		<div class="text">
+			<div class="contenedor-inicio p-2">
+				<h3>¿Qué es Game Experiences?</h3>
+				<p class="parrafo">Game Experiences es una aplicación creada por la empresa Mr. Game and Watch para ofrecer a los clientes una manera de de guardar en una lista aquellos videojuegos que hayan generado una o varias experiencias al usuario.
+				</p>
+				<h3>Sobre nosotros.</h3>
+				<p class="parrafo">
+					La empresa Mr. Game and Watch es una empresa palentina fundada en 2010 por el magnate Rodrigo Díaz de Vivar quien es el mayor inversor actual del competitivo de los videojuegos.<br>
+					Según él, el mundo de los videojuegos es un lugar maravilloso del que todos debemos aprender, a veces se pierde, a veces se gana pero lo más importante son las experiencias que hacemos.<br>
+					De hecho, el señor Rodrigo Díaz de Vivar desvio una gran parte de sus ingresos para la creación de esta empresa. y cada vez que puede, visita las instalaciones y pregunta por la evolución del proyecto y nos da animos para seguir adelante.
+				</p>
+			</div>
 			{% if mensaje == true %}
-				<p>Ya has creado el usuario felicidades, ahora para poder empezar a utilizar las funcionalidades del programa tienes que iniciar la sesión.</p>
+				<div class="contenedor-final d-flex justify-content-center">
+					<div class="d-inline text-center p-4">
+						<p>Enhorabuena, ya te has registrado, ahora solo tienes que iniciar la sesión para empezar a utilizar la web con todo su potencial.</p>
+						<a class="btn btn-primary" href="{{path('app_inicio_sesion')}}">Iniciar sesión</a>
+					</div>
+				</div>
+			{% else %}
+				<div class="d-flex justify-content-evenly contenedor-final">
+					<div class="d-inline text-center p-4">
+						<p>Si aún no te has registrado todavía, ¿a qué esperas?</p>
+						<a class="btn btn-primary" href="{{path('app_register')}}">Registrarse</a>
+					</div>
+					<div class="d-inline text-center p-4">
+						<p>Si ya estas registrado, inicia la sesión para empezar a ver la verdadera cara de nuestra web.</p>
+						<a class="btn btn-primary" href="{{path('app_inicio_sesion')}}">Iniciar sesión</a>
+					</div>
+				</div>
 			{% endif %}
-			<h3>¿Qué es Game Experiences?</h3>
-			<p>Game Experiences es ...</p>
 		</div>
 	{% endblock %}
 

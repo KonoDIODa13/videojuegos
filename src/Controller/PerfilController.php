@@ -15,7 +15,7 @@ class PerfilController extends ControladorBase
 {
 
     #[Route('/', name: 'app_inicio')]
-    public function inicio(UsuarioRepository $usuarioRepository, Request $request): Response
+    public function inicio(UsuarioRepository $usuarioRepository): Response
     {
         $mensaje = null;
         if (isset($_SESSION)) {
