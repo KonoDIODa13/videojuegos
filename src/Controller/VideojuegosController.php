@@ -19,8 +19,10 @@ class VideojuegosController extends ControladorBase
     #[Route('/videojuegos', name: 'app_videojuegos')]
     public function index(VideojuegoRepository $videojuegoRepository): Response
     {
+        $videojuegos =  $videojuegoRepository->findAll();
+
         return $this->render('videojuegos/index.html.twig', [
-            'videojuegos' => $videojuegoRepository->findAll(),
+            'videojuegos' => $videojuegos,
         ]);
     }
 
@@ -38,7 +40,8 @@ class VideojuegosController extends ControladorBase
         $mismoJuego = false;
         $arrComentarios = array();
         $comentario = null;
-        $foto = str_replace(" ", "", $videojuego->getTitulo());
+        $remplazar = array(" ", ":");
+        $foto = str_replace($remplazar, "", $videojuego->getTitulo());
         if ($usuario != null) {
             $juegosLista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
             $mismoJuego = false;

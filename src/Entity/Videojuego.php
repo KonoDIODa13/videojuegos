@@ -93,7 +93,7 @@ class Videojuego
 
     public function __toString(): string
     {
-        return $this->getTitulo();
+        return $this->getId();
     }
 
     /**

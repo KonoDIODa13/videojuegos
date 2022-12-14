@@ -29,7 +29,7 @@ CREATE TABLE `director` (
   PRIMARY KEY (`id`),
   KEY `IDX_1E90D3F082925A85` (`videojuego_id`),
   CONSTRAINT `FK_1E90D3F082925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `director` (
 
 LOCK TABLES `director` WRITE;
 /*!40000 ALTER TABLE `director` DISABLE KEYS */;
-INSERT INTO `director` VALUES (1,'Cory Barlog',5),(2,'Mathijs de Jonge',6),(3,'Hidetaka Miyazaki',7),(4,'William Pellen',8),(5,'Tatsuya Kamiyama',9),(6,'Colas Koola',10),(7,'Eric Williams',5),(8,'Shinya Kumazaki',9),(9,'Vivien Mermet-Guyenet',10);
+INSERT INTO `director` VALUES (1,'Cory Barlog',5),(2,'Mathijs de Jonge',6),(3,'Hidetaka Miyazaki',7),(4,'William Pellen',8),(5,'Tatsuya Kamiyama',9),(6,'Colas Koola',10),(7,'Eric Williams',5),(8,'Shinya Kumazaki',9),(9,'Vivien Mermet-Guyenet',10),(10,'Shigeru Ohmori',11),(11,'Hidemaro Fujibayashi',12),(12,'Kaname Fujioka',13),(13,'Yuya Tokuda',13),(14,'Hidetaka Miyazaki',14),(15,'Isamu Okano',14),(16,'Yui Tanimura',14),(17,'Takeshi Kawachimaru',15),(18,'Hideo Kojima',16);
 /*!40000 ALTER TABLE `director` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +81,7 @@ CREATE TABLE `empresa_desarrolladora` (
   PRIMARY KEY (`id`),
   KEY `IDX_F616848482925A85` (`videojuego_id`),
   CONSTRAINT `FK_F616848482925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `empresa_desarrolladora` (
 
 LOCK TABLES `empresa_desarrolladora` WRITE;
 /*!40000 ALTER TABLE `empresa_desarrolladora` DISABLE KEYS */;
-INSERT INTO `empresa_desarrolladora` VALUES (1,5,'Santa Monica Studios'),(2,6,'Guerrilla Games'),(3,7,'FromSoftware'),(4,8,'Team Cherry'),(5,9,'Hal Laboratory'),(6,10,'BlueTwelve Studio');
+INSERT INTO `empresa_desarrolladora` VALUES (1,5,'Santa Monica Studios'),(2,6,'Guerrilla Games'),(3,7,'FromSoftware'),(4,8,'Team Cherry'),(5,9,'Hal Laboratory'),(6,10,'BlueTwelve Studio'),(7,11,'Game Freak'),(8,12,'Nintendo'),(9,12,'Monolith Soft'),(10,13,'Capcom'),(11,14,'FromSoftware'),(12,15,'Game Freak'),(13,16,'Kojima Productions');
 /*!40000 ALTER TABLE `empresa_desarrolladora` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `genero` (
   PRIMARY KEY (`id`),
   KEY `IDX_A000883A82925A85` (`videojuego_id`),
   CONSTRAINT `FK_A000883A82925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `genero` (
 
 LOCK TABLES `genero` WRITE;
 /*!40000 ALTER TABLE `genero` DISABLE KEYS */;
-INSERT INTO `genero` VALUES (1,5,'Accion'),(2,5,'Aventura'),(3,6,'Accion'),(4,6,'Aventura'),(5,6,'Rol'),(6,7,'Accion'),(7,7,'Rol'),(8,8,'Metroidvania'),(9,9,'Plataformas'),(10,10,'Aventura');
+INSERT INTO `genero` VALUES (1,5,'Accion'),(2,5,'Aventura'),(3,6,'Accion'),(4,6,'Aventura'),(5,6,'Rol'),(6,7,'Accion'),(7,7,'Rol'),(8,8,'Metroidvania'),(9,9,'Plataformas'),(10,10,'Aventura'),(11,11,'Rol'),(12,12,'Accion'),(13,12,'Aventura'),(14,12,'Rol'),(15,13,'Rol'),(16,13,'Accion'),(17,14,'Rol'),(18,14,'Accion'),(19,15,'RPG'),(20,16,'Accion'),(21,16,'Exploracion');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +138,7 @@ CREATE TABLE `lista_juegos` (
   KEY `IDX_F6AD149B82925A85` (`videojuego_id`),
   CONSTRAINT `FK_F6AD149B82925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`),
   CONSTRAINT `FK_F6AD149BDB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `lista_juegos` (
 
 LOCK TABLES `lista_juegos` WRITE;
 /*!40000 ALTER TABLE `lista_juegos` DISABLE KEYS */;
-INSERT INTO `lista_juegos` VALUES (4,'Eso si que no me lo esperaba',86,5),(5,'Muy bonito todo',86,6),(6,'Goty',86,7),(8,'Esto es un comentario',96,5),(11,'El mejor metroidvania de la historia',86,8),(12,'Que bonito es el Kirby',86,9),(13,'Que majo es el michi',86,10);
+INSERT INTO `lista_juegos` VALUES (4,'Eso si que no me lo esperaba',86,5),(5,'Muy bonito todo',86,6),(6,'Goty',86,7),(8,'Esto es un comentario',96,5),(11,'El mejor metroidvania de la historia',86,8),(12,'Que bonito es el Kirby',86,9),(13,'Que majo es el michi',86,10),(16,NULL,87,7);
 /*!40000 ALTER TABLE `lista_juegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +165,7 @@ CREATE TABLE `usuario` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_2265B05DF85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (86,'jaime','[]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu'),(96,'daniel','[]','$2y$10$IEEmTOqw2d23nI.vsmtiPeytfzjLMHPovRsna9JB7G36GtsotlLNC'),(97,'javier','[]','$2y$10$I2vXVTPj5avAejY9WT7quO/JoifVJ3JlPCS4uZSpyNK0NNdUHOpvq'),(103,'angel','[]','$2y$10$G41I8G0PVW3ZsA7xQqhAk./NFfgQsXaXKt7yJXT86G3h5FmteLEV2'),(104,'luis','[]','$2y$10$T.V/2Brk1GH3NZDUebCwH.9cMpW9MDj8oy0.EsA7RlvbpZocfrRDq');
+INSERT INTO `usuario` VALUES (86,'jaime','[]','$2y$13$s5EBgiWPb7f49onmjsQCfOVt3bWMgKKGMj5uOrCIuMDeXzD6oA8sy'),(87,'miguel','[]','$2y$13$MVHcJ4Yzg2uwM1JCTq1W.ezb9RT5IHmZUZwlMWfoyI1Px3SqQXRGm'),(95,'admin','[\"ROLE_ADMIN\"]','$2y$10$PK404kz8bOkITUWea4Iru./fmWfQEPWVK7T20JkvVkIhcBaVIcOJu'),(96,'daniel','[]','$2y$10$IEEmTOqw2d23nI.vsmtiPeytfzjLMHPovRsna9JB7G36GtsotlLNC'),(97,'javier','[]','$2y$10$I2vXVTPj5avAejY9WT7quO/JoifVJ3JlPCS4uZSpyNK0NNdUHOpvq'),(103,'angel','[]','$2y$10$G41I8G0PVW3ZsA7xQqhAk./NFfgQsXaXKt7yJXT86G3h5FmteLEV2'),(104,'luis','[]','$2y$10$T.V/2Brk1GH3NZDUebCwH.9cMpW9MDj8oy0.EsA7RlvbpZocfrRDq'),(143,'luna','[]','$2y$10$nV1Dc.TxfSQ6chRsCujwnu15KlNVQ2fCWf6RL5xYQcblV.dG.VDn.');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +191,7 @@ CREATE TABLE `videojuego` (
   `fecha_publicacion` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `videojuego` (
 
 LOCK TABLES `videojuego` WRITE;
 /*!40000 ALTER TABLE `videojuego` DISABLE KEYS */;
-INSERT INTO `videojuego` VALUES (5,'God Of War Ragnarok','2022',NULL),(6,'Horizon Forbidden West','2022',NULL),(7,'Elden Ring','2022',NULL),(8,'Hollow Knight','2017',NULL),(9,'Kirby and the Forgotten Land','2022',NULL),(10,'Stray','2022',NULL);
+INSERT INTO `videojuego` VALUES (5,'God Of War: Ragnarok','2022',NULL),(6,'Horizon Forbidden West','2022',NULL),(7,'Elden Ring','2022',NULL),(8,'Hollow Knight','2017',NULL),(9,'Kirby and the Forgotten Land','2022',NULL),(10,'Stray','2022',NULL),(11,'Pokemon Violet','2022',NULL),(12,'The Legend of Zelda: Breath of the Wild','2017',NULL),(13,'Monster Hunter: World','2018',NULL),(14,'Dark Souls III','2016',NULL),(15,'Pokemon Platinum','2009',NULL),(16,'Death Stranding','2019',NULL);
 /*!40000 ALTER TABLE `videojuego` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -213,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-14  9:45:52
+-- Dump completed on 2022-12-14 14:53:19
