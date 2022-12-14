@@ -130,7 +130,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
-        return $this->getId();
+        return $this->getUsername();
     }
 
     /**

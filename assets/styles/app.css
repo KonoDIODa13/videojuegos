@@ -8,10 +8,10 @@ body {
     padding: 0;
 }
 
-.contenedor_videojuegos {
+.contenedor-videojuegos {
     border-radius: 5px;
     font-size: larger;
-    background-color: silver;
+    background-color: lightsteelblue;
 }
 
 .row {
@@ -65,7 +65,7 @@ a:link,
 }
 
 
-.contenedor-comentarios{
+.contenedor-comentarios {
     width: 20%;
 }
 
@@ -91,16 +91,17 @@ a:link,
 }
 
 .contenedorPeque {
-    width: 80%;
-    margin-left: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .contenedorGrande {
     margin-top: 5%;
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 30%;
+    margin-right: 30%;
     padding: 1%;
 }
+
 
 .imagen {
     width: 100%;

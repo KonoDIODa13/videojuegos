@@ -50,6 +50,6 @@ class Genero
 
     public function __toString()
     {
-        return $this->genero;
+        return $this->getGenero();
     }
 }

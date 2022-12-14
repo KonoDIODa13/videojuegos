@@ -49,6 +49,6 @@ class EmpresaDesarrolladora
     }
     public function __toString()
     {
-        return $this->desarrolladora;
+        return $this->getDesarrolladora();
     }
 }

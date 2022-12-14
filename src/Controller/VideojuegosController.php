@@ -14,6 +14,8 @@ use App\Repository\UsuarioRepository;
 class VideojuegosController extends ControladorBase
 {
 
+    // En esta función recogeremos todos los videojuegos de la base de datos y las mostraremos en la plantilla.
+
     #[Route('/videojuegos', name: 'app_videojuegos')]
     public function index(VideojuegoRepository $videojuegoRepository): Response
     {
@@ -21,6 +23,13 @@ class VideojuegosController extends ControladorBase
             'videojuegos' => $videojuegoRepository->findAll(),
         ]);
     }
+
+    // Aqui recibimos por parámetro el videojuego.
+    // Si el usuario no ha iniciado la sesión, solo ve los datos del videojuego. 
+    // Si el usuario ha iniciado la sesión podrá ver los comentarios de otros usuarios y podra añadir dicho videojuego a su lista.
+    // Si el usuario ha iniciado la sesión y dicho videojuego ya lo tiene en su lista,
+    // no podrá añadirlo porque ya lo tiene añadido pero si podrá ver el comentario que el usuario ha puesto,
+    // si no ha puesto comentario aun, lee saldrá que no hay comentario.
 
     #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
     public function mostrarVideojuego(Videojuego $videojuego, ListaJuegosRepository $listaJuegosRepository, UsuarioRepository $usuarioRepository): Response
@@ -35,8 +44,8 @@ class VideojuegosController extends ControladorBase
             $mismoJuego = false;
             $comentario = null;
 
+            // Con este for compruebo si el videojuego que pasamos por parámetro es igual que alguno de los juegos de la lista del usuario.
             foreach ($juegosLista as $juego) {
-
                 if ($juego->getVideojuego() == $videojuego) {
                     $comentario = $juego->getComentario();
                     $mismoJuego = true;
@@ -52,9 +61,6 @@ class VideojuegosController extends ControladorBase
                         $array = ['usuario' => $lista->getUsuario(), 'comentario' => $lista->getComentario()];
                         array_push($arrComentarios, $array);
                     }
-                } else {
-                    $array = ['usuario' => $lista->getUsuario(), 'comentario' => 'no hay comentario aun'];
-                    array_push($arrComentarios, $array);
                 }
             }
         }
@@ -62,7 +68,6 @@ class VideojuegosController extends ControladorBase
         $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getEmpresaDesarrolladora();
 
-        //dd($foto);
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'directores' => $directores,
@@ -76,11 +81,12 @@ class VideojuegosController extends ControladorBase
         ]);
     }
 
+    // en esta función creamos el objeto lista 
+
     #[Route('/videojuegos/{videojuego}/lista', name: 'app_annadir_a_lista')]
     public function annadirLista(EntityManagerInterface $entityManager, Videojuego $videojuego): Response
     {
         $usuario = $this->getUser();
-
         $lista = new ListaJuegos();
         $lista->setUsuario($usuario);
         $lista->setVideojuego($videojuego);

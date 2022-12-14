@@ -50,6 +50,6 @@ class Director
 
     public function __toString()
     {
-        return $this->nombre;
+        return $this->getNombre();
     }
 }
