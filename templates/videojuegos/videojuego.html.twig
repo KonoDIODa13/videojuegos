@@ -7,8 +7,8 @@
 	{% block text %}
 		<div class="text">
 			{% if usuario != null %}
-				<div class="flex-row d-flex">
-					<div class="container card p-2">
+				<div class="d-flex flex-row">
+					<div class="container contenedor-datos card p-2">
 						<div class="p-2 card-body bg-secondary">
 							<h2 class="text-center card-title mt-2">{{videojuego.titulo}}</h2>
 							<div class="d-flex">
@@ -84,18 +84,18 @@
 										{% endif %}
 									{% endif %}
 								</div>
-								<div class="contenerdor-imagen p-3">
-									<img class="" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpeg'}}">
+								<div class="contenerdor-imagen">
+									<img class="imagen" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpeg'}}">
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="p-2 card">
+					<div class="p-2 card contenedor-comentarios">
 						<div class=" bg-secondary card-body">
 							<h2 class="text-center">Comentarios</h2>
 							{% for comentario in arrComentarios %}
-								<div class="p-1 m-2">
+								<div class="m-3">
 									<span class="datos">
 										Usuario:
 										{{comentario.usuario.username}}.
@@ -172,7 +172,7 @@
 									{% endif %}
 								</div>
 								<div class="contenerdor-imagen">
-									<img class="img-responsive" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpg'}}">
+									<img class="imagen img-responsive" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpeg'}}">
 								</div>
 							</div>
 						</div>

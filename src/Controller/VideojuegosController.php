@@ -62,6 +62,7 @@ class VideojuegosController extends ControladorBase
         $generos = $videojuego->getGenero();
         $desarrolladores = $videojuego->getEmpresaDesarrolladora();
 
+        //dd($foto);
         return $this->render('videojuegos/videojuego.html.twig', [
             'videojuego' => $videojuego,
             'directores' => $directores,
