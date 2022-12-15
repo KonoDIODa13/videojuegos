@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `director`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `director` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `videojuego_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1E90D3F082925A85` (`videojuego_id`),
@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `empresa_desarrolladora`;
 CREATE TABLE `empresa_desarrolladora` (
   `id` int NOT NULL AUTO_INCREMENT,
   `videojuego_id` int DEFAULT NULL,
-  `desarrolladora` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desarrolladora` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F616848482925A85` (`videojuego_id`),
   CONSTRAINT `FK_F616848482925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`)
@@ -106,7 +106,7 @@ DROP TABLE IF EXISTS `genero`;
 CREATE TABLE `genero` (
   `id` int NOT NULL AUTO_INCREMENT,
   `videojuego_id` int DEFAULT NULL,
-  `genero` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `genero` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A000883A82925A85` (`videojuego_id`),
   CONSTRAINT `FK_A000883A82925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`)
@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS `lista_juegos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lista_juegos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `comentario` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comentario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `usuario_id` int DEFAULT NULL,
   `videojuego_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -140,7 +140,7 @@ CREATE TABLE `lista_juegos` (
   KEY `IDX_F6AD149B82925A85` (`videojuego_id`),
   CONSTRAINT `FK_F6AD149B82925A85` FOREIGN KEY (`videojuego_id`) REFERENCES `videojuego` (`id`),
   CONSTRAINT `FK_F6AD149BDB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `lista_juegos` (
 
 LOCK TABLES `lista_juegos` WRITE;
 /*!40000 ALTER TABLE `lista_juegos` DISABLE KEYS */;
-INSERT INTO `lista_juegos` VALUES (4,'Eso si que no me lo esperaba',86,5),(5,'Muy bonito todo',86,6),(6,'Goty',86,7),(8,'Esto es un comentario',96,5),(11,'El mejor metroidvania de la historia',86,8),(12,'Que bonito es el Kirby',86,9),(13,'Que majo es el michi',86,10),(16,NULL,87,7),(18,'El primer mundo abierto pokemon',86,11),(19,'Que ganas tengo de que salga su secuela',86,12),(20,'Le he metido mas de 1000 horas y aun asi me dan ganas de jugarlo',86,13),(21,'El souls mas perfecto',86,14),(22,'El juego de pokemon que mas me ha costado pasarme',86,15),(23,'Lo he completado y sigo sin entenderlo',86,16),(24,'Lo mejor es el trayecto hasta los colosos',86,17),(25,'yo empece en este juego por Arcane',86,18),(26,'Me encanta que con lo sencillo que es la de posibilidades que te da',86,19);
+INSERT INTO `lista_juegos` VALUES (4,'Eso si que no me lo esperaba',86,5),(5,'Muy bonito todo',86,6),(6,'GOTY',86,7),(8,'Esto es un comentario',96,5),(11,'El mejor metroidvania de la historia',86,8),(12,'Que bonito es el Kirby',86,9),(13,'Que majo es el michi',86,10),(16,'Este juego es demasiado largo',87,7),(18,'El primer mundo abierto pokemon',86,11),(19,'Que ganas tengo de que salga su secuela',86,12),(20,'Le he metido mas de 1000 horas y aun asi me dan ganas de jugarlo',86,13),(21,'El souls mas perfecto',86,14),(22,'El juego de pokemon que mas me ha costado pasarme',86,15),(23,'Lo he completado y sigo sin entenderlo',86,16),(24,'Lo mejor es el trayecto hasta los colosos',86,17),(25,'Yo empece en este juego por Arcane',86,18),(26,'Me encanta que con lo sencillo que es la de posibilidades que te da',86,19),(27,'Este juego mola un monton',143,13),(28,'Las musicas de este juego son lo mejor',143,14),(29,'El mejor juego del año',87,5);
 /*!40000 ALTER TABLE `lista_juegos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +190,7 @@ DROP TABLE IF EXISTS `videojuego`;
 CREATE TABLE `videojuego` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_publicacion` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_publicacion` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -215,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-15  9:35:34
+-- Dump completed on 2022-12-15 11:01:07

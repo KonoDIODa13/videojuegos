@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
     // A diferencia del registro, el formulario de inicio de sesión no esta creado por una clase.
     // Aqui solo mostramos el formulario, el que lo controla esta en /Security
 
-    #[Route('iniciar_sesion', name: 'app_inicio_sesion')]
+    #[Route('/iniciar_sesion', name: 'app_inicio_sesion')]
     public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
     {
         return $this->render('registration/inicio_sesion.html.twig', [
