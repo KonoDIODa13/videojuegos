@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
@@ -29,12 +28,13 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
         $this->router = $router;
     }
 
-
+    // esta funcion recoge la informacion sobre de donde viene la ruta
     public function supports(Request $request): ?bool
     {
         return ($request->getPathInfo() === '/iniciar_sesion' && $request->isMethod('POST'));
     }
 
+    // esta funcion recoge los datos del form crea un pasaporte que es la manera que tiene symfony de logearte como usuario
     public function authenticate(Request $request): Passport
     {
         $nombreUsuario = $request->get('nombreUsuario');
@@ -56,9 +56,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
                     'authenticate',
                     $request->request->get('_csrf_token'),
                 ),
-                (new RememberMeBadge())->enable(),
             ]
-
         );
         return $pasaporte;
     }

@@ -53,7 +53,6 @@ class RegistrationController extends AbstractController
     {
         return $this->render('registration/inicio_sesion.html.twig', [
             'error' => $authenticationUtils->getLastAuthenticationError(),
-            'last_username' => $authenticationUtils->getLastUsername(),
         ]);
     }
 

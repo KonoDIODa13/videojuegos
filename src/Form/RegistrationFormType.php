@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+    // Lo primero que haccemos es crear aquellos campos que queremos que aparezcan en el form. Todos ellos tienen que 
+    // ser campos de la entidad con la que estamos haciendo el form en este caso, es de usuario.
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
