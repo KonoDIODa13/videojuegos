@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DirectorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DirectorRepository::class)]
@@ -16,8 +18,13 @@ class Director
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
-    #[ORM\ManyToOne(inversedBy: 'director')]
-    private ?Videojuego $videojuego = null;
+    #[ORM\ManyToMany(targetEntity: Videojuego::class, mappedBy: 'director')]
+    private Collection $videojuegos;
+
+    public function __construct()
+    {
+        $this->videojuegos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -36,20 +43,36 @@ class Director
         return $this;
     }
 
-    public function getVideojuego(): ?Videojuego
-    {
-        return $this->videojuego;
-    }
-
-    public function setVideojuego(?Videojuego $videojuego): self
-    {
-        $this->videojuego = $videojuego;
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->getNombre();
     }
+
+    /**
+     * @return Collection<int, Videojuego>
+     */
+    public function getVideojuegos(): Collection
+    {
+        return $this->videojuegos;
+    }
+
+    public function addVideojuego(Videojuego $videojuego): self
+    {
+        if (!$this->videojuegos->contains($videojuego)) {
+            $this->videojuegos->add($videojuego);
+            $videojuego->addDirector($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideojuego(Videojuego $videojuego): self
+    {
+        if ($this->videojuegos->removeElement($videojuego)) {
+            $videojuego->removeDirector($this);
+        }
+
+        return $this;
+    }
+
 }

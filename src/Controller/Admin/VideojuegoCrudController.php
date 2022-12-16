@@ -6,7 +6,7 @@ use App\Entity\Videojuego;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -25,12 +25,25 @@ class VideojuegoCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IdField::new('id')->hideOnForm();
         yield TextField::new('titulo');
-        yield ArrayField::new('director')->hideOnForm();
-        yield ArrayField::new('genero')->hideOnForm();
+
+        yield ArrayField::new('director')
+            ->hideOnForm();
+        yield AssociationField::new('director')
+            ->hideOnIndex();
+
+        yield ArrayField::new('genero')
+            ->hideOnForm();
+        yield AssociationField::new('genero')
+            ->hideOnIndex();
+
         yield TextField::new('fechaPublicacion');
-        yield ArrayField::new('empresaDesarrolladora')->hideOnForm();
+
+        yield ArrayField::new('empresaDesarrolladora')
+            ->hideOnForm();
+        yield AssociationField::new('empresaDesarrolladora')
+            ->hideOnIndex();
+
         yield TextareaField::new('descripcion')
             ->hideOnIndex();
     }

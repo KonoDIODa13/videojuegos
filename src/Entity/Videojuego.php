@@ -26,27 +26,24 @@ class Videojuego
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descripcion = null;
 
-    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: Director::class)]
-    private Collection $director;
-
-    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: Genero::class)]
-    private Collection $genero;
-
-    #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: EmpresaDesarrolladora::class)]
-    private Collection $empresaDesarrolladora;
-
     #[ORM\OneToMany(mappedBy: 'videojuego', targetEntity: ListaJuegos::class)]
     private Collection $listaJuegos;
 
+    #[ORM\ManyToMany(targetEntity: Director::class, inversedBy: 'videojuegos')]
+    private Collection $director;
+
+    #[ORM\ManyToMany(targetEntity: Genero::class, inversedBy: 'videojuegos')]
+    private Collection $genero;
+
+    #[ORM\ManyToMany(targetEntity: EmpresaDesarrolladora::class, inversedBy: 'videojuegos')]
+    private Collection $empresaDesarrolladora;
+    
     public function __construct()
     {
-        $this->director = new ArrayCollection();
-
-        $this->genero = new ArrayCollection();
-
-        $this->empresaDesarrolladora = new ArrayCollection();
-
         $this->listaJuegos = new ArrayCollection();
+        $this->director = new ArrayCollection();
+        $this->genero = new ArrayCollection();
+        $this->empresaDesarrolladora = new ArrayCollection();
     }
 
 
@@ -97,93 +94,6 @@ class Videojuego
     }
 
     /**
-     * @return Collection<int, Director>
-     */
-    public function getDirector(): Collection
-    {
-        return $this->director;
-    }
-
-    public function addDirector(Director $director): self
-    {
-        if (!$this->director->contains($director)) {
-            $this->director->add($director);
-            $director->setVideojuego($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDirector(Director $director): self
-    {
-        if ($this->director->removeElement($director)) {
-            if ($director->getVideojuego() === $this) {
-                $director->setVideojuego(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Genero>
-     */
-    public function getGenero(): Collection
-    {
-        return $this->genero;
-    }
-
-    public function addGenero(Genero $genero): self
-    {
-        if (!$this->genero->contains($genero)) {
-            $this->genero->add($genero);
-            $genero->setVideojuego($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGenero(Genero $genero): self
-    {
-        if ($this->genero->removeElement($genero)) {
-            if ($genero->getVideojuego() === $this) {
-                $genero->setVideojuego(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, EmpresaDesarrolladora>
-     */
-    public function getEmpresaDesarrolladora(): Collection
-    {
-        return $this->empresaDesarrolladora;
-    }
-
-    public function addEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
-    {
-        if (!$this->empresaDesarrolladora->contains($empresaDesarrolladora)) {
-            $this->empresaDesarrolladora->add($empresaDesarrolladora);
-            $empresaDesarrolladora->setVideojuego($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
-    {
-        if ($this->empresaDesarrolladora->removeElement($empresaDesarrolladora)) {
-            if ($empresaDesarrolladora->getVideojuego() === $this) {
-                $empresaDesarrolladora->setVideojuego(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, ListaJuegos>
      */
     public function getListaJuegos(): Collection
@@ -211,4 +121,77 @@ class Videojuego
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Director>
+     */
+    public function getDirector(): Collection
+    {
+        return $this->director;
+    }
+
+    public function addDirector(Director $director): self
+    {
+        if (!$this->director->contains($director)) {
+            $this->director->add($director);
+        }
+
+        return $this;
+    }
+
+    public function removeDirector(Director $director): self
+    {
+        $this->director->removeElement($director);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Genero>
+     */
+    public function getGenero(): Collection
+    {
+        return $this->genero;
+    }
+
+    public function addGenero(Genero $genero): self
+    {
+        if (!$this->genero->contains($genero)) {
+            $this->genero->add($genero);
+        }
+
+        return $this;
+    }
+
+    public function removeGenero(Genero $genero): self
+    {
+        $this->genero->removeElement($genero);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EmpresaDesarrolladora>
+     */
+    public function getEmpresaDesarrolladora(): Collection
+    {
+        return $this->empresaDesarrolladora;
+    }
+
+    public function addEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
+    {
+        if (!$this->empresaDesarrolladora->contains($empresaDesarrolladora)) {
+            $this->empresaDesarrolladora->add($empresaDesarrolladora);
+        }
+
+        return $this;
+    }
+
+    public function removeEmpresaDesarrolladora(EmpresaDesarrolladora $empresaDesarrolladora): self
+    {
+        $this->empresaDesarrolladora->removeElement($empresaDesarrolladora);
+
+        return $this;
+    }
+
 }

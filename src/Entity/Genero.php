@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GeneroRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GeneroRepository::class)]
@@ -16,8 +18,13 @@ class Genero
     #[ORM\Column(length: 255)]
     private ?string $genero = null;
 
-    #[ORM\ManyToOne(inversedBy: 'genero')]
-    private ?Videojuego $videojuego = null;
+    #[ORM\ManyToMany(targetEntity: Videojuego::class, mappedBy: 'genero')]
+    private Collection $videojuegos;
+
+    public function __construct()
+    {
+        $this->videojuegos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -36,20 +43,35 @@ class Genero
         return $this;
     }
 
-    public function getVideojuego(): ?Videojuego
+    public function __toString()
     {
-        return $this->videojuego;
+        return $this->getGenero();
     }
 
-    public function setVideojuego(?Videojuego $videojuego): self
+    /**
+     * @return Collection<int, Videojuego>
+     */
+    public function getVideojuegos(): Collection
     {
-        $this->videojuego = $videojuego;
+        return $this->videojuegos;
+    }
+
+    public function addVideojuego(Videojuego $videojuego): self
+    {
+        if (!$this->videojuegos->contains($videojuego)) {
+            $this->videojuegos->add($videojuego);
+            $videojuego->addGenero($this);
+        }
 
         return $this;
     }
 
-    public function __toString()
+    public function removeVideojuego(Videojuego $videojuego): self
     {
-        return $this->getGenero();
+        if ($this->videojuegos->removeElement($videojuego)) {
+            $videojuego->removeGenero($this);
+        }
+
+        return $this;
     }
 }
