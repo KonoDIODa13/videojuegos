@@ -37,7 +37,10 @@ class Videojuego
 
     #[ORM\ManyToMany(targetEntity: EmpresaDesarrolladora::class, inversedBy: 'videojuegos')]
     private Collection $empresaDesarrolladora;
-    
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->listaJuegos = new ArrayCollection();
@@ -90,7 +93,7 @@ class Videojuego
 
     public function __toString(): string
     {
-        return $this->getId();
+        return $this->getTitulo();
     }
 
     /**
@@ -194,4 +197,23 @@ class Videojuego
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+    public function setSlug($slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function autoSlug(): self
+    {
+        $remlpazar = array(" ", ":");
+        $slug = str_replace($remlpazar, "", $this->getTitulo());
+        $this->slug = $slug;
+
+        return $this;
+    }
 }

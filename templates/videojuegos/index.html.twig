@@ -16,7 +16,8 @@
 				{% for juego in videojuegos %}
 					<div class="col col-m-4 p-4">
 						<div class="contenedor-videojuegos text-center p-2 m-3">
-							<a class="text-link link-dark" href="{{ path('app_videojuego', {videojuego: juego}) }}">
+						
+							<a class="text-link link-dark" href="{{ path('app_videojuego', {slug: juego.slug}) }}">
 								<span class="titulo">
 									{{ juego.titulo }}
 								</span>

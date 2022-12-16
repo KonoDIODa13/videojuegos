@@ -5,20 +5,20 @@
 		{{ parent() }}
 	{% endblock %}
 	{% block text %}
-		<div class="text">
+		<div class="container-fluid">
 			{% if usuario != null %}
-				<div class="d-flex flex-row">
-					<div class="container contenedor-datos card p-2">
-						<div class="p-2 card-body bg-secondary">
-							<h2 class="text-center card-title mt-2">{{videojuego.titulo}}</h2>
+				<div class="d-flex">
+					<div class="card p-2 w-100">
+						<div class="card-body bg-secondary">
+							<h2 class="text-center card-title">{{videojuego.titulo}}</h2>
 							<div class="d-flex">
-								<div class="m-3 p-2">
+								<div class="flex-fill">
 									{% if directores != null %}
 										<h4>Directores:</h4>
 										{% for director in directores %}
 											<ul>
 												<li>
-													<span class="datos">{{director}}</span>
+													<span class="datos">{{director}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -31,7 +31,7 @@
 										{% for genero in generos %}
 											<ul>
 												<li>
-													<span class="datos">{{genero}}</span>
+													<span class="datos">{{genero}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -42,7 +42,7 @@
 									<h4>Año de publicación:</h4>
 									<ul>
 										<li>
-											<span class="datos">{{videojuego.fechaPublicacion}}</span>
+											<span class="datos">{{videojuego.fechaPublicacion}}.</span>
 										</li>
 									</ul>
 
@@ -51,7 +51,7 @@
 										{% for desarrollador in desarrolladores %}
 											<ul>
 												<li>
-													<span class="datos">{{desarrollador}}</span>
+													<span class="datos">{{desarrollador}}.</span>
 												</li>
 											</ul>
 										{% endfor %}
@@ -63,7 +63,7 @@
 										<h4>Descripcion:</h4>
 										<ul>
 											<li>
-												<span class="datos">{{videojuego.descripcion}}</span>
+												<span class="datos">{{videojuego.descripcion}}.</span>
 											</li>
 										</ul>
 									{% endif %}
@@ -78,9 +78,9 @@
 												</svg>
 											</p>
 											<span class="datos">
-											{% if comentario != null %}
-												Comentario:
-												{{comentario}}.
+												{% if comentario != null %}
+													Comentario:
+													{{comentario}}.
 												{% else %}
 													Aun no hay comentario.
 												{% endif %}
@@ -88,15 +88,16 @@
 										{% endif %}
 									{% endif %}
 								</div>
-								<div class="contenerdor-imagenG">
-									<img class="imagen" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpeg'}}">
+								<div class="mt-4 p-3 flex-row flex-fill">
+									<img class="img-fluid" src="{{asset('fotos/'~videojuego.slug~'.jpeg')}}" alt="{{'fotos/'~videojuego.slug~'.jpeg'}}">
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="p-2 card contenedor-comentarios">
-						<div class=" bg-secondary card-body">
+	<div class="margen">
+	</div>
+					<div class="card p-2 flex-shrink-1">
+						<div class="bg-secondary card-body">
 							<h2 class="text-center">Comentarios</h2>
 							{% for comentario in arrComentarios %}
 								<div class="m-3">
@@ -176,7 +177,7 @@
 									{% endif %}
 								</div>
 								<div class="contenerdor-imagen">
-									<img class="imagen img-responsive" src="{{asset('fotos/'~foto~'.jpeg')}}" alt="{{'fotos/'~foto~'.jpeg'}}">
+									<img class="imagen img-responsive" src="{{asset('fotos/'~videojuego.slug~'.jpeg')}}" alt="{{'fotos/'~videojuego.slug~'.jpeg'}}">
 								</div>
 							</div>
 						</div>
@@ -184,6 +185,7 @@
 				</div>
 			{% endif %}
 		</div>
+		<div class="espacio"></div>
 	{% endblock %}
 
 	{% block footer %}

@@ -17,12 +17,24 @@ class VideojuegosController extends ControladorBase
     // En esta función recogeremos todos los videojuegos de la base de datos y las mostraremos en la plantilla.
 
     #[Route('/videojuegos', name: 'app_videojuegos')]
-    public function index(VideojuegoRepository $videojuegoRepository): Response
+    public function index(VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager): Response
     {
         $videojuegos =  $videojuegoRepository->findAll();
+        $arrSlug = array();
+        foreach ($videojuegos as  $juego) {
+            $remlpazar = array(" ", ":");
+            $slug = str_replace($remlpazar, "", $juego->getTitulo());
+            $juego->setSlug($slug);
+            $entityManager->flush();
+            array_push($arrSlug, $slug);
 
+            //dd($juego);
+        }
+
+        //dd($arrSlug);
         return $this->render('videojuegos/index.html.twig', [
             'videojuegos' => $videojuegos,
+            'arrSlug' => $arrSlug,
         ]);
     }
 
@@ -31,17 +43,16 @@ class VideojuegosController extends ControladorBase
     // Si el usuario ha iniciado la sesión podrá ver los comentarios de otros usuarios y podra añadir dicho videojuego a su lista.
     // Si el usuario ha iniciado la sesión y dicho videojuego ya lo tiene en su lista,
     // no podrá añadirlo porque ya lo tiene añadido pero si podrá ver el comentario que el usuario ha puesto,
-    // si no ha puesto comentario aun, lee saldrá que no hay comentario.
+    // si no ha puesto comentario aun, le saldrá que no hay comentario.
 
-    #[Route('/videojuegos/{videojuego}', name: 'app_videojuego')]
-    public function mostrarVideojuego(Videojuego $videojuego, ListaJuegosRepository $listaJuegosRepository, UsuarioRepository $usuarioRepository): Response
+    #[Route('/videojuegos/{slug}', name: 'app_videojuego')]
+    public function mostrarVideojuego($slug, VideojuegoRepository $videojuegoRepository, ListaJuegosRepository $listaJuegosRepository, UsuarioRepository $usuarioRepository): Response
     {
+        $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
         $usuario = $this->getUser();
         $mismoJuego = false;
         $arrComentarios = array();
         $comentario = null;
-        $remplazar = array(" ", ":");
-        $foto = str_replace($remplazar, "", $videojuego->getTitulo());
         if ($usuario != null) {
             $juegosLista = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
             $mismoJuego = false;
@@ -80,7 +91,6 @@ class VideojuegosController extends ControladorBase
             'comentario' => $comentario,
             'arrComentarios' => $arrComentarios,
             'usuario' => $usuario,
-            'foto' => $foto,
         ]);
     }
 
