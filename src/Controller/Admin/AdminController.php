@@ -6,6 +6,7 @@ use App\Entity\Director;
 use App\Entity\EmpresaDesarrolladora;
 use App\Entity\Genero;
 use App\Entity\ListaJuegos;
+use App\Entity\Plataforma;
 use App\Entity\Usuario;
 use App\Entity\Videojuego;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -58,6 +59,7 @@ class AdminController extends AbstractDashboardController
         yield MenuItem::linkToCrud('genero', 'fas fa-list', Genero::class);
         yield MenuItem::linkToCrud('empresa desarrolladora', 'fas fa-list', EmpresaDesarrolladora::class);
         yield MenuItem::linkToCrud('lista juegos', 'fas fa-list', ListaJuegos::class);
+        yield MenuItem::linkToCrud('plataforma', 'fas fa-list', Plataforma::class);
         //contra admin: ad69mi69n
     }
 }

@@ -41,12 +41,16 @@ class Videojuego
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\ManyToMany(targetEntity: Plataforma::class, inversedBy: 'videojuegos')]
+    private Collection $plataforma;
+
     public function __construct()
     {
         $this->listaJuegos = new ArrayCollection();
         $this->director = new ArrayCollection();
         $this->genero = new ArrayCollection();
         $this->empresaDesarrolladora = new ArrayCollection();
+        $this->plataforma = new ArrayCollection();
     }
 
 
@@ -213,6 +217,30 @@ class Videojuego
         $remlpazar = array(" ", ":");
         $slug = str_replace($remlpazar, "", $this->getTitulo());
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Plataforma>
+     */
+    public function getPlataforma(): Collection
+    {
+        return $this->plataforma;
+    }
+
+    public function addPlataforma(Plataforma $plataforma): self
+    {
+        if (!$this->plataforma->contains($plataforma)) {
+            $this->plataforma->add($plataforma);
+        }
+
+        return $this;
+    }
+
+    public function removePlataforma(Plataforma $plataforma): self
+    {
+        $this->plataforma->removeElement($plataforma);
 
         return $this;
     }
