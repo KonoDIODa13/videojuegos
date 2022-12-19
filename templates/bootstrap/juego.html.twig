@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% block nav %}
+		{{parent()}}
+	{% endblock %}
+
+	{% block text %}
+		<div class="card m-2">
+			<div class="row border border-black">
+				<div class="col-md-7 px-3">
+					<div class="card-block px-6">
+						<h4 class="card-title text-center">{{videojuego.titulo}}
+						</h4>
+						<div class="d-flex">
+							<p class="card-text">
+
+								<div class="div1">
+									<h5>Directores:</h5>
+									{% for director in videojuego.director %}
+										<li class="datos">
+											{{director}}.
+										</li>
+									{% endfor %}
+								</div>
+
+								<div class="div2">
+									<h5>Géneros:</h5>
+									{% for genero in videojuego.genero %}
+										<li class="datos">
+											{{genero}}.
+										</li>
+									{% endfor %}
+								</div>
+
+								<div class="div3">
+									<h5>Plataformas:</h5>
+									{% for plataforma in videojuego.plataforma %}
+										<li class="datos">
+											{{plataforma}}.
+										</li>
+									{% endfor %}
+
+								</div>
+								<div class="div4">
+									<h5>Año de publicación:</h5>
+									<li class="datos">{{videojuego.fechaPublicacion}}</li>
+								</div>
+
+								<div class="div5">
+									<h5>Empresas desarrolladoras:</h5>
+									{% for desarrolladora in videojuego.empresaDesarrolladora %}
+										<li class="datos">
+											{{desarrolladora}}.
+										</li>
+									{% endfor %}
+
+									{% if videojuego.descripcion != null %}
+										<div class="div6">
+											<h5>Descripción:</h5>
+											<li class="datos">{{videojuego.descripcion}}</li>
+										{% endif %}
+
+									</div>
+								</p>
+							</p>
+						</div>
+						<p class="card-text">
+							<a href="#" class="mt-auto btn btn-primary">Añadir a la lista</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-5 align-center">
+					<img src="{{asset('fotos/'~videojuego.slug~'sm.jpeg')}}" alt="{{asset('fotos/'~videojuego.slug~'sm.jpeg')}}">
+				</div>
+
+			</div>
+		</div>
+	{% endblock %}
+	{% block footer %}
+		{{parent()}}
+	{% endblock %}
+{% endblock %}

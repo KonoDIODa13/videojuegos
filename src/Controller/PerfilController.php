@@ -86,13 +86,4 @@ class PerfilController extends ControladorBase
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
     }
-
-    #[Route('/bootstrap', name:'app_bootstrap')]
-    public function ejemplo(VideojuegoRepository $videojuegoRepository): Response
-    {
-        return $this->render('bootstrap/prueba.html.twig', [
-            'videojuegos'=>$videojuegoRepository->findAll(),
-        ]);
-    }
-
 }

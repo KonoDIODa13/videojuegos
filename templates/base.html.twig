@@ -12,13 +12,13 @@
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
-			<link rel="stylesheet" href="{{asset('prueba/prueba.css')}}">
+			<link rel="stylesheet" href="{{asset('prueba/videojuegos.css')}}">
 			<link rel="stylesheet" href="{{asset('prueba/favicon.ico')}}">
+			<link rel="stylesheet" href="{{asset('prueba/juego.css')}}">
 		{% endblock %}
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
-			<script src="{{asset('prueba/prueba.js')}}"></script>
 		{% endblock %}
 
 	</head>
@@ -61,6 +61,13 @@
 												</span>
 											</a>
 										</li>
+										<li class="nav-item">
+											<a class="nav-link active" href="{{ path('app_bootstrap_videojuegos') }}">
+												<span class="link-navegador">
+													bootstrap
+												</span>
+											</a>
+										</li>
 									</div>
 								{% else %}
 									<div class="dropdown opciones">
@@ -83,6 +90,7 @@
 										</ul>
 									</div>
 								{% endif %}
+
 							</ul>
 						</div>
 					</body>
