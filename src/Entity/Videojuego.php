@@ -68,6 +68,8 @@ class Videojuego
     {
         $this->titulo = $titulo;
 
+        $this->setSlug($titulo);
+
         return $this;
     }
 
@@ -207,15 +209,8 @@ class Videojuego
     }
     public function setSlug($slug): self
     {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function autoSlug(): self
-    {
         $remlpazar = array(" ", ":");
-        $slug = str_replace($remlpazar, "", $this->getTitulo());
+        $slug = str_replace($remlpazar, "", $slug);
         $this->slug = $slug;
 
         return $this;

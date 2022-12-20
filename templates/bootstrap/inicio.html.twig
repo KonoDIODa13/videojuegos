@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% block nav %}
+		{{parent()}}
+	{% endblock %}
+	{% block text %}
+		<ul>
+			<li class="nav-link">
+				<a href="{{path('app_bootstrap_inicio_sesion')}}">Iniciar Sesión</a>
+			</li>
+			<li class="nav-link">
+				<a href="{{path('app_bootstrap_videojuegos')}}">Videojuegos</a>
+			</li>
+			<li class="nav-link">
+				<a href="{{path('app_bootstrap_perfil')}}">Perfil</a>
+			</li>
+		</ul>
+	{% endblock %}
+	{% block footer %}
+		{{parent()}}
+	{% endblock %}
+
+
+{% endblock %}

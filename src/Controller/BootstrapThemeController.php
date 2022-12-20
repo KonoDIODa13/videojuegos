@@ -4,20 +4,28 @@ namespace App\Controller;
 
 use App\Repository\ListaJuegosRepository;
 use App\Repository\VideojuegoRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class BootstrapThemeController extends ControladorBase
 {
-    #[Route('/bootstrap', name: 'app_bootstrap_videojuegos')]
-    public function ejemplo(VideojuegoRepository $videojuegoRepository): Response
+    #[Route('/bootstrap', name: 'app_bootstrap')]
+    public function mostrarBootstrap(): Response
+    {
+        return $this->render('bootstrap/inicio.html.twig');
+    }
+
+    #[Route('/bootstrap/videojuegos', name: 'app_bootstrap_videojuegos')]
+    public function mostrarJuegos(VideojuegoRepository $videojuegoRepository): Response
     {
         return $this->render('bootstrap/videojuegos.html.twig', [
             'videojuegos' => $videojuegoRepository->findAll(),
         ]);
     }
 
-    #[Route('/bootstrap/{slug}', name: 'app_bootstrap_juego')]
+    #[Route('/bootstrap/videojuegos{slug}', name: 'app_bootstrap_juego')]
     public function mostrarJuego(VideojuegoRepository $videojuegoRepository, $slug, ListaJuegosRepository $listaJuegosRepository): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
@@ -36,9 +44,8 @@ class BootstrapThemeController extends ControladorBase
         if ($usuario != null) {
             $listado = $listaJuegosRepository->findBy(['videojuego' => $videojuego]);
             $UserX = $listaJuegosRepository->findOneBy(['usuario' => $usuario, 'videojuego' => $videojuego]);
-            $comentUserX = $UserX->getComentario();
             foreach ($listado as $lista) {
-                if ($lista->getComentario() != $comentUserX) {
+                if ($lista->getComentario() != $UserX->getComentario()) {
                     $array = (["usuario" => $lista->getUsuario(), "comentario" => $lista->getComentario()]);
                     array_push($comentarios, $array);
                 }
@@ -50,6 +57,28 @@ class BootstrapThemeController extends ControladorBase
             'usuario' => $usuario,
             'mensaje' => $mensaje,
             'comentarios' => $comentarios,
+        ]);
+    }
+    #[Route('/bootstrap/iniciar_sesion', name: 'app_bootstrap_inicio_sesion')]
+    public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
+    {
+        return $this->render('bootstrap/iniciarSesion.html.twig', [
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+        ]);
+    }
+
+    #[Route('/bootstrap/perfil', name: 'app_bootstrap_perfil')]
+    public function mostrarPerfil(ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository): Response
+    {
+        $usuario = $this->getUser();
+        $listado = $listaJuegosRepository->findBy(['usuario' => $usuario]);
+        foreach ($listado as $lista) {
+            $videojuegoRepository->findBy(['id' => $lista->getVideojuego()]);
+        }
+
+        //dd($listado);
+        return $this->render('bootstrap/perfil.html.twig', [
+            'listado' => $listado,
         ]);
     }
 }

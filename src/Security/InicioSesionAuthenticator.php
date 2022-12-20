@@ -31,7 +31,9 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     // esta funcion recoge la informacion sobre de donde viene la ruta
     public function supports(Request $request): ?bool
     {
-        return ($request->getPathInfo() === '/iniciar_sesion' && $request->isMethod('POST'));
+
+        //return ($request->getPathInfo() === '/iniciar_sesion' || $request->getPathInfo() === '/bootstrap/iniciar_sesion' && $request->isMethod('POST'));
+        return ($request->getPathInfo() === '/bootstrap/iniciar_sesion' && $request->isMethod('POST'));
     }
 
     // esta funcion recoge los datos del form crea un pasaporte que es la manera que tiene symfony de logearte como usuario
@@ -39,7 +41,6 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     {
         $nombreUsuario = $request->get('nombreUsuario');
         $contra = $request->get('contra');
-
         $pasaporte = new Passport(
             new UserBadge($nombreUsuario, function ($userIdentifier) {
                 $usuario = $this->usuarioRepository->findOneBy(['username' => $userIdentifier]);
@@ -65,8 +66,8 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     {
         $nombre = $request->get("nombreUsuario");
         $usuario = $this->usuarioRepository->findOneBy(["username" => $nombre]);
-        
-        if($usuario->getUsername()=="admin"){
+
+        if ($usuario->getUsername() == "admin") {
             return new RedirectResponse(
                 $this->router->generate('admin')
             );

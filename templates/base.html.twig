@@ -15,10 +15,7 @@
 			<link rel="stylesheet" href="{{asset('prueba/videojuegos.css')}}">
 			<link rel="stylesheet" href="{{asset('prueba/favicon.ico')}}">
 			<link rel="stylesheet" href="{{asset('prueba/juego.css')}}">
-		{% endblock %}
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
+			<link rel="stylesheet" href="{{asset('prueba/iniciarSesion.css')}}">
 		{% endblock %}
 
 	</head>
@@ -46,7 +43,7 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" href="{{ path('app_bootstrap_videojuegos') }}">
+										<a class="nav-link active" href="{{ path('app_bootstrap') }}">
 											<span class="link-navegador">
 												bootstrap
 											</span>
