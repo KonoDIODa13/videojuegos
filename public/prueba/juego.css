@@ -33,20 +33,7 @@ body {
     margin-top: auto;
 }
 
-@media (min-width: 576px) {}
-
-@media (min-width: 768px) {}
-
-@media (min-width: 992px) {}
-
-@media (min-width: 1200px) {
-    .div5+.div6 {
-        flex-wrap: wrap;
-    }
-}
-
-@media (min-width: 1400px) {
-    .div6 {
-        flex-wrap: wrap;
-    }
+.datos {
+    font-size: large;
+    color: black;
 }

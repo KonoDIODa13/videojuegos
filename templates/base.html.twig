@@ -45,6 +45,13 @@
 											<span class="link-navegador">Videojuegos</span>
 										</a>
 									</li>
+									<li class="nav-item">
+										<a class="nav-link active" href="{{ path('app_bootstrap_videojuegos') }}">
+											<span class="link-navegador">
+												bootstrap
+											</span>
+										</a>
+									</li>
 									{% if is_granted("ROLE_USER")!= true %}
 										<li class="nav-item">
 											<a class="nav-link active" href="{{ path('app_register') }}">
@@ -58,13 +65,6 @@
 											<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
 												<span class="link-navegador">
 													Inciar Sesión
-												</span>
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link active" href="{{ path('app_bootstrap_videojuegos') }}">
-												<span class="link-navegador">
-													bootstrap
 												</span>
 											</a>
 										</li>

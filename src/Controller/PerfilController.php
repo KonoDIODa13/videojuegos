@@ -48,10 +48,13 @@ class PerfilController extends ControladorBase
     // Por último le pasamos los datos a la plantilla.
 
     #[Route('/perfil', name: 'app_perfil')]
-    public function perfil(ListaJuegosRepository $listaJuegosRepository): Response
+    public function perfil(ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository): Response
     {
+        $videojuegos = $videojuegoRepository->findAll();
         $usuario = $this->getUser();
         $listado = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
+        //dd($listado);
+
         return $this->render('perfil/perfil.html.twig', [
             'usuario' => $usuario,
             'nombre' => $usuario->getUsername(),

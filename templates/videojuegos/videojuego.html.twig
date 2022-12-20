@@ -69,7 +69,7 @@
 									{% endif %}
 									{% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 										{% if mismoJuego != true %}
-											<a class="btn btn-primary" href="{{path('app_annadir_a_lista',{videojuego: videojuego})}}">Añadir a la lista</a>
+											<a class="btn btn-primary" href="{{path('app_annadir_a_lista',{slug: videojuego.slug})}}">Añadir a la lista</a>
 										{% else %}
 											<p class="datos">
 												El juego ya esta en la lista.
