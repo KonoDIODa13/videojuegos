@@ -75,7 +75,7 @@
 										</p>
 									{% else %}
 										<p class="card-text">
-											<a href="#" class="mt-auto btn btn-primary">Añadir a la lista</a>
+											<a href="{{path('app_bootstrap_videojuego_juego_añadir', {slug: videojuego.slug})}}" class="mt-auto btn btn-primary">Añadir a la lista</a>
 										</p>
 									{% endif %}
 
@@ -95,8 +95,8 @@
 					<div class="card p-3">
 						{% for comentario in comentarios %}
 							<p class="datos">
-								<span class="text-capitalize">{{comentario.usuario}}</span><br>
-								{{comentario.comentario}}
+								<span class="text-capitalize">{{comentario.usuario}}:</span><br>
+								{{comentario.comentario}}.
 							</p>
 						{% endfor %}
 					</div>

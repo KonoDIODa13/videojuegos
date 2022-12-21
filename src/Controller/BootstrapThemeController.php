@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\ListaJuegos;
+use App\Entity\Videojuego;
 use App\Repository\ListaJuegosRepository;
+use App\Repository\UsuarioRepository;
 use App\Repository\VideojuegoRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -24,7 +28,7 @@ class BootstrapThemeController extends ControladorBase
         ]);
     }
 
-    #[Route('/bootstrap/videojuegos{slug}', name: 'app_bootstrap_juego')]
+    #[Route('/bootstrap/videojuegos/{slug}', name: 'app_bootstrap_juego')]
     public function mostrarJuego(VideojuegoRepository $videojuegoRepository, $slug, ListaJuegosRepository $listaJuegosRepository): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
@@ -39,18 +43,20 @@ class BootstrapThemeController extends ControladorBase
                     $mensaje = "Este videojuego ya esta en la lista";
                 }
             }
-        }
-        if ($usuario != null) {
             $listado = $listaJuegosRepository->findBy(['videojuego' => $videojuego]);
             $UserX = $listaJuegosRepository->findOneBy(['usuario' => $usuario, 'videojuego' => $videojuego]);
             foreach ($listado as $lista) {
-                if ($lista->getComentario() != $UserX->getComentario()) {
+                if ($UserX == null) {
+                    $comentario = "Aun no hay comentario";
+                } else {
+                    $comentario = $UserX->getComentario();
+                }
+                if ($lista->getComentario() != $comentario) {
                     $array = (["usuario" => $lista->getUsuario(), "comentario" => $lista->getComentario()]);
                     array_push($comentarios, $array);
                 }
             }
         }
-
         return $this->render('bootstrap/juego.html.twig', [
             'videojuego' => $videojuego,
             'usuario' => $usuario,
@@ -73,10 +79,45 @@ class BootstrapThemeController extends ControladorBase
         $listado = $listaJuegosRepository->findBy(['usuario' => $usuario]);
         foreach ($listado as $lista) {
             $videojuegoRepository->findBy(['id' => $lista->getVideojuego()]);
+            //dd($lista->getId());
         }
-
         return $this->render('bootstrap/perfil.html.twig', [
             'listado' => $listado,
+        ]);
+    }
+
+    #[Route('/bootstrap/videojuego/añadir/{slug}', name: 'app_bootstrap_videojuego_juego_añadir')]
+    public function annadirJuego(EntityManagerInterface $entityManagerInterface, $slug, VideojuegoRepository $videojuegoRepository): Response
+    {
+        $usuario = $this->getUser();
+        $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);
+        $lista = new ListaJuegos();
+        $lista->setUsuario($usuario);
+        $lista->setVideojuego($videojuego);
+        $entityManagerInterface->persist($lista);
+        $entityManagerInterface->flush();
+        return $this->redirectToRoute('app_bootstrap_perfil');
+    }
+
+    #[Route('/bootstrap/perfil/eliminar/{lista}', name: 'app_bootstrap_perfil_elminar')]
+    public function eliminar($lista, ListaJuegosRepository $listaJuegosRepository, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $eliminarLista = $listaJuegosRepository->findOneBy(['id' => $lista]);
+        $entityManagerInterface->remove($eliminarLista);
+        $entityManagerInterface->flush();
+        return $this->redirectToRoute('app_bootstrap_perfil');
+    }
+
+    #[Route('/bootstrap/perfil/{lista}', name: 'app_bootstrap_perfil_añadir_comentario')]
+    public function annadirComentario(listaJuegos $lista, UsuarioRepository $usuarioRepository, VideojuegoRepository $videojuegoRepository): Response
+    {
+        $usuario = $usuarioRepository->findOneBy(['id' => $lista->getUsuario()]);
+        $videojuego = $videojuegoRepository->findOneBy(['id' => $lista->getVideojuego()]);
+
+        return $this->render("bootstrap/annadirComentario.html.twig", [
+            'lista' => $lista,
+            'usuario' => $usuario,
+            'videojuego' => $videojuego,
         ]);
     }
 }

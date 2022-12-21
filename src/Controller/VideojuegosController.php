@@ -104,7 +104,6 @@ class VideojuegosController extends ControladorBase
         $lista = new ListaJuegos();
         $lista->setUsuario($usuario);
         $lista->setVideojuego($videojuego);
-
         $entityManager->persist($lista);
         $entityManager->flush();
         return $this->redirectToRoute('app_perfil');
