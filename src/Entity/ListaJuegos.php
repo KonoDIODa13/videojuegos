@@ -39,6 +39,12 @@ class ListaJuegos
         return $this;
     }
 
+    public function eliminarComentario()
+    {
+        $comentario = null;
+        return $this->comentario = $comentario;
+    }
+
     public function getUsuario(): ?Usuario
     {
         return $this->usuario;

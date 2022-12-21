@@ -11,13 +11,14 @@
 	{% endblock %}
 	{% block text %}
 		<div class="login-form">
-			<h2 class="text-center">{{videojuego.titulo}}</h2>
+			<h2 class="text-center p-2">{{videojuego.titulo}}</h2>
 			<form method="post" class="text-center">
-				<label class="fw-bold">Escriba el comentario:</label><br>
-				<textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+				{{form_start(comentarioForm)}}
+				<label class="fw-bold fs-5">{{form_row(comentarioForm.comentario)}}</label><br>
 				<button class="btn btn-primary" type="submit">
 					Enviar comentario
 				</button>
+				{{form_end(comentarioForm)}}
 			</form>
 		</div>
 	{% endblock %}

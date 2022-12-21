@@ -8,9 +8,11 @@ use App\Repository\ListaJuegosRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\VideojuegoRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Form\ComentarioFormType;
 
 class BootstrapThemeController extends ControladorBase
 {
@@ -108,16 +110,31 @@ class BootstrapThemeController extends ControladorBase
         return $this->redirectToRoute('app_bootstrap_perfil');
     }
 
-    #[Route('/bootstrap/perfil/{lista}', name: 'app_bootstrap_perfil_añadir_comentario')]
-    public function annadirComentario(listaJuegos $lista, UsuarioRepository $usuarioRepository, VideojuegoRepository $videojuegoRepository): Response
+    #[Route('/bootstrap/perfil/{lista}/añadirComentario', name: 'app_bootstrap_perfil_añadir_comentario')]
+    public function annadirComentario(listaJuegos $lista, VideojuegoRepository $videojuegoRepository, Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
-        $usuario = $usuarioRepository->findOneBy(['id' => $lista->getUsuario()]);
         $videojuego = $videojuegoRepository->findOneBy(['id' => $lista->getVideojuego()]);
+        $form = $this->createForm(ComentarioFormType::class, $lista);
+        $form->handleRequest($request);
 
-        return $this->render("bootstrap/annadirComentario.html.twig", [
-            'lista' => $lista,
-            'usuario' => $usuario,
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comentario = $form->get('comentario')->getData();
+            $lista->setComentario($comentario);
+            $entityManagerInterface->persist($lista);
+            $entityManagerInterface->flush();
+            return $this->redirectToRoute('app_bootstrap_perfil');
+        }
+        return $this->render('bootstrap/annadirComentario.html.twig', [
+            'comentarioForm' => $form->createView(),
             'videojuego' => $videojuego,
         ]);
+    }
+
+    #[Route('/bootstrap/perfil/{lista}/eliminarComentario', name: 'app_bootstrap_perfil_eliminar_comentario')]
+    public function eliminarComentario(ListaJuegos $lista, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $lista->eliminarComentario();
+        $entityManagerInterface->flush();
+        return $this->redirectToRoute('app_bootstrap_perfil');
     }
 }
