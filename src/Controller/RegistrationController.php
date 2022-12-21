@@ -57,10 +57,4 @@ class RegistrationController extends AbstractController
     }
 
     // Este método se encarga de cerrar la sesión del usuario.
-
-    #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
-    {
-        throw new \LogicException();
-    }
 }

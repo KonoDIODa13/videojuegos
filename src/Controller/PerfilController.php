@@ -13,12 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PerfilController extends ControladorBase
 {
-    // Esta función nos controla lo que se muestra al inicio del programa.
-    // Al principio, cierro la sesión porque symfony inicia la sesión sin que yo se lo pida.
-    // De primeras no nos mostrará el mensaje, solo lo muestra cuando venimos del registro.
-    // Los Repository son aquellas clases que estan relaccionadas con las entidades,
-    // dicha clase, nos permite recoger los datos que haya en la base de datos de dicha entidad
-    // Por ultimo cerramos la sesión porque ya no la vamos a utilizar y enviamos los datos a la plantilla.
 
     #[Route('/', name: 'app_inicio')]
     public function inicio(UsuarioRepository $usuarioRepository): Response
@@ -42,51 +36,53 @@ class PerfilController extends ControladorBase
         ]);
     }
 
-    // Esta función controla una vez que nos hemos registrado. 
-    // En ella, conseguimos el usuario y la lista en funcion de su id.
-    // Dicha lista contiene todos los juegos que el usuario agregó y los comentarios si esque puso alguno.
-    // Por último le pasamos los datos a la plantilla.
-
     #[Route('/perfil', name: 'app_perfil')]
-    public function perfil(ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository): Response
+    public function mostrarPerfil(ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository): Response
     {
-        $videojuegos = $videojuegoRepository->findAll();
         $usuario = $this->getUser();
-        $listado = $listaJuegosRepository->findBy(['usuario' => $usuario->getId()]);
-        //dd($listado);
-
+        $listado = $listaJuegosRepository->findBy(['usuario' => $usuario]);
+        foreach ($listado as $lista) {
+            $videojuegoRepository->findBy(['id' => $lista->getVideojuego()]);
+        }
         return $this->render('perfil/perfil.html.twig', [
-            'usuario' => $usuario,
-            'nombre' => $usuario->getUsername(),
             'listado' => $listado,
         ]);
     }
 
-    // En esta función, lo que recibimos por parámetro es una lista que contiene el id del usuario, el id del videojuego y el comentario si esque lo tiene.
-    // en este método se utiliza el Entity Manager que es la interfaz que tiene symfony para crear, borrar y editar.
-    // Como no queremos crear ninguna plantilla, nos devuelve directamente a la plantilla de perfil con la lista borrada.
-
-    #[Route('perfil/remover_juego/{lista}', name: 'app_remover_juego_lista')]
-    public function remover(ListaJuegos $lista, EntityManagerInterface $entityManager): Response
+    #[Route('/perfil/eliminar/{lista}', name: 'app_perfil_elminar')]
+    public function eliminar($lista, ListaJuegosRepository $listaJuegosRepository, EntityManagerInterface $entityManagerInterface): Response
     {
-        $entityManager->remove($lista);
-        $entityManager->flush();
+        $eliminarLista = $listaJuegosRepository->findOneBy(['id' => $lista]);
+        $entityManagerInterface->remove($eliminarLista);
+        $entityManagerInterface->flush();
         return $this->redirectToRoute('app_perfil');
     }
 
-    // esta función recoge del perfil tanto el comentario como el videojuego ya que para poder modificar un dato de la lista requiere tanto el usuario como el videojuego.
-    //al igual que con la anterior función, nos devuelve a la plantilla de perfil con el comentario añadido.
-
-    #[Route('/perfil/addComentario', name: 'app_comentario')]
-    public function addComentario(Request $request, ListaJuegosRepository $listaJuegosRepository, VideojuegoRepository $videojuegoRepository, EntityManagerInterface $entityManager): Response
+    #[Route('/perfil/{lista}/añadirComentario', name: 'app_perfil_añadir_comentario')]
+    public function annadirComentario(listaJuegos $lista, VideojuegoRepository $videojuegoRepository, Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
-        $comentario = $request->get('comentario');
-        $idVideojuego = $request->get('videojuego'); //id videojuego
-        $videojuego = $videojuegoRepository->findOneBy(['id' => $idVideojuego]);
-        $usuario = $this->getUser();
-        $lista = $listaJuegosRepository->findOneBy(["usuario" => $usuario->getId(), 'videojuego' => $videojuego]);
-        $lista->setComentario($comentario);
-        $entityManager->flush();
+        $videojuego = $videojuegoRepository->findOneBy(['id' => $lista->getVideojuego()]);
+        $form = $this->createForm(ComentarioFormType::class, $lista);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comentario = $form->get('comentario')->getData();
+            $lista->setComentario($comentario);
+            $entityManagerInterface->persist($lista);
+            $entityManagerInterface->flush();
+            return $this->redirectToRoute('app_bootstrap_perfil');
+        }
+        return $this->render('perfil/annadirComentario.html.twig', [
+            'comentarioForm' => $form->createView(),
+            'videojuego' => $videojuego,
+        ]);
+    }
+
+    #[Route('/perfil/{lista}/eliminarComentario', name: 'app_perfil_eliminar_comentario')]
+    public function eliminarComentario(ListaJuegos $lista, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $lista->eliminarComentario();
+        $entityManagerInterface->flush();
         return $this->redirectToRoute('app_perfil');
     }
 }
