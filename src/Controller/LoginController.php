@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
+use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +13,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-    #[Route('/iniciar_sesion', name: 'app__inicio_sesion')]
+    #[Route('/iniciar_sesion', name: 'app_inicio_sesion')]
     public function inicioSesion(AuthenticationUtils $authenticationUtils): Response
     {
         return $this->render('login/iniciarSesion.html.twig', [
@@ -43,6 +44,10 @@ class LoginController extends AbstractController
                 $error = "Las contraseñas no coinciden";
             }
         }
+        return $this->render('login/registrar.html.twig', [
+            'registrationForm' => $form->createView(),
+            'error' => $error,
+        ]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

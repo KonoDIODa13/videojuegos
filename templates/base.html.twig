@@ -14,6 +14,7 @@
 			{{ encore_entry_link_tags('app') }}
 			<link rel="stylesheet" href="{{asset('prueba/favicon.ico')}}">
 		{% endblock %}
+		
 		{% block javascript %}
 			{{ encore_entry_link_tags('app') }}
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -24,50 +25,39 @@
 		{% block body %}
 			{% block nav %}
 				<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex sticky-top mb-2">
-					<div class="container-fluid">
-						<div>
-							<ul class="navbar-nav">
+					<div class="container">
+						<a class="nav-link active" href="{{path('app_inicio')}}">
+							<span class="link-navegador">Game Experiences</span>
+						</a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ms-auto">
 								<li class="nav-item">
-									<a class="nav-link active" href="{{path('app_inicio')}}">
-										<span class="link-navegador">Game Experiences</span>
+									<a class="nav-link active" href="{{path('app_videojuegos')}}">
+										<span class="link-navegador">Videojuegos</span>
 									</a>
 								</li>
-
-								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-
-								<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								{% if is_granted("ROLE_USER")!= true %}
 									<li class="nav-item">
-										<a class="nav-link active" href="{{path('app_videojuegos')}}">
-											<span class="link-navegador">Videojuegos</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link active" href="{{ path('app_bootstrap') }}">
+										<a class="nav-link active" href="{{ path('app_registrar') }}">
 											<span class="link-navegador">
-												bootstrap
+												Registrar
 											</span>
 										</a>
 									</li>
-									{% if is_granted("ROLE_USER")!= true %}
-										<li class="nav-item">
-											<a class="nav-link active" href="{{ path('app_register') }}">
-												<span class="link-navegador">
-													Registrar
-												</span>
-											</a>
-										</li>
-
-										<li class="nav-item">
-											<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
-												<span class="link-navegador">
-													Inciar Sesión
-												</span>
-											</a>
-										</li>
-									</div>
-								{% else %}
+									<li class="nav-item">
+										<a class="nav-link active" href="{{ path('app_inicio_sesion') }}">
+											<span class="link-navegador">
+												Inciar Sesión
+											</span>
+										</a>
+									</li>
+							{% else %}
+								</ul>
+								<div class="ms-auto">
 									<div class="dropdown opciones">
 										<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdown">
 											<img src="{{ app.user.avatarUri }}" alt="{{ app.user.username }} Avatar">
@@ -81,30 +71,17 @@
 											<li>
 												<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
 											</li>
-
 											<li>
 												<a class="dropdown-item text-secondary" href="{{path('app_logout')}}">Cerrar sesión</a>
 											</li>
 										</ul>
 									</div>
-								{% endif %}
-
-							</ul>
-						</div>
-					</body>
+								</div>
+							{% endif %}
+						</ul>
+					</div>
 				</body>
 			</body>
 		</html>
-	</nav>
-{% endblock %}
-
-{% block text %}
-	<div class="text"></div>
-{% endblock %}
-
-{% block footer %}
-	<div class="footer p-3 text-center fixed-bottom">
-		© 2021 Copyright:
-		<strong>Jaime González Bravo</strong>.
-	</div>
-{% endblock %}{% endblock %}
+	</body>
+</html></body></html></nav>{% endblock %}{% block text %}<div class="text"></div>{% endblock %}{% block footer %}<div class="footer p-3 text-center fixed-bottom">© 2021 Copyright:<strong>Jaime González Bravo</strong>.</div>{% endblock %}{% endblock %}

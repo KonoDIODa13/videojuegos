@@ -16,11 +16,11 @@
 					<img src="{{asset('fotos/avatar.png')}}" alt="Avatar">
 				</div>
 				<h2 class="text-center">Inicio de sesión</h2>
-				<div class="form-group p-2">
+				<div class="form-group p-2 text-center">
 					<label for="inputNombre" class="fw-bold">Nombre de usuario:</label>
 					<input type="text" class="form-control" name="nombreUsuario" id="inputNombre" required="required">
 				</div>
-				<div class="form-group p-2">
+				<div class="form-group p-2 text-center">
 					<label for="inputContra" class="fw-bold">Contraseña:</label>
 					<input type="password" class="form-control" name="contra" id="inputContra" required="required">
 				</div>
@@ -34,7 +34,7 @@
 				{% endif %}
 			</form>
 			<p class="text-center small fw-bolder">¿No tienes cuenta todavía?
-				<a href="#">Registrate aquí</a>
+				<a href="{{path('app_registrar')}}">Registrate aquí</a>
 			</p>
 		</div>
 	{% endblock %}

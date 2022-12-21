@@ -15,26 +15,33 @@
 				<div class="avatar">
 					<img src="{{asset('fotos/avatar.png')}}" alt="Avatar">
 				</div>
-				<h2 class="text-center">Inicio de sesión</h2>
-				<div class="form-group p-2">
-					<label for="inputNombre" class="fw-bold">Nombre de usuario:</label>
-					<input type="text" class="form-control" name="nombreUsuario" id="inputNombre" required="required">
-				</div>
-				<div class="form-group p-2">
-					<label for="inputContra" class="fw-bold">Contraseña:</label>
-					<input type="password" class="form-control" name="contra" id="inputContra" required="required">
-				</div>
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<h2 class="text-center">Registrar</h2>
+				<div class="text-center">
+					<div class="form-group p-2">
+						{{ form_start(registrationForm) }}
+						<label class="fw-bold">{{form_row(registrationForm.username)}}</label>
+					</div>
+					<div class="form-group p-2">
+						<label class="fw-bold">{{form_row(registrationForm.password)}}</label>
+					</div>
 
-				<div class="form-group text-center p-2">
-					<button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
+					<div class="form-group p-2">
+						<label class="fw-bold">{{form_row(registrationForm.plainPassword)}}</label>
+					</div>
+
+					<input type="hidden" value="true" name="usuarioCreado" id="usuarioCreado">
 				</div>
+				<div class="form-group text-center p-2">
+					<button type="submit" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+				</div>
+				{{form_end(registrationForm)}}
+
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 			</form>
-			<p class="text-center small fw-bolder">¿No tienes cuenta todavía?
-				<a href="#">Registrate aquí</a>
+			<p class="text-center small fw-bolder">¿Tienes cuenta?
+				<a href="{{path('app_inicio_sesion')}}">Inicia sesión aquí</a>
 			</p>
 		</div>
 	{% endblock %}
