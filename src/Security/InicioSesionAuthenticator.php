@@ -73,7 +73,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
             );
         }
         return new RedirectResponse(
-            $this->router->generate('app_perfil')
+            $this->router->generate('app_bootstrap_perfil')
         );
     }
 
@@ -81,7 +81,7 @@ class InicioSesionAuthenticator extends AbstractAuthenticator
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
         return new RedirectResponse(
-            $this->router->generate('app_inicio_sesion')
+            $this->router->generate('app_bootstrap_inicio_sesion')
         );
     }
 

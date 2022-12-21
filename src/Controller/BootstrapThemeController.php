@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\ListaJuegosRepository;
 use App\Repository\VideojuegoRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -76,7 +75,6 @@ class BootstrapThemeController extends ControladorBase
             $videojuegoRepository->findBy(['id' => $lista->getVideojuego()]);
         }
 
-        //dd($listado);
         return $this->render('bootstrap/perfil.html.twig', [
             'listado' => $listado,
         ]);

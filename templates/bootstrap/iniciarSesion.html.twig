@@ -1,5 +1,10 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{asset('prueba/iniciarSesion.css')}}">
+{% endblock %}
+
 {% block body %}
 	{% block nav %}
 		{{parent()}}
@@ -28,7 +33,7 @@
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 			</form>
-			<p class="text-center small fw-bold">¿No tienes cuenta todavía?
+			<p class="text-center small fw-bolder">¿No tienes cuenta todavía?
 				<a href="#">Registrate aquí</a>
 			</p>
 		</div>

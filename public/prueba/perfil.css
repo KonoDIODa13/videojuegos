@@ -1,7 +1,10 @@
 body {
-    background-color: white;
+    background-color: lightgray;
 }
 
+.tabla{
+    background-color: white;
+}
 .hm-gradient {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
@@ -47,7 +50,27 @@ body {
     text-align: center;
 }
 
-.papelera{
+table {
+    width: 100%;
+}
+
+#tabla_filter {
+    float: right;
+}
+
+#tabla_paginate {
+    float: right;
+}
+
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+
+}
+
+
+.papelera {
     width: 40px;
     height: 40px;
 }
