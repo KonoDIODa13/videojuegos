@@ -60,4 +60,10 @@ class BootstrapThemeController extends ControladorBase
             'mensaje' => $mensaje,
         ]);
     }
+
+    #[Route('/prueba', name: 'prueba')]
+    public function prueba(): Response
+    {
+        return $this->render('bootstrap/prueba.html.twig');
+    }
 }
