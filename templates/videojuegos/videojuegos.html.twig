@@ -5,35 +5,82 @@
 	<link rel="stylesheet" href="{{asset('prueba/videojuegos.css')}}">
 {% endblock %}
 
-{% block title %}videojuegos
+{% block javascript %}
+	{{parent()}}
+	<script src="{{asset('prueba/videojuegos.js')}}"></script>
 {% endblock %}
 
 {% block body %}
+<!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Checkboxes</title>
+</head>
+
+<body>
+    <p>Select your favorite colors:</p>
+    <label for="c1"> <input type="checkbox" name="color" value="red" id="c1">Red</label>
+    <label for="c2"><input type="checkbox" name="color" value="green" id="c2"> Green</label>
+    <label for="c3"><input type="checkbox" name="color" value="blue" id="c3">Blue</label>
+    <p>
+        <button id="btn">Get Selected Colors</button>
+    </p>
+
+    <script>
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="color"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        });    
+    </script>
+
+</body>
+
+</html>
+-->
+
 	{% block nav %}
 		{{ parent() }}
 	{% endblock %}
 
 	{% block text %}
 		<section class="py-5 bg-secondary">
-			<h2 class="text-center">Videojuegos</h2>
+			<div class="text-end m-3">
+				<h2 class="text-center">Videojuegos</h2>
+				<button type="button" class="btn-dropdown-toggle btn btn-primary" data-bs-toggle="dropdown" area-expanded="false" id="filtrar">
+					Filtrar por:
+				</button>
+				<div class="dropdown-menu" aria-labelledby="filtrar">
+					{% for genero in generos %}
+						<input type="checkbox" name="genero" id="{{genero}}" class="radio m-2" value="{{genero}}">
+						{{genero}}<br>
+					{% endfor %}
+					<li><hr class="dropdown-divider"></li>
+					<div class="text-center">
+						<button href="#" class="text-center text-dark" id="filtrar">Filtrar</button>
+					</div>
+				</div>
+
+			</div>
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center border-">
 					{% for videojuego in videojuegos %}
 						<div class="col mb-5">
-							<div
-								class="card h-100">
-								<!-- Product image-->
-								<img
-								class="card-img-top imagen" src="{{asset('fotos/horizontal/'~videojuego.slug~'.jpeg')}}" alt="videojuego foto"/>
-								<!-- Product details-->
+							<div class="card h-100">
+								<img class="card-img-top imagen" src="{{asset('fotos/horizontal/'~videojuego.slug~'.jpeg')}}" alt="videojuego foto"/>
 								<div class="card-body p-4">
-									<div
-										class="text-center">
-										<!-- Product name-->
+									<div class="text-center">
 										<h5 class="fw-bolder">{{videojuego.titulo}}</h5>
 									</div>
 								</div>
-								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
 										<a class="btn btn-outline-dark mt-auto" href="{{ path('app_juego', {slug: videojuego.slug}) }}">Ver juego</a>
@@ -49,6 +96,4 @@
 		{% block footer %}
 			{{parent()}}
 		{% endblock %}
-		<!-- Bootstrap core JS-->
-		<!-- Core theme JS-->
 	{% endblock %}

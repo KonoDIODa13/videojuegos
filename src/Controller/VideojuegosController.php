@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ListaJuegos;
+use App\Repository\GeneroRepository;
 use App\Repository\VideojuegoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +13,21 @@ use App\Repository\ListaJuegosRepository;
 class VideojuegosController extends ControladorBase
 {
     #[Route('/videojuegos', name: 'app_videojuegos')]
-    public function mostrarJuegos(VideojuegoRepository $videojuegoRepository): Response
+    public function mostrarJuegos(VideojuegoRepository $videojuegoRepository, GeneroRepository $generoRepository): Response
     {
         return $this->render('videojuegos/videojuegos.html.twig', [
             'videojuegos' => $videojuegoRepository->findAll(),
+            'generos' => $generoRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/videojuegos{genero}', name: 'app_videojuegos_genero')]
+    public function mostrarJuegosXGenero($genero, VideojuegoRepository $videojuegoRepository, GeneroRepository $generoRepository): Response
+    {
+        $videojuegos = $videojuegoRepository->findBy(['genero' => $genero]);
+        return $this->render('videojuegos/videojuegos.html.twig', [
+            'videojuegos' => $videojuegos,
+            'generos' => $generoRepository->findAll(),
         ]);
     }
 
