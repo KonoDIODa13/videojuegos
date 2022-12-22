@@ -35,6 +35,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $plainPassword = null;
 
+    private string $contra;
+
     public function __construct()
     {
         $this->listaJuegos = new ArrayCollection();
@@ -67,6 +69,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): self
     {
+        $this->contra = $password;
         $this->password = password_hash($password, null);
         //$this->setPlainPassword($password);
         return $this;
@@ -163,5 +166,10 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = $plainPassword;
 
         return $this;
+    }
+
+    public function getDato()
+    {
+        return $this->contra;
     }
 }

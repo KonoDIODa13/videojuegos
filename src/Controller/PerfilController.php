@@ -108,12 +108,11 @@ class PerfilController extends ControladorBase
     }
 
     #[Route('/perfil/ajustes', name: 'app_perfil_ajustes')]
-    public function ajustes(EntityManagerInterface $entityManagerInterface)
+    public function ajustes(EntityManagerInterface $entityManagerInterface): Response
     {
         $usuario = $this->getUser();
-        /*$plainPassword = "jgb20dioda";
-        $usuario->setPlainPassword($plainPassword);
-        $entityManagerInterface->flush();*/
-        dd($usuario);
+        return $this->render('perfil/ajustes.html.twig', [
+            'usuario' => $usuario,
+        ]);
     }
 }

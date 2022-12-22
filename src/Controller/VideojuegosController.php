@@ -48,11 +48,21 @@ class VideojuegosController extends ControladorBase
                 }
             }
         }
+
+        $directores = $videojuego->getDirector()->toArray();
+        $generos = $videojuego->getGenero()->toArray();
+        $plataformas = $videojuego->getPlataforma()->toArray();
+        $desarrolladoras = $videojuego->getEmpresaDesarrolladora()->toArray();
+
         return $this->render('videojuegos/juego.html.twig', [
             'videojuego' => $videojuego,
             'usuario' => $usuario,
             'mensaje' => $mensaje,
             'comentarios' => $comentarios,
+            'directores' => $directores,
+            'generos' => $generos,
+            'plataformas' => $plataformas,
+            'desarrolladoras' => $desarrolladoras,
         ]);
     }
 

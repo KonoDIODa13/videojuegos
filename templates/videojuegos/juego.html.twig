@@ -21,29 +21,47 @@
 							<div class="card-text">
 								<p>
 									<h5>Directores:</h5>
-									{% for director in videojuego.director %}
+									{% if directores != null %}
+										{% for director in directores %}
+											<li class="datos">
+												{{director}}.
+											</li>
+										{% endfor %}
+									{% else %}
 										<li class="datos">
-											{{director}}.
+											No hay datos del los directores.
 										</li>
-									{% endfor %}
+									{% endif %}
 								</p>
 
 								<p>
 									<h5>Géneros:</h5>
-									{% for genero in videojuego.genero %}
+									{% if generos != null %}
+										{% for genero in generos %}
+											<li class="datos">
+												{{genero}}.
+											</li>
+										{% endfor %}
+									{% else %}
 										<li class="datos">
-											{{genero}}.
+											No hay datos de los generos.
 										</li>
-									{% endfor %}
+									{% endif %}
 								</p>
 
 								<p>
 									<h5>Plataformas:</h5>
-									{% for plataforma in videojuego.plataforma %}
+									{% if plataformas != null %}
+										{% for plataforma in plataformas %}
+											<li class="datos">
+												{{plataforma}}.
+											</li>
+										{% endfor %}
+									{% else %}
 										<li class="datos">
-											{{plataforma}}.
+											No hay datos de las plataformas
 										</li>
-									{% endfor %}
+									{% endif %}
 
 								</p>
 
@@ -54,11 +72,18 @@
 
 								<p>
 									<h5>Empresas desarrolladoras:</h5>
-									{% for desarrolladora in videojuego.empresaDesarrolladora %}
+									{% if desarrolladoras != null %}
+
+										{% for desarrolladora in desarrolladoras %}
+											<li class="datos">
+												{{desarrolladora}}.
+											</li>
+										{% endfor %}
+									{% else %}
 										<li class="datos">
-											{{desarrolladora}}.
+											No hay datos de las desarrolladoras
 										</li>
-									{% endfor %}
+									{% endif %}
 								</p>
 
 								{% if videojuego.descripcion != null %}
@@ -93,12 +118,16 @@
 				<div class="mb-5 mt-5">
 					<h2 class="card-title text-center">Comentarios</h2>
 					<div class="card p-3">
-						{% for comentario in comentarios %}
-							<p class="datos">
-								<span class="text-capitalize">{{comentario.usuario}}:</span><br>
-								{{comentario.comentario}}.
-							</p>
-						{% endfor %}
+						{% if comentarios != null %}
+							{% for comentario in comentarios %}
+								<p class="datos">
+									<span class="text-capitalize">{{comentario.usuario}}:</span><br>
+									{{comentario.comentario}}.
+								</p>
+							{% endfor %}
+							{% else %}
+								<span class="text-center datos">Aun no hay comentarios.</span>
+						{% endif %}
 					</div>
 				</div>
 

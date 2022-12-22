@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{asset('prueba/ajustes.css')}}">
+{% endblock %}
+
+{% block body %}
+	{% block nav %}
+		{{parent()}}
+	{% endblock %}
+	{% block text %}
+		<div class="m-4 p-4">
+			<div class="form">
+				<div class="card">
+					<div class="row">
+						<div class="col-md-4 avatar m-2">
+							<img class="imagen" src="{{asset('fotos/avatar.png')}}" alt="img png">
+						</div>
+						<div class="col-md-5 m-3 p-3">
+							<div>
+
+								<p>
+									Nombre del usuario:
+									<br>
+									{{usuario.username}}
+								</p>
+
+								<p>
+									Contraseña
+									<br>
+									<span class="visually-hidden">{{usuario.password}}</span>
+								</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block footer %}
+		{{parent()}}
+	{% endblock %}
+{% endblock %}

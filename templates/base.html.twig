@@ -72,10 +72,10 @@
 												<a class="dropdown-item text-secondary" href="{{ path('app_perfil') }}">Perfil</a>
 											</li>
 											<li>
-												<a class="dropdown-item text-secondary" href="{{path('app_logout')}}">Cerrar sesión</a>
+												<a class="dropdown-item text-secondary" href="{{path('app_perfil_ajustes')}}">Ajustes</a>
 											</li>
 											<li>
-												<a class="dropdown-item text-secondary" href="{{path('app_perfil_ajustes')}}">Ajustes</a>
+												<a class="dropdown-item text-secondary" href="{{path('app_logout')}}">Cerrar sesión</a>
 											</li>
 										</ul>
 									</div>
@@ -83,8 +83,15 @@
 							{% endif %}
 						</ul>
 					</div>
-				</body>
-			</body>
-		</html>
+				</nav>
+			{% endblock %}
+			{% block text %}
+				<div class="text"></div>
+			{% endblock %}
+
+			{% block footer %}
+				<div class="footer p-3 text-center fixed-bottom">© 2021 Copyright: <strong>Jaime González Bravo</strong>.</div>
+			{% endblock %}
+		{% endblock %}
 	</body>
-</html></body></html></nav>{% endblock %}{% block text %}<div class="text"></div>{% endblock %}{% block footer %}<div class="footer p-3 text-center fixed-bottom">© 2021 Copyright:<strong>Jaime González Bravo</strong>.</div>{% endblock %}{% endblock %}
+</html>
