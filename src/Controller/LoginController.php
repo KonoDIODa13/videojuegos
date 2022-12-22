@@ -31,6 +31,7 @@ class LoginController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('password')->getData() == $form->get('plainPassword')->getData()) {
                 $user->setPassword($form->get('password')->getData());
+                $user->setPlainPassword($form->get('plainPassword')->getData());
                 $creado = $request->get('usuarioCreado');
                 if (isset($_SESSION)) {
                     session_abort();

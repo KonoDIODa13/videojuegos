@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ListaJuegos;
+use App\Form\ComentarioFormType;
 use App\Repository\ListaJuegosRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\VideojuegoRepository;
@@ -78,11 +79,41 @@ class PerfilController extends ControladorBase
         ]);
     }
 
+    #[Route('/perfil/{lista}/modificarComentario', name: 'app_perfil_modificar_comentario')]
+    public function modificarComentario(listaJuegos $lista, VideojuegoRepository $videojuegoRepository, Request $request, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $videojuego = $videojuegoRepository->findOneBy(['id' => $lista->getVideojuego()]);
+        $form = $this->createForm(ComentarioFormType::class, $lista);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comentario = $form->get('comentario')->getData();
+            $lista->setComentario($comentario);
+            $entityManagerInterface->persist($lista);
+            $entityManagerInterface->flush();
+            return $this->redirectToRoute('app_bootstrap_perfil');
+        }
+        return $this->render('perfil/modificarComentario.html.twig', [
+            'comentarioForm' => $form->createView(),
+            'videojuego' => $videojuego,
+        ]);
+    }
+
     #[Route('/perfil/{lista}/eliminarComentario', name: 'app_perfil_eliminar_comentario')]
     public function eliminarComentario(ListaJuegos $lista, EntityManagerInterface $entityManagerInterface): Response
     {
         $lista->eliminarComentario();
         $entityManagerInterface->flush();
         return $this->redirectToRoute('app_perfil');
+    }
+
+    #[Route('/perfil/ajustes', name: 'app_perfil_ajustes')]
+    public function ajustes(EntityManagerInterface $entityManagerInterface)
+    {
+        $usuario = $this->getUser();
+        /*$plainPassword = "jgb20dioda";
+        $usuario->setPlainPassword($plainPassword);
+        $entityManagerInterface->flush();*/
+        dd($usuario);
     }
 }

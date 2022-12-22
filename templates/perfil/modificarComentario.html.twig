@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{asset('prueba/annadirComentario.css')}}">
+{% endblock %}
+
+{% block body %}
+	{% block nav %}
+		{{parent()}}
+	{% endblock %}
+	{% block text %}
+		<div class="login-form">
+			<h2 class="text-center p-2">{{videojuego.titulo}}</h2>
+			<form method="post" class="text-center">
+				{{form_start(comentarioForm)}}
+				<label class="fw-bold fs-5">{{form_row(comentarioForm.comentario)}}</label><br>
+				<button class="btn btn-primary" type="submit">
+					Modificar comentario
+				</button>
+				{{form_end(comentarioForm)}}
+			</form>
+		</div>
+	{% endblock %}
+	{% block footer %}
+		{{parent()}}
+	{% endblock %}
+{% endblock %}

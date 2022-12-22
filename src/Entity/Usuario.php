@@ -32,7 +32,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ListaJuegos::class)]
     private Collection $listaJuegos;
 
-    private string $plainPassword;
+    #[ORM\Column(length: 100)]
+    private ?string $plainPassword = null;
 
     public function __construct()
     {
@@ -67,18 +68,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = password_hash($password, null);
+        //$this->setPlainPassword($password);
         return $this;
-    }
-
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
     }
 
     /**
@@ -158,6 +149,18 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
                 $listaJuego->setUsuario(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
