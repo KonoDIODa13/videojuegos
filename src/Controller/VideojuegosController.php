@@ -41,7 +41,7 @@ class VideojuegosController extends ControladorBase
         ]);
     }
 
-    #[Route('/videojuegos/{slug}', name: 'app_juego')]
+    #[Route('/videojuegos/juego/{slug}', name: 'app_juego')]
     public function mostrarJuego(VideojuegoRepository $videojuegoRepository, $slug, ListaJuegosRepository $listaJuegosRepository): Response
     {
         $videojuego = $videojuegoRepository->findOneBy(['slug' => $slug]);

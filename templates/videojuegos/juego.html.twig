@@ -98,6 +98,7 @@
 										<p class="datos">
 											{{mensaje}}
 										</p>
+										<a href="{{path('app_perfil')}}" class="btn btn-primary">Back to perfil</a>
 									{% else %}
 										<p class="card-text">
 											<a href="{{path('app_videojuego_juego_añadir', {slug: videojuego.slug})}}" class="mt-auto btn btn-primary">Añadir a la lista</a>
@@ -125,8 +126,8 @@
 									{{comentario.comentario}}.
 								</p>
 							{% endfor %}
-							{% else %}
-								<span class="text-center datos">Aun no hay comentarios.</span>
+						{% else %}
+							<span class="text-center datos">Aun no hay comentarios.</span>
 						{% endif %}
 					</div>
 				</div>
