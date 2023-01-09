@@ -8,6 +8,7 @@
 {% block javascript %}
 	{{parent()}}
 	<script src="{{asset('prueba/videojuegos.js')}}"></script>
+	<!--<script src="{{asset('prueba/videojuegosv2.js')}}"></script>-->
 {% endblock %}
 
 {% block body %}
@@ -25,7 +26,9 @@
 				</button>
 				<div class="dropdown-menu" aria-labelledby="filtrar">
 					{% for genero in generos %}
-						<a class="text-secondary" href="{{path('app_videojuegos_genero', {genero: genero})}}">{{genero}}</a><br>
+						<form method="post">
+							<a class="text-secondary" href="{{path('app_videojuegos_genero', {genero: genero})}}">{{genero}}</a><br>
+						</form>
 					{% endfor %}
 				</div>
 			</div>

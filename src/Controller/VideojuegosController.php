@@ -21,11 +21,21 @@ class VideojuegosController extends ControladorBase
         ]);
     }
 
-    #[Route('/videojuegos{genero}', name: 'app_videojuegos_genero')]
-    public function mostrarJuegosXGenero($genero, VideojuegoRepository $videojuegoRepository, GeneroRepository $generoRepository): Response
+    #[Route('/videojuegos/{genero}', name: 'app_videojuegos_genero')]
+    public function mostrarJuegosXGenero(VideojuegoRepository $videojuegoRepository, GeneroRepository $generoRepository, $genero): Response
     {
-        $videojuegos = $videojuegoRepository->findBy(['genero' => $genero]);
-        return $this->render('videojuegos/videojuegos.html.twig', [
+
+        $allGames = $videojuegoRepository->findAll();
+        $videojuegos = array();
+        foreach ($allGames as $videojuego) {
+            $generos = $videojuego->getGenero()->toArray();
+            foreach ($generos as $generoJuego) {
+                if ($genero == $generoJuego) {
+                    array_push($videojuegos, $videojuego);
+                }
+            }
+        }
+        return $this->render('videojuegos/videojuegosv2.html.twig', [
             'videojuegos' => $videojuegos,
             'generos' => $generoRepository->findAll(),
         ]);
