@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block javascript %}
+	{{parent()}}
+{% endblock %}
+{% block body %}
+	{% block text %}
+		<div class="col-xs-12 col-9">
+			<div data-controller="counter"></div>
+		</div>
+	{% endblock %}
+{% endblock %}

@@ -66,4 +66,10 @@ class BootstrapThemeController extends ControladorBase
     {
         return $this->render('bootstrap/prueba.html.twig');
     }
+ 
+    #[Route('/stimulus', name: 'app_stimulus')]
+    public function stimulus(): Response
+    {
+        return $this->render('stimulus/stimulus.html.twig');
+    }
 }
