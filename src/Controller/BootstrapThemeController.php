@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Repository\ListaJuegosRepository;
 use App\Repository\VideojuegoRepository;
+use Faker\Guesser\Name;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -72,8 +74,26 @@ class BootstrapThemeController extends ControladorBase
     {
         return $this->render('stimulus/stimulus.html.twig');
     }
+    #[Route('/ejAjax', name: 'app_ejAjax')]
+    public function ejemplo(Request $request): Response
+    {
+        $query = $request->query->get('q');
+        $preview = $request->query->get('preview');
+        if ($query) {
+            return $this->render('stimulus/ejAjax.html.twig', [
+                'query' => $query,
+                //'preview' => $preview,
+            ]);
+        }else{
+            $query= "Silksongn't";
+        }
+        return $this->render('stimulus/ejAjax.html.twig', [
+            'query' =>$query,
+        ]);
+        
+    }
 
-    #[Route('/base')]
+    #[Route('/base', name: 'app_base')]
     public function base(): Response
     {
         return $this->render('base.html.twig');

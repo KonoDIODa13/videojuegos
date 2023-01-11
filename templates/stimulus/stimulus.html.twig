@@ -6,8 +6,24 @@
 		{{parent()}}
 	{% endblock %}
 	{% block text %}
-		<div>
-			<div data-controller="counter">pensabas que no funcionaba eh</div>
+		<div class="container-fluid">
+			<div data-controller="counter">
+				<button class="btn btn-info btn-sm" data-action="counter#increment">
+					Click me!
+				</button>
+				<p class="datos">
+					I 've been clicked
+					<span class="text-info" data-counter-target="count">0</span>
+					times!
+				</p>
+			</div>
+			<form>
+				<div class="input-group" {{ stimulus_controller('search-preview', { url: path('app_ejAjax') } ) }}>
+					<input type="text" data-action="search-preview#onSearchInput">
+					<br>
+					<div class="search-preview" data-search-preview-target="result">aqui la respuesta</div>
+				</div>
+			</form>
 		</div>
 	{% endblock %}
 
