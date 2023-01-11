@@ -17,7 +17,8 @@
 					times!
 				</p>
 			</div>
-			<form>
+			<hr>
+			<form {{stimulus_controller('submit-confirm', { title: "Remove this item?", icon: "warning", confirmButtonText: "Yes, remove it", submitAsync: true,} )}} data-action="submit-confirm#onSubmit">
 				<div class="input-group" {{ stimulus_controller('search-preview', { url: path('app_ejAjax') } ) }}>
 					<input type="text" data-action="search-preview#onSearchInput">
 					<br>

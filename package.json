@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.3",
-        "stimulus-use": "^0.51.1"
+        "stimulus-use": "^0.51.1",
+        "sweetalert2": "^11.6.16"
     }
 }
