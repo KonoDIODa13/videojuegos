@@ -1,5 +1,6 @@
 import React from "react";
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import RepLogApp from "./RepLog/RepLogApp";
 
 // se puede hacer pero es un coñazo
 /*const el = React.createElement(
@@ -10,8 +11,11 @@ import ReactDom from 'react-dom';
 );*/
 
 // mejor asi weee pero el watch se mosquea. Instalar paquete y descomentar en el webpack
-const el = <h2>Lift Stuff! <span>❤️</span></h2>;
+//const el = <h2>Lift Stuff! <span>❤️</span></h2>;
 
-console.log(el);
 
-ReactDom.render(el, document.getElementById('lift-stuff-app'));
+const root = createRoot(document.getElementById('root'));
+
+console.log(<RepLogApp />);
+root.render(<RepLogApp />)
+//ReactDom.render(<RepLogApp />, document.getElementById('lift-stuff-app'));
