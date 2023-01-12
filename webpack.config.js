@@ -21,6 +21,8 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    // React
+    .addEntry('rep_log_react', './assets/js/rep_log_react.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -46,9 +48,9 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // configure Babel
-    .configureBabel((config) => {
+    /*.configureBabel((config) => {
         config.plugins.push('@babel/a-babel-plugin');
-    })
+    })*/
 
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
@@ -63,7 +65,7 @@ Encore
     //.enableTypeScriptLoader()
 
     // uncomment if you use React
-    //.enableReactPreset()
+    .enableReactPreset()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher

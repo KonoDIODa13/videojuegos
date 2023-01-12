@@ -84,18 +84,23 @@ class BootstrapThemeController extends ControladorBase
                 'query' => $query,
                 //'preview' => $preview,
             ]);
-        }else{
-            $query= "Silksongn't";
+        } else {
+            $query = "Silksongn't";
         }
         return $this->render('stimulus/ejAjax.html.twig', [
-            'query' =>$query,
+            'query' => $query,
         ]);
-        
     }
 
     #[Route('/base', name: 'app_base')]
     public function base(): Response
     {
         return $this->render('base.html.twig');
+    }
+
+    #[Route('/react', name: 'app_react')]
+    public function react(): Response
+    {
+        return $this->render('react/react.html.twig');
     }
 }
