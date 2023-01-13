@@ -7,15 +7,17 @@ import RepLogApp from "./RepLog/RepLogApp";
     'h2',
     null,
     'Lift History!',
-    React.createElement('span', null, '❤️')
+    React.createElement('span', null, '🦖')
 );*/
 
 // mejor asi weee pero el watch se mosquea. Instalar paquete y descomentar en el webpack
-//const el = <h2>Lift Stuff! <span>❤️</span></h2>;
-
+//const el = <h2>Lift Stuff! <span>🦖</span></h2>;
 
 const root = createRoot(document.getElementById('root'));
+const shouldShowDino = true;
 
-console.log(<RepLogApp />);
-root.render(<RepLogApp />)
-//ReactDom.render(<RepLogApp />, document.getElementById('lift-stuff-app'));
+//console.log(<RepLogApp />);
+
+root.render(
+    <RepLogApp withDino={shouldShowDino} />,
+);

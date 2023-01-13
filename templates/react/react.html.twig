@@ -9,50 +9,51 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<div class="row">
-			<div id="root"></div>
-		</div>
-		<br><br><br><br><br><br>
-		<hr/>
-		<div class="row">
-			<div class="col-md-7 js-rep-log-table">
-				<h2>
-					Lift History
-				</h2>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>What</th>
-							<th>How many times?</th>
-							<th>Weight</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-					<tfoot>
-						<tr>
-							<td>&nbsp;</td>
-							<th>Total</th>
-							<th class="js-total-weight"></th>
-							<td>&nbsp;</td>
-						</tr>
-					</tfoot>
-				</table>
-				<div class="js-new-rep-log-form-wrapper"></div>
+	{% block text %}
+		<section class="container-fluid">
+			<div class="row">
+				<div id="root"></div>
 			</div>
-			<div class="col-md-5">
-				<div class="leaderboard">
-					<h2
-						class="text-center">
-						{#
-																												                    <img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}" />
-																												                    #}
-						Leaderboard
-					</h2>
-				</div>
-			</div>
-		</div>
-	</section>
-
+			<br><br><br><br><br><br>
+			<hr/>
+			<!--<div class="row">
+								<div class="col-md-7 js-rep-log-table">
+									<h2>
+										Lift History
+									</h2>
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>What</th>
+												<th>How many times?</th>
+												<th>Weight</th>
+												<th>&nbsp;</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										<tfoot>
+											<tr>
+												<td>&nbsp;</td>
+												<th>Total</th>
+												<th class="js-total-weight"></th>
+												<td>&nbsp;</td>
+											</tr>
+										</tfoot>
+									</table>
+									<div class="js-new-rep-log-form-wrapper"></div>
+								</div>
+								<div class="col-md-5">
+									<div class="leaderboard">
+										<h2
+											class="text-center">
+											{#
+																																	                    <img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}" />
+																																	                    #}
+											Leaderboard
+										</h2>
+									</div>
+								</div>
+							</div>-->
+		</section>
+	{% endblock %}
 {% endblock %}
