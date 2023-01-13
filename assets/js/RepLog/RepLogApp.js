@@ -14,6 +14,7 @@ export default class RepLogApp extends Component {
 
     handleRowClick(repLogId) {
         this.setState({ highlightedRowId: repLogId });
+        console.log("se ha cambiao, solo tienes que mirar en el compoent del F12 bobo.");
     }
 
     render() {
