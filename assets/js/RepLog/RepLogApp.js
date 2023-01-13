@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RepLogList from './RepLogList';
 
 export default class RepLogApp extends Component {
 
@@ -8,11 +9,11 @@ export default class RepLogApp extends Component {
         this.state = {
             highlightedRowId: null
         };
+        this.handleRowClick = this.handleRowClick.bind(this);
     }
 
-    handleRowClick(repLogId, event) {
+    handleRowClick(repLogId) {
         this.setState({ highlightedRowId: repLogId });
-        console.log(this.state);
     }
 
     render() {
@@ -22,13 +23,6 @@ export default class RepLogApp extends Component {
         if (withDino) {
             dino = <span>🦖</span>;
         }
-
-        const repLogs = [
-            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
-            { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
-            { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
-
-        ];
 
         return (
             <div className='col-md-7'>
@@ -44,18 +38,10 @@ export default class RepLogApp extends Component {
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {repLogs.map((repLog) => (
-                            <tr key={repLog.id}
-                                className={highlightedRowId === repLog.id ? 'info' : ''}
-                                onClick={(event) => this.handleRowClick(repLog.id, event)}>
-                                <td>{repLog.itemLabel}</td>
-                                <td>{repLog.reps}</td>
-                                <td>{repLog.totalWeightLifted}</td>
-                                <td>...</td>
-                            </tr>
-                        ))}
-                    </tbody>
+                    <RepLogList
+                        highlightedRowId={highlightedRowId}
+                        onRowClick={this.handleRowClick}
+                    />
                     <tfoot>
                         <tr>
                             <td>&nbsp;</td>
