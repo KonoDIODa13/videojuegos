@@ -10,6 +10,11 @@ export default class RepLogApp extends Component {
         };
     }
 
+    handleRowClick(repLogId, event) {
+        this.setState({ highlightedRowId: repLogId });
+        console.log(this.state);
+    }
+
     render() {
         const { highlightedRowId } = this.state;
         const { withDino } = this.props;
@@ -24,20 +29,8 @@ export default class RepLogApp extends Component {
             { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
 
         ];
-        // se puede meter directamente en el dom pero esto también funciona añadiendo en el <tbody> {repLogElements}</tbody>
-        /*const repLogElements = repLogs.map((repLog) => {
-            return (
-                <tr key={repLog.id}>
-                    <td>{repLog.itemLabel}</td>
-                    <td>{repLog.reps}</td>
-                    <td>{repLog.totalWeightLifted}</td>
-                    <td>...</td>
-                </tr>
-            )
-        });*/
 
         return (
-            // <React.StrictMode>
             <div className='col-md-7'>
                 <h2>
                     {dino} Like a dino! {dino}
@@ -53,7 +46,9 @@ export default class RepLogApp extends Component {
                     </thead>
                     <tbody>
                         {repLogs.map((repLog) => (
-                            <tr key={repLog.id} className={highlightedRowId === repLog.id ? 'info' : ''}>
+                            <tr key={repLog.id}
+                                className={highlightedRowId === repLog.id ? 'info' : ''}
+                                onClick={(event) => this.handleRowClick(repLog.id, event)}>
                                 <td>{repLog.itemLabel}</td>
                                 <td>{repLog.reps}</td>
                                 <td>{repLog.totalWeightLifted}</td>
@@ -103,8 +98,7 @@ export default class RepLogApp extends Component {
                         it!
                     </button>
                 </form>
-            </div>
-            // </React.StrictMode>
+            </div >
         );
     }
 }
