@@ -48,9 +48,19 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // configure Babel
-    /*.configureBabel((config) => {
-        config.plugins.push('@babel/a-babel-plugin');
-    })*/
+    .configureBabel((BabelConfig) => {
+        //esto no va a furrular
+        /*BabelConfig.env = {
+            "production": {
+                "plugins": ["tranform-react-remove-prop-types"]
+            }
+        }*/
+        if (Encore.isProduction()) {
+            BabelConfig.plugins.push(
+                'tranform-react-remove-prop-types'
+            );
+        }
+    })
 
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {

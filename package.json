@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@babel/preset-react": "^7.0.0",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
         "bootstrap": "^5.2.3",
         "eslint": "^8.31.0",
         "eslint-plugin-react": "^7.32.0",
