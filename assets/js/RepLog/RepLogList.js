@@ -1,7 +1,6 @@
 import React from "react";
-
-export default function RepLogLists(props) {
-
+import PropTypes from 'prop-types';
+export default function RepLogList(props) {
 
     const { highlightedRowId, onRowClick } = props;
     const repLogs = [
@@ -25,4 +24,9 @@ export default function RepLogLists(props) {
         </tbody>
     );
 
+}
+
+RepLogList.propTypes = {
+    highlightedRowId: PropTypes.any,
+    onRowClick: PropTypes.func.isRequired
 }

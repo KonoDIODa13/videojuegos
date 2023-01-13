@@ -1,6 +1,6 @@
 import React from "react";
-import RepLogLists from "./RepLogList";
-
+import RepLogList from "./RepLogList";
+import { PropTypes } from "prop-types";
 export default function RepLogs(props) {
     const { withDino, highlightedRowId, onRowClick } = props;
 
@@ -22,7 +22,7 @@ export default function RepLogs(props) {
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <RepLogLists
+                <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
                 />
@@ -71,4 +71,9 @@ export default function RepLogs(props) {
         </div >
     );
 
+}
+RepLogs.propTypes= {
+    withDino: PropTypes.bool,
+    highlightedRowId: PropTypes.any,
+    onRowClick: PropTypes.func.isRequired
 }
