@@ -1,13 +1,30 @@
 import React from "react";
 import RepLogList from "./RepLogList";
 import { PropTypes } from "prop-types";
+
+function calculateTotalWeightLifted(repLogs) {
+    let total = 0;
+    for (let repLog of repLogs) {
+        total += repLog.totalWeightLifted;
+    }
+    return total;
+}
+
 export default function RepLogs(props) {
-    const { withDino, highlightedRowId, onRowClick } = props;
+    const { withDino, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
 
     let dino = "";
     if (withDino) {
         dino = <span>🦖</span>;
     }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        console.log("Do you believe in gravity?");
+        //console.log(event.target);
+        onNewItemSubmit('Coffee Cup', event.target.elements.namedItem("reps").value);
+    }
+
     return (
         <div className='col-md-7'>
             <h2>
@@ -18,24 +35,25 @@ export default function RepLogs(props) {
                     <tr>
                         <th>What</th>
                         <th>How many times?</th>
-                        <th>Weight</th>
+                        <th>Weight (kg)</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
+                    repLogs={repLogs}
                 />
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th>TODO</th>
+                        <th>{calculateTotalWeightLifted(repLogs)} kg</th>
                         <td>&nbsp;</td>
                     </tr>
                 </tfoot>
             </table>
-            <form className='form-inline'>
+            <form className='form-inline' onSubmit={handleFormSubmit}>
                 <div className='form-group'>
                     <label className='sr-only control-label required'
                         htmlFor="rep_log_item">
@@ -72,8 +90,9 @@ export default function RepLogs(props) {
     );
 
 }
-RepLogs.propTypes= {
+RepLogs.propTypes = {
     withDino: PropTypes.bool,
     highlightedRowId: PropTypes.any,
-    onRowClick: PropTypes.func.isRequired
+    onRowClick: PropTypes.func.isRequired,
+    repLogs: PropTypes.array.isRequired
 }
