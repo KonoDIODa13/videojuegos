@@ -1,28 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class RepLogList extends Component {
+export default function RepLogLists(props) {
 
-    render() {
-        const { highlightedRowId, onRowClick } = this.props;
-        const repLogs = [
-            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
-            { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
-            { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
-        ];
 
-        return (
-            <tbody>
-                {repLogs.map((repLog) => (
-                    <tr key={repLog.id}
-                        className={highlightedRowId === repLog.id ? 'info' : ''}
-                        onClick={() => onRowClick(repLog.id)}>
-                        <td>{repLog.itemLabel}</td>
-                        <td>{repLog.reps}</td>
-                        <td>{repLog.totalWeightLifted}</td>
-                        <td>...</td>
-                    </tr>
-                ))}
-            </tbody>
-        );
-    }
+    const { highlightedRowId, onRowClick } = props;
+    const repLogs = [
+        { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
+        { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
+        { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
+    ];
+
+    return (
+        <tbody>
+            {repLogs.map((repLog) => (
+                <tr key={repLog.id}
+                    className={highlightedRowId === repLog.id ? 'info' : ''}
+                    onClick={() => onRowClick(repLog.id)}>
+                    <td>{repLog.itemLabel}</td>
+                    <td>{repLog.reps}</td>
+                    <td>{repLog.totalWeightLifted}</td>
+                    <td>...</td>
+                </tr>
+            ))}
+        </tbody>
+    );
+
 }
