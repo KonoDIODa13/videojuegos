@@ -14,13 +14,15 @@ function calculateTotalWeightLifted(repLogs) {
 }
 
 export default function RepLogs(props) {
-    const { withDino,
+    const {
+        withDino,
         highlightedRowId,
         onRowClick,
         repLogs,
         onAddRepLog,
         numberOfDinos,
-        onDinoChange
+        onDinoChange,
+        onDeleteRepLog,
     } = props;
 
     let dino = "";
@@ -29,7 +31,6 @@ export default function RepLogs(props) {
     }
 
     return (
-
         <div className='col-md-7 mt-3'>
             <h2>
                 Like a dino! {dino}
@@ -52,6 +53,7 @@ export default function RepLogs(props) {
                 <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
+                    onDeleteRepLog={onDeleteRepLog}
                     repLogs={repLogs}
                 />
                 <tfoot>
@@ -66,6 +68,7 @@ export default function RepLogs(props) {
             <div className="row">
                 <div className="col-md-6">
                     <RepLogCreator
+                        highlightedRowId={highlightedRowId}
                         onAddRepLog={onAddRepLog}
                     />
                 </div>
@@ -81,4 +84,5 @@ RepLogs.propTypes = {
     repLogs: PropTypes.array.isRequired,
     numberOfDinos: PropTypes.number.isRequired,
     onDinoChange: PropTypes.func.isRequired,
+    onDeleteRepLog: PropTypes.func.isRequired,
 }

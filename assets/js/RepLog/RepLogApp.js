@@ -11,25 +11,24 @@ export default class RepLogApp extends Component {
         this.state = {
             highlightedRowId: null,
             repLogs: [
-                { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
-                { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
-                { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
+                { id: uuid(), reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
+                { id: uuid(), reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
+                { id: uuid(), reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
             ],
-            numberOfDinos: number = 1
+            numberOfDinos: 1
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
         this.handleDinoChange = this.handleDinoChange.bind(this);
+        this.handleDeleteRepLog = this.handleDeleteRepLog.bind(this);
     }
 
     handleRowClick(repLogId) {
         this.setState({ highlightedRowId: repLogId });
-        //console.log("se ha cambiado, solo tienes que mirar en el compoent del F12 bobo.");
     }
 
     handleAddRepLog(itemLabel, reps) {
-        //const repLogs = this.state.repLogs;
         const newRep = {
             id: uuid(),
             reps: reps,
@@ -40,13 +39,19 @@ export default class RepLogApp extends Component {
             const newRepLogs = [...prevState.repLogs, newRep];
             return { repLogs: newRepLogs };
         })
-        /*repLogs.push(newRep);
-        this.setState({ repLogs: repLogs });*/
     }
 
     handleDinoChange(dinoCount) {
         this.setState({
             numberOfDinos: dinoCount
+        });
+    }
+
+    handleDeleteRepLog(id) {
+        this.setState((prevState) => {
+            return {
+                repLogs: this.state.repLogs.filter(repLog => repLog.id !== id)
+            };
         });
     }
 
@@ -58,6 +63,7 @@ export default class RepLogApp extends Component {
             onRowClick={this.handleRowClick}
             onAddRepLog={this.handleAddRepLog}
             onDinoChange={this.handleDinoChange}
+            onDeleteRepLog={this.handleDeleteRepLog}
         />
 
     }
