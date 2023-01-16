@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RepLogs from './RepLogs';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import { v4 as uuid } from "uuid";
 
 export default class RepLogApp extends Component {
@@ -15,7 +15,7 @@ export default class RepLogApp extends Component {
                 { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
                 { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
             ],
-            numberOfDinos: 1
+            numberOfDinos: number = 1
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
