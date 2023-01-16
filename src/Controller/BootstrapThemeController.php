@@ -103,4 +103,8 @@ class BootstrapThemeController extends ControladorBase
     {
         return $this->render('react/react.html.twig');
     }
+    #[Route('/rep')]
+    public function api(){
+        return $this->render('bootstrap/rep.json');
+    }
 }

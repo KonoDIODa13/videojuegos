@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "reps": 25,
+        "itemLabel": "My Laptop",
+        "totalWeightLifted": 112.5
+    },
+    {
+        "id": 2,
+        "reps": 10,
+        "itemLabel": "BigDioMonkey",
+        "totalWeightLifted": 180
+    },
+    {
+        "id": 3,
+        "reps": 4,
+        "itemLabel": "Uwu",
+        "totalWeightLifted": 72
+    }
+]
