@@ -9,6 +9,10 @@ export default class RepLogCreator extends Component {
         this.quantityInput = React.createRef();
         this.itemSelected = React.createRef();
 
+        this.state = {
+            quantityInputError: ""
+        }
+
         this.itemOptions = [
             { id: 'cat', text: 'Cat' },
             { id: 'big_dio_monkey', text: 'Big Dio Monkey' },
@@ -29,6 +33,9 @@ export default class RepLogCreator extends Component {
 
         if (quantityInput.value <= 0) {
             console.log(quantityInput.value);
+            this.setState({
+                quantityInputError: "Ponga usted un numero mayor que 0."
+            });
             return;
         }
 
@@ -38,12 +45,17 @@ export default class RepLogCreator extends Component {
         );
         quantityInput.value = "";
         itemSelected.selectedIndex = 0;
+
+        this.setState({
+            quantityInputError: ""
+        });
+
     }
     render() {
-
+        const { quantityInputError } = this.state;
         return (
             <div>
-                <form className='form-inline' onSubmit={this.handleFormSubmit}>
+                <form onSubmit={this.handleFormSubmit}>
                     <div className='form-group'>
                         <label className='sr-only control-label required'
                             htmlFor="rep_log_item">
@@ -61,17 +73,20 @@ export default class RepLogCreator extends Component {
                             })}
                         </select>
                     </div>
-                    <br />
-                    <div className="form-group">
-                        <label className="sr-only control-label required"
-                            htmlFor="rep_log_reps">
-                            How many times?
-                        </label>
-                        <input type="number" id="rep_log_reps"
-                            name="reps" required="required"
-                            placeholder="How many times?"
-                            className="form-control"
-                            ref={this.quantityInput} />
+                    <div className={`form-group ${quantityInputError ? 'has-error' : ''}`}>
+                        <br />
+                        <div className="form-group">
+                            <label className="sr-only control-label required"
+                                htmlFor="rep_log_reps">
+                                How many times?
+                            </label>
+                            <input type="number" id="rep_log_reps"
+                                name="reps" required="required"
+                                placeholder="How many times?"
+                                className="form-control"
+                                ref={this.quantityInput} />
+                            {quantityInputError && <span className='help-block'>{quantityInputError}</span>}
+                        </div>
                     </div>
                     <br />
                     <button type="submit" className="btn btn-primary">I Lifted
