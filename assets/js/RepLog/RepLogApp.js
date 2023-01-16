@@ -14,11 +14,13 @@ export default class RepLogApp extends Component {
                 { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
                 { id: 2, reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
                 { id: 8, reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
-            ]
+            ],
+            numberOfDinos: 1
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
+        this.handleDinoChange = this.handleDinoChange.bind(this);
     }
 
     handleRowClick(repLogId) {
@@ -42,6 +44,12 @@ export default class RepLogApp extends Component {
         this.setState({ repLogs: repLogs });*/
     }
 
+    handleDinoChange(dinoCount) {
+        this.setState({
+            numberOfDinos: dinoCount
+        });
+    }
+
     render() {
 
         return <RepLogs
@@ -49,6 +57,7 @@ export default class RepLogApp extends Component {
             {...this.state}
             onRowClick={this.handleRowClick}
             onAddRepLog={this.handleAddRepLog}
+            onDinoChange={this.handleDinoChange}
         />
 
     }

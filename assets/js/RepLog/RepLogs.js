@@ -5,24 +5,40 @@ import RepLogCreator from "./RepLogCreator";
 
 function calculateTotalWeightLifted(repLogs) {
     let total = 0;
+
     for (let repLog of repLogs) {
         total += repLog.totalWeightLifted;
     }
+
     return total;
 }
 
 export default function RepLogs(props) {
-    const { withDino, highlightedRowId, onRowClick, repLogs, onAddRepLog } = props;
+    const { withDino,
+        highlightedRowId,
+        onRowClick,
+        repLogs,
+        onAddRepLog,
+        numberOfDinos,
+        onDinoChange
+    } = props;
 
     let dino = "";
     if (withDino) {
-        dino = <span>🦖</span>;
+        dino = <span>{'🦖'.repeat(numberOfDinos)}</span>;
     }
 
     return (
-        <div className='col-md-7'>
+
+        <div className='col-md-7 mt-3'>
             <h2>
-                {dino} Like a dino! {dino}
+                Like a dino! {dino}
+                <input
+                    type="range"
+                    value={numberOfDinos}
+                    onChange={(e) => {
+                        onDinoChange(e.target.value);
+                    }} />
             </h2>
             <table className='table table-striped'>
                 <thead>
@@ -62,5 +78,7 @@ RepLogs.propTypes = {
     withDino: PropTypes.bool,
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
-    repLogs: PropTypes.array.isRequired
+    repLogs: PropTypes.array.isRequired,
+    numberOfDinos: PropTypes.number.isRequired,
+    onDinoChange: PropTypes.func.isRequired,
 }
