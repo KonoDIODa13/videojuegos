@@ -3,31 +3,32 @@ import RepLogs from './RepLogs';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from "uuid";
 import { getRepLogs } from '../api/rep_log_api';
-import { data } from 'jquery';
 
 export default class RepLogApp extends Component {
-
     constructor(props) {
         super(props);
 
-        getRepLogs().then((data) => {
-            console.log(data);
-        })
-
         this.state = {
             highlightedRowId: null,
-            repLogs: [
-                { id: uuid(), reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
-                { id: uuid(), reps: 10, itemLabel: 'Big Dio Monkey', totalWeightLifted: 180 },
-                { id: uuid(), reps: 4, itemLabel: 'Uwu', totalWeightLifted: 72 }
-            ],
-            numberOfDinos: 1
+            repLogs: [],
+            numberOfDinos: 1,
+            isLoaded: false,
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
         this.handleDinoChange = this.handleDinoChange.bind(this);
         this.handleDeleteRepLog = this.handleDeleteRepLog.bind(this);
+    }
+
+    componentDidMount() {
+        getRepLogs().then((data) => {
+            console.log(data)
+            this.setState({
+                repLogs: data,
+                isLoaded: true
+            })
+        })
     }
 
     handleRowClick(repLogId) {

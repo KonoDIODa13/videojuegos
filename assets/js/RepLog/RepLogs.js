@@ -23,6 +23,7 @@ export default function RepLogs(props) {
         numberOfDinos,
         onDinoChange,
         onDeleteRepLog,
+        isLoaded,
     } = props;
 
     let dino = "";
@@ -55,6 +56,7 @@ export default function RepLogs(props) {
                     onRowClick={onRowClick}
                     onDeleteRepLog={onDeleteRepLog}
                     repLogs={repLogs}
+                    isLoaded={isLoaded}
                 />
                 <tfoot>
                     <tr>
@@ -85,4 +87,5 @@ RepLogs.propTypes = {
     numberOfDinos: PropTypes.number.isRequired,
     onDinoChange: PropTypes.func.isRequired,
     onDeleteRepLog: PropTypes.func.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
 }
