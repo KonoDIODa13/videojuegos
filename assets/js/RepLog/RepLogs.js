@@ -12,7 +12,7 @@ function calculateTotalWeightLifted(repLogs) {
 }
 
 export default function RepLogs(props) {
-    const { withDino, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
+    const { withDino, highlightedRowId, onRowClick, repLogs, onAddRepLog } = props;
 
     let dino = "";
     if (withDino) {
@@ -49,7 +49,7 @@ export default function RepLogs(props) {
             </table>
 
             <RepLogCreator
-                onNewItemSubmit={onNewItemSubmit}
+                onAddRepLog={onAddRepLog}
             />
         </div >
     );

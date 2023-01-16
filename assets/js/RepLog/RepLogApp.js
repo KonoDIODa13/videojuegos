@@ -18,27 +18,28 @@ export default class RepLogApp extends Component {
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
-        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
+        this.handleAddRepLog = this.handleAddRepLog.bind(this);
     }
 
     handleRowClick(repLogId) {
         this.setState({ highlightedRowId: repLogId });
-        console.log("se ha cambiado, solo tienes que mirar en el compoent del F12 bobo.");
+        //console.log("se ha cambiado, solo tienes que mirar en el compoent del F12 bobo.");
     }
 
-    handleNewItemSubmit(itemLabel, reps) {
-        //console.log('TODO - handle this.new data');
-        //console.log(itemLabel, reps);
-        const repLogs = this.state.repLogs;
-       // console.log(repLogs);
+    handleAddRepLog(itemLabel, reps) {
+        //const repLogs = this.state.repLogs;
         const newRep = {
             id: uuid(),
             reps: reps,
             itemLabel: itemLabel,
             totalWeightLifted: Math.floor(Math.random() * 50)
         }
-        repLogs.push(newRep);
-        this.setState({ repLogs: repLogs });
+        this.setState(prevState => {
+            const newRepLogs = [...prevState.repLogs, newRep];
+            return { repLogs: newRepLogs };
+        })
+        /*repLogs.push(newRep);
+        this.setState({ repLogs: repLogs });*/
     }
 
     render() {
@@ -47,7 +48,7 @@ export default class RepLogApp extends Component {
             {...this.props}
             {...this.state}
             onRowClick={this.handleRowClick}
-            onNewItemSubmit={this.handleNewItemSubmit}
+            onAddRepLog={this.handleAddRepLog}
         />
 
     }

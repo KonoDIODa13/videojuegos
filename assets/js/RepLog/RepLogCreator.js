@@ -9,18 +9,30 @@ export default class RepLogCreator extends Component {
         this.quantityInput = React.createRef();
         this.itemSelected = React.createRef();
 
+        this.itemOptions = [
+            { id: 'cat', text: 'Cat' },
+            { id: 'big_dio_monkey', text: 'Big Dio Monkey' },
+            { id: 'laptop', text: 'My Laptop' },
+            { id: 'coffee_cup', text: 'Coffee Cup' }
+        ];
+
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
 
-        const { onNewItemSubmit } = this.props;
+        const { onAddRepLog } = this.props;
 
         const quantityInput = this.quantityInput.current;
         const itemSelected = this.itemSelected.current;
 
-        onNewItemSubmit(
+        if (quantityInput.value <= 0) {
+            console.log(quantityInput.value);
+            return;
+        }
+
+        onAddRepLog(
             itemSelected.options[itemSelected.selectedIndex].text,
             quantityInput.value
         );
@@ -44,10 +56,9 @@ export default class RepLogCreator extends Component {
                             ref={this.itemSelected}>
 
                             <option value="">What did you lift?</option>
-                            <option value="Cat">Cat</option>
-                            <option value="fat_Dio">Big Dio Monkey</option>
-                            <option value="laptop">My Laptop</option>
-                            <option value="coffee_cup">Coffee Cup</option>
+                            {this.itemOptions.map(option => {
+                                return <option value={option.id} key={option.id}>{option.text}</option>
+                            })}
                         </select>
                     </div>
                     <br />
@@ -73,5 +84,5 @@ export default class RepLogCreator extends Component {
 }
 
 RepLogCreator.propTypes = {
-    onNewItemSubmit: PropTypes.func.isRequired
+    onAddRepLog: PropTypes.func.isRequired
 }
