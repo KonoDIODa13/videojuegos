@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RepLogs from './RepLogs';
 import PropTypes from 'prop-types';
+import { v4 as uuid } from "uuid";
+
 export default class RepLogApp extends Component {
 
     constructor(props) {
@@ -16,6 +18,7 @@ export default class RepLogApp extends Component {
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
+        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
     }
 
     handleRowClick(repLogId) {
@@ -23,9 +26,19 @@ export default class RepLogApp extends Component {
         console.log("se ha cambiado, solo tienes que mirar en el compoent del F12 bobo.");
     }
 
-    handleNewItemSubmit(itemName, reps) {
-        console.log('TODO - handle this.new data');
-        console.log(itemName, reps)
+    handleNewItemSubmit(itemLabel, reps) {
+        //console.log('TODO - handle this.new data');
+        //console.log(itemLabel, reps);
+        const repLogs = this.state.repLogs;
+       // console.log(repLogs);
+        const newRep = {
+            id: uuid(),
+            reps: reps,
+            itemLabel: itemLabel,
+            totalWeightLifted: Math.floor(Math.random() * 50)
+        }
+        repLogs.push(newRep);
+        this.setState({ repLogs: repLogs });
     }
 
     render() {

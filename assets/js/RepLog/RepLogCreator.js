@@ -6,14 +6,26 @@ export default class RepLogCreator extends Component {
     constructor(props) {
         super(props);
 
+        this.quantityInput = React.createRef();
+        this.itemSelected = React.createRef();
+
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
+
         const { onNewItemSubmit } = this.props;
-        //console.log("Do you believe in gravity?");
-        onNewItemSubmit('Coffee Cup', event.target.elements.namedItem("reps").value);
+
+        const quantityInput = this.quantityInput.current;
+        const itemSelected = this.itemSelected.current;
+
+        onNewItemSubmit(
+            itemSelected.options[itemSelected.selectedIndex].text,
+            quantityInput.value
+        );
+        quantityInput.value = "";
+        itemSelected.selectedIndex = 0;
     }
     render() {
 
@@ -28,8 +40,10 @@ export default class RepLogCreator extends Component {
                         <select id="rep_log_item"
                             name="item"
                             required="required"
-                            className="form-control">
-                            <option value="" defaultValue={""}>What did you lift?</option>
+                            className="form-control"
+                            ref={this.itemSelected}>
+
+                            <option value="">What did you lift?</option>
                             <option value="Cat">Cat</option>
                             <option value="fat_Dio">Big Dio Monkey</option>
                             <option value="laptop">My Laptop</option>
@@ -45,7 +59,8 @@ export default class RepLogCreator extends Component {
                         <input type="number" id="rep_log_reps"
                             name="reps" required="required"
                             placeholder="How many times?"
-                            className="form-control" />
+                            className="form-control"
+                            ref={this.quantityInput} />
                     </div>
                     <br />
                     <button type="submit" className="btn btn-primary">I Lifted
