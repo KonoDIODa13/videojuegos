@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\GeneroRepository;
 use App\Repository\VideojuegoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +38,19 @@ class VideojuegosAdminController extends AbstractController
     {
         return $this->render("prueba/plataformas.json");
     }
+
+    #[Route('/generos')]
+    public function getGeneros(GeneroRepository $generoRepository)
+    {
+        $generos = array();
+        foreach ($generoRepository->findAll() as $array) {
+            $id = $array->getId();
+            $genero = $array->getGenero();
+            array_push($generos, ["id" => $id, "genero" => $genero]);
+        }
+        return $this->json($generos);
+    }
+
 
     #[Route('/mostrarDatos', name: 'uwu')]
     public function mostrarDatos(VideojuegoRepository $videojuegoRepository): Response

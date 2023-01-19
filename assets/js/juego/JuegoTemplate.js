@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import JuegoTabla from "./JuegoTabla";
+import JuegoForm from "./JuegoForm";
 
 export default function JuegoTemplate(props) {
 
     const {
         juegos,
-        isLoaded
+        isLoaded,
+        generos,
     } = props;
 
     return (
-        <div>
+        <div className="mb-4">
             <h1 className="text-center">Videojuegos</h1>
             <table className="table table-bordered bg-light mt-3">
                 <thead>
@@ -32,13 +34,14 @@ export default function JuegoTemplate(props) {
             </table>
             <hr />
             <JuegoForm
-
+                generos={generos}
             />
         </div>
     );
 }
 
-JuegoTabla.propTypes = {
+JuegoTemplate.propTypes = {
     juegos: PropTypes.array.isRequired,
+    generos: PropTypes.array.isRequired,
     isLoaded: PropTypes.bool.isRequired,
 }

@@ -12,6 +12,13 @@ export function getPlataformas() {
         });
 }
 
+export function getGeneros() {
+    return fetch('/generos')
+        .then(response => {
+            return response.json();
+        });
+}
+
 export function getJuegosXPlataformas() {
     return fetch('/juegos_plataformas')
         .then(response => {

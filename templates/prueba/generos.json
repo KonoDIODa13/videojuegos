@@ -1,0 +1,46 @@
+[
+	{
+		"id" : 1,
+		"genero" : "Accion"
+	},
+	{
+		"id" : 2,
+		"genero" : "Aventura"
+	},
+	{
+		"id" : 5,
+		"genero" : "Rol"
+	},
+	{
+		"id" : 8,
+		"genero" : "Metroidvania"
+	},
+	{
+		"id" : 9,
+		"genero" : "Plataformas"
+	},
+	{
+		"id" : 19,
+		"genero" : "RPG"
+	},
+	{
+		"id" : 21,
+		"genero" : "Exploracion"
+	},
+	{
+		"id" : 24,
+		"genero" : "Multiplayer"
+	},
+	{
+		"id" : 25,
+		"genero" : "Sandbox"
+	},
+	{
+		"id" : 26,
+		"genero" : "Hack and Slash"
+	},
+	{
+		"id" : 27,
+		"genero" : "Deportes"
+	}
+]

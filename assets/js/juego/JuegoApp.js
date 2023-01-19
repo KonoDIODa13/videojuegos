@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getData} from "./JuegoApi";
+import { getData, getGeneros } from "./JuegoApi";
 //import JuegoDatatable from './JuegoDatatable';
 import JuegoTemplate from "./JuegoTemplate";
 
@@ -12,6 +12,7 @@ export default class JuegoApp extends Component {
 
         this.state = {
             juegos: [],
+            generos: [],
             isLoaded: false
         };
     }
@@ -30,13 +31,19 @@ export default class JuegoApp extends Component {
             });
         })*/
 
+        getGeneros().then((data) => {
+            this.setState({
+                generos: data,
+            });
+        });
+
         /*getPlataformas().then((data) => {
             this.setState({
                 plataformas: data
             })
-        })
+        })*/
 
-        getJuegosXPlataformas().then((data) => {
+        /*getJuegosXPlataformas().then((data) => {
             this.setState({
                 juegos_plataformas: data
             })
