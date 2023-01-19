@@ -1,0 +1,66 @@
+[
+	{
+		"id" : 1,
+		"plataforma" : "PS"
+	},
+	{
+		"id" : 2,
+		"plataforma" : "PS2"
+	},
+	{
+		"id" : 3,
+		"plataforma" : "PS3"
+	},
+	{
+		"id" : 4,
+		"plataforma" : "PS4"
+	},
+	{
+		"id" : 5,
+		"plataforma" : "PS5"
+	},
+	{
+		"id" : 6,
+		"plataforma" : "Xbox"
+	},
+	{
+		"id" : 7,
+		"plataforma" : "Xbox 360"
+	},
+	{
+		"id" : 8,
+		"plataforma" : "Xbox One"
+	},
+	{
+		"id" : 9,
+		"plataforma" : "Xbox Series X/S"
+	},
+	{
+		"id" : 10,
+		"plataforma" : "Wii"
+	},
+	{
+		"id" : 11,
+		"plataforma" : "Wii U"
+	},
+	{
+		"id" : 12,
+		"plataforma" : "DS"
+	},
+	{
+		"id" : 13,
+		"plataforma" : "3DS"
+	},
+	{
+		"id" : 14,
+		"plataforma" : "Switch"
+	},
+	{
+		"id" : 15,
+		"plataforma" : "Steam Deck"
+	},
+	{
+		"id" : 16,
+		"plataforma" : "PC"
+	}
+]

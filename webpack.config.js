@@ -22,7 +22,8 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     // React
-    .addEntry('rep_log_react', './assets/js/rep_log_react.js')
+    //.addEntry('rep_log_react', './assets/js/rep_log_react.js')
+    .addEntry('videojuego', "./assets/js/videojuegos.js")
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

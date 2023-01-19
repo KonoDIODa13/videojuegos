@@ -10,4 +10,5 @@ import './styles/app.css';
 
 // start the Stimulus application
 //import './bootstrap';
-import './js/rep_log_react'
+//import './js/rep_log_react'
+import "./js/videojuegos"

@@ -1,0 +1,206 @@
+[
+	{
+		"videojuego_id" : 5,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 5,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 6,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 6,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 7,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 7,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 7,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 7,
+		"plataforma_id" : 9
+	},
+	{
+		"videojuego_id" : 7,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 8,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 8,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 8,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 8,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 9,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 10,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 10,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 10,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 11,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 12,
+		"plataforma_id" : 11
+	},
+	{
+		"videojuego_id" : 12,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 13,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 13,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 13,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 14,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 14,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 14,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 15,
+		"plataforma_id" : 12
+	},
+	{
+		"videojuego_id" : 16,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 16,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 16,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 17,
+		"plataforma_id" : 2
+	},
+	{
+		"videojuego_id" : 17,
+		"plataforma_id" : 3
+	},
+	{
+		"videojuego_id" : 17,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 17,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 18,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 3
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 7
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 9
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 11
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 13
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 19,
+		"plataforma_id" : 16
+	},
+	{
+		"videojuego_id" : 20,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 4
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 5
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 8
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 9
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 14
+	},
+	{
+		"videojuego_id" : 21,
+		"plataforma_id" : 16
+	}
+]

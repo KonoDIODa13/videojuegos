@@ -1,0 +1,17 @@
+{% block text %}
+	[<br>
+	{% for juegos in videojuegos %}
+			{
+			  "id" :	{{juegos.id}},<br>
+				"titulo" : "{{juegos.titulo}}",<br>
+				"fecha_publicacion" : "{{juegos.fechaPublicacion}}",<br>
+				"descripcion" : null,<br>
+				"slug" : "{{juegos.slug}}"<br>
+			{% if ultimoElemento != juegos %}
+				},<br>
+			{% else %}
+				}
+			{% endif %}
+	{% endfor %}<br>
+	]
+{% endblock %}

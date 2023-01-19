@@ -1,0 +1,128 @@
+[
+	{
+		"id" : 5,
+		"titulo" : "God Of War: Ragnarok",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "GodOfWarRagnarok"
+	},
+	{
+		"id" : 6,
+		"titulo" : "Horizon Forbidden West",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "HorizonForbiddenWest"
+	},
+	{
+		"id" : 7,
+		"titulo" : "Elden Ring",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "EldenRing"
+	},
+	{
+		"id" : 8,
+		"titulo" : "Hollow Knight",
+		"fecha_publicacion" : "2017",
+		"descripcion" : null,
+		"slug" : "HollowKnight"
+	},
+	{
+		"id" : 9,
+		"titulo" : "Kirby and the Forgotten Land",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "KirbyandtheForgottenLand"
+	},
+	{
+		"id" : 10,
+		"titulo" : "Stray",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "Stray"
+	},
+	{
+		"id" : 11,
+		"titulo" : "Pokemon Violet",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "PokemonViolet"
+	},
+	{
+		"id" : 12,
+		"titulo" : "The Legend of Zelda: Breath of the Wild",
+		"fecha_publicacion" : "2017",
+		"descripcion" : null,
+		"slug" : "TheLegendofZeldaBreathoftheWild"
+	},
+	{
+		"id" : 13,
+		"titulo" : "Monster Hunter: World",
+		"fecha_publicacion" : "2018",
+		"descripcion" : null,
+		"slug" : "MonsterHunterWorld"
+	},
+	{
+		"id" : 14,
+		"titulo" : "Dark Souls III",
+		"fecha_publicacion" : "2016",
+		"descripcion" : null,
+		"slug" : "DarkSoulsIII"
+	},
+	{
+		"id" : 15,
+		"titulo" : "Pokemon Platinum",
+		"fecha_publicacion" : "2009",
+		"descripcion" : null,
+		"slug" : "PokemonPlatinum"
+	},
+	{
+		"id" : 16,
+		"titulo" : "Death Stranding",
+		"fecha_publicacion" : "2019",
+		"descripcion" : null,
+		"slug" : "DeathStranding"
+	},
+	{
+		"id" : 17,
+		"titulo" : "Shadow of the Colossus",
+		"fecha_publicacion" : "2005",
+		"descripcion" : null,
+		"slug" : "ShadowoftheColossus"
+	},
+	{
+		"id" : 18,
+		"titulo" : "League of Legends",
+		"fecha_publicacion" : "2009",
+		"descripcion" : null,
+		"slug" : "LeagueofLegends"
+	},
+	{
+		"id" : 19,
+		"titulo" : "Minecraft",
+		"fecha_publicacion" : "2009",
+		"descripcion" : null,
+		"slug" : "Minecraft"
+	},
+	{
+		"id" : 20,
+		"titulo" : "Bloodborne",
+		"fecha_publicacion" : "2015",
+		"descripcion" : null,
+		"slug" : "Bloodborne"
+	},
+	{
+		"id" : 21,
+		"titulo" : "Fifa 2023",
+		"fecha_publicacion" : "2022",
+		"descripcion" : null,
+		"slug" : "Fifa2023"
+	},
+	{
+		"id" : 22,
+		"titulo" : "Battlefront 2",
+		"fecha_publicacion" : "2017",
+		"descripcion" : null,
+		"slug" : "Battlefront2"
+	}
+]

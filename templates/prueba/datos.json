@@ -1,0 +1,684 @@
+[
+    {
+        "id": 5,
+        "titulo": "God Of War: Ragnarok",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "GodOfWarRagnarok",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Cory Barlog"
+            },
+            {
+                "id": 2,
+                "nombre": "Eric Williams"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Aventura"
+            },
+            {
+                "id": 3,
+                "genero": "Hack and Slash"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "titulo": "Horizon Forbidden West",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "HorizonForbiddenWest",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Mathijs de Jonge"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Aventura"
+            },
+            {
+                "id": 3,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "titulo": "Elden Ring",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "EldenRing",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            },
+            {
+                "id": 3,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 4,
+                "plataforma": "Xbox Series X/S"
+            },
+            {
+                "id": 5,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Hidetaka Miyazaki"
+            },
+            {
+                "id": 2,
+                "nombre": "Yui Tanimura"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "titulo": "Hollow Knight",
+        "fecha_publicacion": "2017",
+        "descripcion": null,
+        "slug": "HollowKnight",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 3,
+                "plataforma": "Switch"
+            },
+            {
+                "id": 4,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "William Pellen"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Metroidvania"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "titulo": "Kirby and the Forgotten Land",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "KirbyandtheForgottenLand",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "Switch"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Tatsuya Kamiyama"
+            },
+            {
+                "id": 2,
+                "nombre": "Shinya Kumazaki"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Plataformas"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "titulo": "Stray",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "Stray",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            },
+            {
+                "id": 3,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Colas Koola"
+            },
+            {
+                "id": 2,
+                "nombre": "Vivien Mermet-Guyenet"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Aventura"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "titulo": "Pokemon Violet",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "PokemonViolet",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "Switch"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Shigeru Ohmori"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "titulo": "The Legend of Zelda: Breath of the Wild",
+        "fecha_publicacion": "2017",
+        "descripcion": null,
+        "slug": "TheLegendofZeldaBreathoftheWild",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "Wii U"
+            },
+            {
+                "id": 2,
+                "plataforma": "Switch"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Hidemaro Fujibayashi"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Aventura"
+            },
+            {
+                "id": 3,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "titulo": "Monster Hunter: World",
+        "fecha_publicacion": "2018",
+        "descripcion": null,
+        "slug": "MonsterHunterWorld",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 3,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Kaname Fujioka"
+            },
+            {
+                "id": 2,
+                "nombre": "Yuya Tokuda"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "titulo": "Dark Souls III",
+        "fecha_publicacion": "2016",
+        "descripcion": null,
+        "slug": "DarkSoulsIII",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 3,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Hidetaka Miyazaki"
+            },
+            {
+                "id": 2,
+                "nombre": "Isamu Okano"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "titulo": "Pokemon Platinum",
+        "fecha_publicacion": "2009",
+        "descripcion": null,
+        "slug": "PokemonPlatinum",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "DS"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Takeshi Kawachimaru"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "RPG"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "titulo": "Death Stranding",
+        "fecha_publicacion": "2019",
+        "descripcion": null,
+        "slug": "DeathStranding",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            },
+            {
+                "id": 3,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Hideo Kojima"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Exploracion"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "titulo": "Shadow of the Colossus",
+        "fecha_publicacion": "2005",
+        "descripcion": null,
+        "slug": "ShadowoftheColossus",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS2"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS3"
+            },
+            {
+                "id": 3,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 4,
+                "plataforma": "PS5"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Fumito Ueda"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Aventura"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "titulo": "League of Legends",
+        "fecha_publicacion": "2009",
+        "descripcion": null,
+        "slug": "LeagueofLegends",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Tom Cardwell"
+            },
+            {
+                "id": 2,
+                "nombre": "Oren Faz"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Multiplayer"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "titulo": "Minecraft",
+        "fecha_publicacion": "2009",
+        "descripcion": null,
+        "slug": "Minecraft",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS3"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 3,
+                "plataforma": "XBox 360"
+            },
+            {
+                "id": 4,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 5,
+                "plataforma": "Xbox Series X/S"
+            },
+            {
+                "id": 6,
+                "plataforma": "Wii U"
+            },
+            {
+                "id": 7,
+                "plataforma": "3DS"
+            },
+            {
+                "id": 8,
+                "plataforma": "Switch"
+            },
+            {
+                "id": 9,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Markus Persson"
+            },
+            {
+                "id": 2,
+                "nombre": "Jens Bergensten"
+            },
+            {
+                "id": 3,
+                "nombre": "Natham Adams"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "SandBox"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "titulo": "Bloodborne",
+        "fecha_publicacion": "2015",
+        "descripcion": null,
+        "slug": "Bloodborne",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Hidetaka Miyazaki"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Rol"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "titulo": "Fifa 2023",
+        "fecha_publicacion": "2022",
+        "descripcion": null,
+        "slug": "Fifa2023",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "PS5"
+            },
+            {
+                "id": 3,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 4,
+                "plataforma": "Xbox Series X/S"
+            },
+            {
+                "id": 5,
+                "plataforma": "Switch"
+            },
+            {
+                "id": 6,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Annonymous"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Deportes"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "titulo": "Battlefront 2",
+        "fecha_publicacion": "2017",
+        "descripcion": null,
+        "slug": "Battlefront2",
+        "plataformas": [
+            {
+                "id": 1,
+                "plataforma": "PS4"
+            },
+            {
+                "id": 2,
+                "plataforma": "XBox One"
+            },
+            {
+                "id": 3,
+                "plataforma": "PC"
+            }
+        ],
+        "directores": [
+            {
+                "id": 1,
+                "nombre": "Bernd Diemer"
+            }
+        ],
+        "generos": [
+            {
+                "id": 1,
+                "genero": "Accion"
+            },
+            {
+                "id": 2,
+                "genero": "Rol"
+            }
+        ]
+    }
+]
