@@ -42,8 +42,52 @@ class VideojuegosAdminController extends AbstractController
     public function mostrarDatos(VideojuegoRepository $videojuegoRepository): Response
     {
         $videojuegos = $videojuegoRepository->findAll();
-        return $this->render('prueba/juegos.html.twig', [
-            "videojuegos"=>json_encode($videojuegos),
-        ]);
+        $juegos = array();
+        foreach ($videojuegos as $juego) {
+            $id = $juego->getId();
+            $titulo = $juego->getTitulo();
+            $fechaPublicacion = $juego->getFechaPublicacion();
+            $slug = $juego->getSlug();
+
+            $plataformas = array();
+            foreach ($juego->getPlataforma() as $platforms) {
+                $plataforma = $platforms->getPlataforma();
+                array_push($plataformas, $plataforma);
+            }
+
+            $directores = array();
+            foreach ($juego->getDirector() as $directors) {
+                $director = $directors->getNombre();
+                array_push($directores, $director);
+            }
+
+            $generos = array();
+            foreach ($juego->getGenero() as $genres) {
+                $genero = $genres->getGenero();
+                array_push($generos, $genero);
+            }
+
+            $empresaDesarrolladoras = array();
+            foreach ($juego->getEmpresaDesarrolladora() as $developers) {
+                $desarrollador = $developers->getDesarrolladora();
+                array_push($empresaDesarrolladoras, $desarrollador);
+            }
+
+            array_push(
+                $juegos,
+                [
+                    "id" => $id,
+                    "titulo" => $titulo,
+                    "fechaPublicacion" => $fechaPublicacion,
+                    "slug" => $slug,
+                    "plataformas" => $plataformas,
+                    "directores" => $directores,
+                    "generos" => $generos,
+                    "desarrolladoras" => $empresaDesarrolladoras
+                ]
+            );
+        }
+
+        return $this->json($juegos);
     }
 }

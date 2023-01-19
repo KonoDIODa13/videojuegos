@@ -4,7 +4,8 @@ import JuegoTabla from "./JuegoTabla";
 
 export default function JuegoTemplate(props) {
 
-    const { juegos,
+    const {
+        juegos,
         isLoaded
     } = props;
 
@@ -14,11 +15,14 @@ export default function JuegoTemplate(props) {
             <table className="table table-bordered bg-light mt-3">
                 <thead>
                     <tr className="text-center">
-                        <th>Titulo</th>
-                        <th>Fecha de publicación</th>
-                        <th>Plataformas</th>
-                        <th>Directores</th>
-                        <th>Géneros</th>
+                        <th>TÍTULO</th>
+                        <th>DIRECTORES</th>
+                        <th>GÉNEROS</th>
+                        <th>FECHA DE PUBLICACIÓN</th>
+                        <th>DESARROLLADORAS</th>
+                        <th>PLATAFORMAS</th>
+                        <th>&nbsp;</th>
+
                     </tr>
                 </thead>
                 <JuegoTabla
@@ -26,6 +30,10 @@ export default function JuegoTemplate(props) {
                     isLoaded={isLoaded}
                 />
             </table>
+            <hr />
+            <JuegoForm
+
+            />
         </div>
     );
 }

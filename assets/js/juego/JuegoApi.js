@@ -24,3 +24,10 @@ export function getDatos() {
             return response.json();
         });
 }
+
+export function getData() {
+    return fetch("/mostrarDatos")
+        .then(response => {
+            return response.json();
+        });
+}

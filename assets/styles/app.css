@@ -46,6 +46,7 @@ a:link,
 .datos {
     font-size: large;
     color: black;
+    text-decoration: none;
 }
 
 .contenedorP {
@@ -102,4 +103,9 @@ a:link,
 .margen {
     margin-left: 2%;
     margin-right: 2%;
+}
+
+i {
+    width: 20px;
+    height: 20px;
 }

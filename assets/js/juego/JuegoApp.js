@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getDatos, getJuegos, getJuegosXPlataformas, getPlataformas } from "./JuegoApi";
+import { getData} from "./JuegoApi";
+//import JuegoDatatable from './JuegoDatatable';
 import JuegoTemplate from "./JuegoTemplate";
+
 
 export default class JuegoApp extends Component {
 
@@ -15,12 +17,12 @@ export default class JuegoApp extends Component {
     }
 
     componentDidMount() {
-        getDatos().then((data) => {
-            this.setState({
-                juegos: data,
-                isLoaded: true
-            });
-        })
+        /* getDatos().then((data) => {
+             this.setState({
+                 juegos: data,
+                 isLoaded: true
+             });
+         })*/
         /*getJuegos().then((data) => {
             this.setState({
                 juegos: data,
@@ -39,6 +41,12 @@ export default class JuegoApp extends Component {
                 juegos_plataformas: data
             })
         })*/
+        getData().then((data) => {
+            this.setState({
+                juegos: data,
+                isLoaded: true
+            })
+        })
     }
 
     render() {
