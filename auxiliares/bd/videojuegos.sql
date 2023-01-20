@@ -28,7 +28,7 @@ CREATE TABLE `director` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `director` (
 
 LOCK TABLES `director` WRITE;
 /*!40000 ALTER TABLE `director` DISABLE KEYS */;
-INSERT INTO `director` VALUES (1,'Cory Barlog'),(2,'Mathijs de Jonge'),(3,'Hidetaka Miyazaki'),(4,'William Pellen'),(5,'Tatsuya Kamiyama'),(6,'Colas Koola'),(7,'Eric Williams'),(8,'Shinya Kumazaki'),(9,'Vivien Mermet-Guyenet'),(10,'Shigeru Ohmori'),(11,'Hidemaro Fujibayashi'),(12,'Kaname Fujioka'),(13,'Yuya Tokuda'),(15,'Isamu Okano'),(16,'Yui Tanimura'),(17,'Takeshi Kawachimaru'),(18,'Hideo Kojima'),(19,'Fumito Ueda'),(20,'Tom Cadwell'),(21,'Oren Faz'),(22,'Markus Persson'),(23,'Jens Bergensten'),(24,'Nathan Adams');
+INSERT INTO `director` VALUES (1,'Cory Barlog'),(2,'Mathijs de Jonge'),(3,'Hidetaka Miyazaki'),(4,'William Pellen'),(5,'Tatsuya Kamiyama'),(6,'Colas Koola'),(7,'Eric Williams'),(8,'Shinya Kumazaki'),(9,'Vivien Mermet-Guyenet'),(10,'Shigeru Ohmori'),(11,'Hidemaro Fujibayashi'),(12,'Kaname Fujioka'),(13,'Yuya Tokuda'),(15,'Isamu Okano'),(16,'Yui Tanimura'),(17,'Takeshi Kawachimaru'),(18,'Hideo Kojima'),(19,'Fumito Ueda'),(20,'Tom Cadwell'),(21,'Oren Faz'),(22,'Markus Persson'),(23,'Jens Bergensten'),(24,'Nathan Adams'),(26,'Annonymous'),(27,'Bernd Diemer');
 /*!40000 ALTER TABLE `director` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `videojuego_director` (
 
 LOCK TABLES `videojuego_director` WRITE;
 /*!40000 ALTER TABLE `videojuego_director` DISABLE KEYS */;
-INSERT INTO `videojuego_director` VALUES (5,1),(5,7),(6,2),(7,3),(7,16),(8,4),(9,5),(9,8),(10,6),(10,9),(11,10),(12,11),(13,12),(13,13),(14,3),(14,15),(15,17),(16,18),(17,19),(18,20),(18,21),(19,22),(19,23),(19,24),(20,3);
+INSERT INTO `videojuego_director` VALUES (5,1),(5,7),(6,2),(7,3),(7,16),(8,4),(9,5),(9,8),(10,6),(10,9),(11,10),(12,11),(13,12),(13,13),(14,3),(14,15),(15,17),(16,18),(17,19),(18,20),(18,21),(19,22),(19,23),(19,24),(20,3),(21,26),(22,27);
 /*!40000 ALTER TABLE `videojuego_director` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +275,7 @@ CREATE TABLE `videojuego_empresa_desarrolladora` (
 
 LOCK TABLES `videojuego_empresa_desarrolladora` WRITE;
 /*!40000 ALTER TABLE `videojuego_empresa_desarrolladora` DISABLE KEYS */;
-INSERT INTO `videojuego_empresa_desarrolladora` VALUES (5,1),(6,2),(7,3),(8,4),(9,5),(10,6),(11,7),(12,8),(12,9),(13,10),(14,3),(15,7),(16,13),(17,14),(18,15),(19,16),(20,3),(21,17);
+INSERT INTO `videojuego_empresa_desarrolladora` VALUES (5,1),(6,2),(7,3),(8,4),(9,5),(10,6),(11,7),(12,8),(12,9),(13,10),(14,3),(15,7),(16,13),(17,14),(18,15),(19,16),(20,3),(21,17),(22,17);
 /*!40000 ALTER TABLE `videojuego_empresa_desarrolladora` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,7 +303,7 @@ CREATE TABLE `videojuego_genero` (
 
 LOCK TABLES `videojuego_genero` WRITE;
 /*!40000 ALTER TABLE `videojuego_genero` DISABLE KEYS */;
-INSERT INTO `videojuego_genero` VALUES (5,1),(5,2),(5,26),(6,1),(6,2),(6,5),(7,1),(7,5),(8,8),(9,9),(10,2),(11,5),(12,1),(12,2),(12,5),(13,1),(13,5),(14,1),(14,5),(15,19),(16,1),(16,21),(17,1),(17,2),(18,24),(19,25),(20,1),(20,5),(21,27);
+INSERT INTO `videojuego_genero` VALUES (5,1),(5,2),(5,26),(6,1),(6,2),(6,5),(7,1),(7,5),(8,8),(9,9),(10,2),(11,5),(12,1),(12,2),(12,5),(13,1),(13,5),(14,1),(14,5),(15,19),(16,1),(16,21),(17,1),(17,2),(18,24),(19,25),(20,1),(20,5),(21,27),(22,1),(22,5);
 /*!40000 ALTER TABLE `videojuego_genero` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +331,7 @@ CREATE TABLE `videojuego_plataforma` (
 
 LOCK TABLES `videojuego_plataforma` WRITE;
 /*!40000 ALTER TABLE `videojuego_plataforma` DISABLE KEYS */;
-INSERT INTO `videojuego_plataforma` VALUES (5,4),(5,5),(6,4),(6,5),(7,4),(7,5),(7,8),(7,9),(7,16),(8,4),(8,8),(8,14),(8,16),(9,14),(10,4),(10,5),(10,16),(11,14),(12,11),(12,14),(13,4),(13,8),(13,16),(14,4),(14,8),(14,16),(15,12),(16,4),(16,5),(16,16),(17,2),(17,3),(17,4),(17,5),(18,16),(19,3),(19,4),(19,7),(19,8),(19,9),(19,11),(19,13),(19,14),(19,16),(20,4),(21,4),(21,5),(21,8),(21,9),(21,14),(21,16);
+INSERT INTO `videojuego_plataforma` VALUES (5,4),(5,5),(6,4),(6,5),(7,4),(7,5),(7,8),(7,9),(7,16),(8,4),(8,8),(8,14),(8,16),(9,14),(10,4),(10,5),(10,16),(11,14),(12,11),(12,14),(13,4),(13,8),(13,16),(14,4),(14,8),(14,16),(15,12),(16,4),(16,5),(16,16),(17,2),(17,3),(17,4),(17,5),(18,16),(19,3),(19,4),(19,7),(19,8),(19,9),(19,11),(19,13),(19,14),(19,16),(20,4),(21,4),(21,5),(21,8),(21,9),(21,14),(21,16),(22,4),(22,8),(22,16);
 /*!40000 ALTER TABLE `videojuego_plataforma` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -344,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-17  8:17:42
+-- Dump completed on 2023-01-20 14:41:18
