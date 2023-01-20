@@ -99,12 +99,12 @@ class VideojuegosAdminController extends AbstractController
                 [
                     "id" => $id,
                     "titulo" => $titulo,
-                    "fechaPublicacion" => $fechaPublicacion,
-                    "slug" => $slug,
-                    "plataformas" => $plataformas,
                     "directores" => $directores,
                     "generos" => $generos,
-                    "desarrolladoras" => $empresaDesarrolladoras
+                    "fechaPublicacion" => $fechaPublicacion,
+                    "desarrolladoras" => $empresaDesarrolladoras,
+                    "plataformas" => $plataformas,
+                    "slug" => $slug,
                 ]
             );
         }

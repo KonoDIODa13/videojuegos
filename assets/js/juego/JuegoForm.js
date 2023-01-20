@@ -4,22 +4,35 @@ import PropTypes from 'prop-types';
 export default class JuegoForm extends Component {
     constructor(props) {
         super(props);
+
         this.arrGeneros = new Array();
+        this.arrPlataformas = new Array();
+        this.arrDirectores = new Array();
+        this.arrDesarrolladoras = new Array();
+
         this.titulo = React.createRef();
-        this.director = React.createRef();
         this.fecha = React.createRef();
-        this.desarrollador = React.createRef();
-        //this.plataforma = React.createRef();
 
         this.state = {
+            director: [],
             genero: [],
+            desarrollador: [],
+            plataforma: [],
         }
+
+        this.crearJuego = this.crearJuego.bind(this);
+
     }
 
-    //this.crearJuego = this.crearJuego.bind(this);
+    getDirector(event) {
+        let array = this.arrDirectores;
+        array.push(event.target.value);
+        this.setState({
+            director: array,
+        });
+    }
 
-
-    getValorGenero(event) {
+    getGenero(event) {
         let array = this.arrGeneros;
         const genero = event.target.value;
         let indexNotU = array.indexOf(genero);
@@ -30,22 +43,46 @@ export default class JuegoForm extends Component {
         }
         this.setState({
             genero: array,
-        })
+        });
+    }
 
+    getDesarrolladora(event) {
+        let array = this.arrDesarrolladoras;
+        array.push(event.target.value);
+        this.setState({
+            desarrollador: array,
+        });
+    }
+
+    getPlataforma(event) {
+        let array = this.arrPlataformas;
+        const plataforma = event.target.value;
+        let indexNotU = array.indexOf(plataforma);
+        if (indexNotU > -1) {
+            array.splice(indexNotU, 1);
+        } else {
+            array.push(plataforma);
+        }
+        this.setState({
+            plataforma: array,
+        });
     }
 
     crearJuego(event) {
         event.preventDefault();
-        juego = new Array(
-            "titulo" = this.titulo.current.value,
-            "director" = this.director.current.value,
-            "genero" = this.setState.genero,
-            "fecha" = this.fecha.current.value,
-            "desarrollador" = this.desarrollador.current.value
-        );
         const { nuevoJuego } = this.props;
-        console.log(juego);
-        nuevoJuego(juego)
+        const { director, genero, desarrollador, plataforma } = this.state;
+
+        const juego = new Array(
+            this.titulo.current.value,
+            director,
+            genero,
+            this.fecha.current.value,
+            desarrollador,
+            plataforma,
+        );
+
+        nuevoJuego(juego);
     }
 
     render() {
@@ -64,7 +101,7 @@ export default class JuegoForm extends Component {
                 <h1 className="text-center"> Añadir Juego</h1>
                 <div className="container align-center m-3">
 
-                    <form>
+                    <form onSubmit={this.crearJuego}>
                         <div className="form-group bg-light m-3 p-4 rounded">
 
                             <label className="control-label text-center">
@@ -76,7 +113,7 @@ export default class JuegoForm extends Component {
                             <label className="control-label text-center">
                                 Director del juego:
                             </label>
-                            <input type="text" name="director" className="form-control" ref={this.director} />
+                            <input type="text" name="director" className="form-control" onChange={this.getDirector.bind(this)} />
                             <br />
 
                             <label className="text-center">
@@ -84,7 +121,7 @@ export default class JuegoForm extends Component {
                             </label><br />
                             {generos.map((genero) => (
                                 <div key={genero.id}>
-                                    <input key={genero.toString()} type="checkbox" name="genero" value={genero.genero} onChange={this.getValorGenero.bind(this)} defaultChecked={false} />
+                                    <input key={genero.toString()} type="checkbox" name="genero" value={genero.genero} onChange={this.getGenero.bind(this)} defaultChecked={false} />
                                     <label>{genero.genero}</label>
                                 </div>
                             ))}
@@ -99,7 +136,7 @@ export default class JuegoForm extends Component {
                             <label className="control-label text-center">
                                 Empresa Desarrolladora:
                             </label>
-                            <input type="text" name="desarrolladora" className="form-control" ref={this.desarrollador} />
+                            <input type="text" name="desarrolladora" className="form-control" onChange={this.getDesarrolladora.bind(this)} />
                             <br />
 
                             <label className="sr-only control-label text-center">
@@ -107,16 +144,16 @@ export default class JuegoForm extends Component {
                             </label><br />
                             {plataformas.map((plataforma) => (
                                 <div key={plataforma.id}>
-                                    <input key={plataforma.toString()} type="checkbox" name="plataforma" value={plataforma.plataforma} />
+                                    <input key={plataforma.toString()} type="checkbox" name="plataforma" value={plataforma.plataforma} onChange={this.getPlataforma.bind(this)} defaultChecked={false} />
                                     <label className="text-">{plataforma.plataforma}</label>
                                 </div>
                             ))}
-                            <button type="submit" className="btn btn-primary" onClick={(event) => this.crearJuego(event)}>Añadir juego</button>
+                            <button type="submit" className="btn btn-primary">Añadir juego</button>
                         </div>
                     </form>
                 </div>
                 <br /><br /><br /><br /><br /><br />
-            </div>
+            </div >
         );
     }
 

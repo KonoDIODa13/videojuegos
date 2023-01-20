@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getData, getGeneros, getPlataformas } from "./JuegoApi";
 //import JuegoDatatable from './JuegoDatatable';
 import JuegoTemplate from "./JuegoTemplate";
+import { v4 as uuid } from "uuid";
 
 
 export default class JuegoApp extends Component {
@@ -16,6 +17,7 @@ export default class JuegoApp extends Component {
             plataformas: [],
             isLoaded: false
         };
+        this.crearJuego = this.crearJuego.bind(this);
     }
 
     componentDidMount() {
@@ -57,6 +59,20 @@ export default class JuegoApp extends Component {
         })
     }
     crearJuego(array) {
+        console.log(array);
+        const nuevoJuego = {
+            id: uuid(),
+            titulo: array[0],
+            directores: array[1],
+            generos: array[2],
+            fechaPublicacion: array[3],
+            desarrolladoras: array[4],
+            plataformas: array[5]
+        }
+        this.setState(prevState => {
+            const nuevaLista = [...prevState.juegos, nuevoJuego];
+            return { juegos: nuevaLista }
+        });
 
     }
 
