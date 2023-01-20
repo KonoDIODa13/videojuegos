@@ -9,6 +9,8 @@ export default function JuegoTemplate(props) {
         juegos,
         isLoaded,
         generos,
+        plataformas,
+        nuevoJuego,
     } = props;
 
     return (
@@ -35,6 +37,9 @@ export default function JuegoTemplate(props) {
             <hr />
             <JuegoForm
                 generos={generos}
+                plataformas={plataformas}
+                isLoaded={isLoaded}
+                nuevoJuego={nuevoJuego}
             />
         </div>
     );
@@ -43,5 +48,7 @@ export default function JuegoTemplate(props) {
 JuegoTemplate.propTypes = {
     juegos: PropTypes.array.isRequired,
     generos: PropTypes.array.isRequired,
+    plataformas: PropTypes.array.isRequired,
     isLoaded: PropTypes.bool.isRequired,
+    nuevoJuego: PropTypes.func.isRequired,
 }

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 export default function JuegoTabla(props) {
 
-    const { juegos,
+    const {
+        juegos,
         isLoaded,
     } = props;
 

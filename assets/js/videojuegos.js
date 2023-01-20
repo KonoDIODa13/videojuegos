@@ -11,7 +11,4 @@ if (document.getElementById("root") != null) {
             working={working}
         />
     );
-} else {
-    console.log("no hay root");
-}
-
+} 

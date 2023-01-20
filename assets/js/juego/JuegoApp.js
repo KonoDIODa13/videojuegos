@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getData, getGeneros } from "./JuegoApi";
+import { getData, getGeneros, getPlataformas } from "./JuegoApi";
 //import JuegoDatatable from './JuegoDatatable';
 import JuegoTemplate from "./JuegoTemplate";
 
@@ -13,6 +13,7 @@ export default class JuegoApp extends Component {
         this.state = {
             juegos: [],
             generos: [],
+            plataformas: [],
             isLoaded: false
         };
     }
@@ -37,11 +38,11 @@ export default class JuegoApp extends Component {
             });
         });
 
-        /*getPlataformas().then((data) => {
+        getPlataformas().then((data) => {
             this.setState({
                 plataformas: data
             })
-        })*/
+        })
 
         /*getJuegosXPlataformas().then((data) => {
             this.setState({
@@ -55,11 +56,15 @@ export default class JuegoApp extends Component {
             })
         })
     }
+    crearJuego(array) {
+
+    }
 
     render() {
         return (
             <JuegoTemplate
                 {...this.state}
+                nuevoJuego={this.crearJuego}
             />
         )
     }

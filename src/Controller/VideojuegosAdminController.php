@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\GeneroRepository;
+use App\Repository\PlataformaRepository;
 use App\Repository\VideojuegoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,9 +35,15 @@ class VideojuegosAdminController extends AbstractController
     }
 
     #[Route('/plataformas')]
-    public function getPlataformas()
+    public function getPlataformas(PlataformaRepository $plataformaRepository)
     {
-        return $this->render("prueba/plataformas.json");
+        $plataformas = array();
+        foreach ($plataformaRepository->findAll() as $array) {
+            $id = $array->getId();
+            $plataforma = $array->getPlataforma();
+            array_push($plataformas, ["id" => $id, "plataforma" => $plataforma]);
+        }
+        return $this->json($plataformas);
     }
 
     #[Route('/generos')]
