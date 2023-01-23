@@ -11,6 +11,7 @@ export default function JuegoTemplate(props) {
         generos,
         plataformas,
         nuevoJuego,
+        borrarJuego,
     } = props;
 
     return (
@@ -32,6 +33,7 @@ export default function JuegoTemplate(props) {
                 <JuegoTabla
                     juegos={juegos}
                     isLoaded={isLoaded}
+                    borrarJuego={borrarJuego}
                 />
             </table>
             <hr />
@@ -51,4 +53,5 @@ JuegoTemplate.propTypes = {
     plataformas: PropTypes.array.isRequired,
     isLoaded: PropTypes.bool.isRequired,
     nuevoJuego: PropTypes.func.isRequired,
+    borrarJuego: PropTypes.func.isRequired,
 }

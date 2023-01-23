@@ -17,23 +17,12 @@ export default class JuegoApp extends Component {
             plataformas: [],
             isLoaded: false
         };
+
         this.crearJuego = this.crearJuego.bind(this);
+        this.eliminarJuego = this.eliminarJuego.bind(this);
     }
 
     componentDidMount() {
-        /* getDatos().then((data) => {
-             this.setState({
-                 juegos: data,
-                 isLoaded: true
-             });
-         })*/
-        /*getJuegos().then((data) => {
-            this.setState({
-                juegos: data,
-                isLoaded: true
-            });
-        })*/
-
         getGeneros().then((data) => {
             this.setState({
                 generos: data,
@@ -46,11 +35,6 @@ export default class JuegoApp extends Component {
             })
         })
 
-        /*getJuegosXPlataformas().then((data) => {
-            this.setState({
-                juegos_plataformas: data
-            })
-        })*/
         getData().then((data) => {
             this.setState({
                 juegos: data,
@@ -60,6 +44,7 @@ export default class JuegoApp extends Component {
     }
     crearJuego(array) {
         console.log(array);
+
         const nuevoJuego = {
             id: uuid(),
             titulo: array[0],
@@ -70,6 +55,7 @@ export default class JuegoApp extends Component {
             plataformas: array[5],
             slug: array[6],
         }
+
         this.setState(prevState => {
             const nuevaLista = [...prevState.juegos, nuevoJuego];
             return { juegos: nuevaLista }
@@ -77,11 +63,19 @@ export default class JuegoApp extends Component {
 
     }
 
+    eliminarJuego(juegoId) {
+        console.log(juegoId);
+        this.setState((prevState) => {
+            return { juegos: this.state.juegos.filter(games => games.id !== juegoId) }
+        });
+    }
+
     render() {
         return (
             <JuegoTemplate
                 {...this.state}
                 nuevoJuego={this.crearJuego}
+                borrarJuego={this.eliminarJuego}
             />
         )
     }
