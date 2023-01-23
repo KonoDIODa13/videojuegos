@@ -38,9 +38,3 @@ export function getData() {
             return response.json();
         });
 }
-
-export function getDirectores() {
-    return fetch("/directores").then(response => {
-        return response.json();
-    });
-}

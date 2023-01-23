@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\DirectorRepository;
 use App\Repository\GeneroRepository;
 use App\Repository\PlataformaRepository;
 use App\Repository\VideojuegoRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,6 +28,24 @@ class VideojuegosAdminController extends AbstractController
     public function getJuegos()
     {
         return $this->render("prueba/juegos.json");
+    }
+
+    #[Route('/directores')]
+    public function getDirectores(DirectorRepository $directorRepository)
+    {
+        $directores = array();
+        foreach ($directorRepository->findAll() as $array) {
+            $id = $array->getId();
+            $director = $array->getNombre();
+            array_push($directores, ["id" => $id, "director" => $director]);
+        }
+        return $this->json($directores);
+    }
+
+    #[Route('/juegos_directores')]
+    public function getJuegosXDirectores()
+    {
+        return $this->render("prueba/videojuego_directores.json");
     }
 
     #[Route('/juegos_plataformas')]

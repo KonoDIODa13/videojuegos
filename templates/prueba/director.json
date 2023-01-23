@@ -1,0 +1,102 @@
+[
+	{
+		"id" : 1,
+		"nombre" : "Cory Barlog"
+	},
+	{
+		"id" : 2,
+		"nombre" : "Mathijs de Jonge"
+	},
+	{
+		"id" : 3,
+		"nombre" : "Hidetaka Miyazaki"
+	},
+	{
+		"id" : 4,
+		"nombre" : "William Pellen"
+	},
+	{
+		"id" : 5,
+		"nombre" : "Tatsuya Kamiyama"
+	},
+	{
+		"id" : 6,
+		"nombre" : "Colas Koola"
+	},
+	{
+		"id" : 7,
+		"nombre" : "Eric Williams"
+	},
+	{
+		"id" : 8,
+		"nombre" : "Shinya Kumazaki"
+	},
+	{
+		"id" : 9,
+		"nombre" : "Vivien Mermet-Guyenet"
+	},
+	{
+		"id" : 10,
+		"nombre" : "Shigeru Ohmori"
+	},
+	{
+		"id" : 11,
+		"nombre" : "Hidemaro Fujibayashi"
+	},
+	{
+		"id" : 12,
+		"nombre" : "Kaname Fujioka"
+	},
+	{
+		"id" : 13,
+		"nombre" : "Yuya Tokuda"
+	},
+	{
+		"id" : 15,
+		"nombre" : "Isamu Okano"
+	},
+	{
+		"id" : 16,
+		"nombre" : "Yui Tanimura"
+	},
+	{
+		"id" : 17,
+		"nombre" : "Takeshi Kawachimaru"
+	},
+	{
+		"id" : 18,
+		"nombre" : "Hideo Kojima"
+	},
+	{
+		"id" : 19,
+		"nombre" : "Fumito Ueda"
+	},
+	{
+		"id" : 20,
+		"nombre" : "Tom Cadwell"
+	},
+	{
+		"id" : 21,
+		"nombre" : "Oren Faz"
+	},
+	{
+		"id" : 22,
+		"nombre" : "Markus Persson"
+	},
+	{
+		"id" : 23,
+		"nombre" : "Jens Bergensten"
+	},
+	{
+		"id" : 24,
+		"nombre" : "Nathan Adams"
+	},
+	{
+		"id" : 26,
+		"nombre" : "Annonymous"
+	},
+	{
+		"id" : 27,
+		"nombre" : "Bernd Diemer"
+	}
+]
