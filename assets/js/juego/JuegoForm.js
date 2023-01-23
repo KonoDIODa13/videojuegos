@@ -11,11 +11,7 @@ export default class JuegoForm extends Component {
         this.arrDesarrolladoras = new Array();
 
         this.titulo = React.createRef();
-        this.directorInp = React.createRef();
-        this.generoChkbx = React.createRef();
         this.fecha = React.createRef();
-        this.desarrolladorInp = React.createRef();
-        this.plataformaChkbx = React.createRef();
 
         this.state = {
             director: [],
@@ -78,13 +74,7 @@ export default class JuegoForm extends Component {
         const { director, genero, desarrollador, plataforma } = this.state;
 
         const tituloInput = this.titulo.current;
-        const directorInp = this.directorInp.current;
-        const generoChkbx = this.generoChkbx.current;
         const fechaInput = this.fecha.current;
-        const desarrolladorInp = this.desarrolladorInp.current;
-        //const plataformaChkbx = this.plataformaChkbx.current
-        const checkboxGeneros = document.getElementsByName("generoCheckbox");
-        console.log(checkboxGeneros);
 
         const juego = new Array(
             tituloInput.value,
@@ -95,23 +85,7 @@ export default class JuegoForm extends Component {
             plataforma,
         );
         nuevoJuego(juego);
-
-        tituloInput.value = "";
-        directorInp.value = "";
-        /*for (let i = 0; i < document.generoCheckbox.elements.length; i++) {
-            if (document.generoCheckbox.elements[i].type === "checkbox") {
-                document.generoCheckbox.elements[i].checked = false;
-            }
-            console.log();
-        }*/
-        /*if (generoChkbx.checked) {
-            generoChkbx.checked = false;
-        }*/
-        fechaInput.value = 0;
-        desarrolladorInp.value = "";
-        /*if (plataformaChkbx.checked) {
-            plataformaChkbx.checked = false;
-        }*/
+        document.getElementById("formulario").reset();
     }
 
     render() {
@@ -130,7 +104,7 @@ export default class JuegoForm extends Component {
                 <h1 className="text-center"> Añadir Juego</h1>
                 <div className="container align-center m-3">
 
-                    <form onSubmit={this.crearJuego} name="formulario">
+                    <form onSubmit={this.crearJuego} id="formulario">
                         <div className="form-group bg-light m-3 p-4 rounded">
 
                             <label className="control-label text-center">
@@ -142,7 +116,7 @@ export default class JuegoForm extends Component {
                             <label className="control-label text-center">
                                 Director del juego:
                             </label>
-                            <input type="text" name="director" className="form-control" onChange={this.getDirector.bind(this)} ref={this.directorInp} />
+                            <input type="text" name="director" className="form-control" onChange={this.getDirector.bind(this)} />
                             <br />
 
                             <label className="text-center">
@@ -151,7 +125,7 @@ export default class JuegoForm extends Component {
                             <div name="generoCheckbox">
                                 {generos.map((genero) => (
                                     <div key={genero.id}>
-                                        <input key={genero.toString()} type="checkbox" name="genero" value={genero.genero} onChange={this.getGenero.bind(this)} defaultChecked={false} ref={this.generoChkbx} />
+                                        <input key={genero.toString()} type="checkbox" name="genero" value={genero.genero} onChange={this.getGenero.bind(this)} defaultChecked={false} />
                                         <label>{genero.genero}</label>
                                     </div>
                                 ))}
@@ -167,7 +141,7 @@ export default class JuegoForm extends Component {
                             <label className="control-label text-center">
                                 Empresa Desarrolladora:
                             </label>
-                            <input type="text" name="desarrolladora" className="form-control" onChange={this.getDesarrolladora.bind(this)} ref={this.desarrolladorInp} />
+                            <input type="text" name="desarrolladora" className="form-control" onChange={this.getDesarrolladora.bind(this)} />
                             <br />
 
                             <label className="sr-only control-label text-center">
@@ -176,7 +150,7 @@ export default class JuegoForm extends Component {
                             <div>
                                 {plataformas.map((plataforma) => (
                                     <div key={plataforma.id}>
-                                        <input key={plataforma.toString()} type="checkbox" name="plataforma" value={plataforma.plataforma} onChange={this.getPlataforma.bind(this)} defaultChecked={false} ref={this.plataformaChkbx} />
+                                        <input key={plataforma.toString()} type="checkbox" name="plataforma" value={plataforma.plataforma} onChange={this.getPlataforma.bind(this)} defaultChecked={false} />
                                         <label className="text-">{plataforma.plataforma}</label>
                                     </div>
                                 ))}
