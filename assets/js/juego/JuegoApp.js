@@ -43,8 +43,6 @@ export default class JuegoApp extends Component {
         })
     }
     crearJuego(array) {
-        console.log(array);
-
         const nuevoJuego = {
             id: uuid(),
             titulo: array[0],
@@ -64,7 +62,6 @@ export default class JuegoApp extends Component {
     }
 
     eliminarJuego(juegoId) {
-        console.log(juegoId);
         this.setState((prevState) => {
             return { juegos: this.state.juegos.filter(games => games.id !== juegoId) }
         });
