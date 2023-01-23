@@ -116,4 +116,9 @@ class VideojuegosAdminController extends AbstractController
     {
         return $this->render("prueba/games.html.twig");
     }
+    #[Route("/admin/director/{director}")]
+    function mostrarDirector()
+    {
+        return $this->render("prueba/director.html.twig");
+    }
 }

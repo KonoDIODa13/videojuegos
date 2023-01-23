@@ -8,7 +8,8 @@ export default class GamesDirector extends Component {
 
     verDirector(event, director) {
         event.preventDefault();
-        window.location.href = "https://127.0.0.1:8000/admin/director/" + director;
+        localStorage.setItem("director", director);
+        window.location.href = "https://127.0.0.1:8000/admin/director/" + director.replace(/\s+/g, "");
     }
 
     overDirectores(event) {
