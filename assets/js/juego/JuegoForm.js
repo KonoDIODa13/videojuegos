@@ -18,6 +18,7 @@ export default class JuegoForm extends Component {
             genero: [],
             desarrollador: [],
             plataforma: [],
+            fechaError: "",
         }
 
         this.crearJuego = this.crearJuego.bind(this);
@@ -75,7 +76,15 @@ export default class JuegoForm extends Component {
 
         const tituloInput = this.titulo.current;
         const fechaInput = this.fecha.current;
+        const slug = tituloInput.value.replace(/\s+/g, "");
 
+
+        if (fechaInput.value <= 2000) {
+            this.setState({
+                fechaError: "El año tiene que ser mayor o igual a 2000."
+            });
+            return;
+        }
         const juego = new Array(
             tituloInput.value,
             director,
@@ -83,13 +92,18 @@ export default class JuegoForm extends Component {
             fechaInput.value,
             desarrollador,
             plataforma,
+            slug
         );
         nuevoJuego(juego);
+        this.setState({
+            fechaError: "",
+        })
         document.getElementById("formulario").reset();
     }
 
     render() {
         const { generos, plataformas, isLoaded } = this.props;
+        const { fechaError } = this.state;
 
         if (!isLoaded) {
             return (
@@ -105,7 +119,7 @@ export default class JuegoForm extends Component {
                 <div className="container align-center m-3">
 
                     <form onSubmit={this.crearJuego} id="formulario">
-                        <div className="form-group bg-light m-3 p-4 rounded">
+                        <div className={`form-group bg-light m-3 p-4 rounded ${fechaError ? 'has error' : ''}`}>
 
                             <label className="control-label text-center">
                                 Título del juego:
@@ -136,6 +150,9 @@ export default class JuegoForm extends Component {
                                 Año de publicación:
                             </label>
                             <input type="number" placeholder="2000" name="fecha" className="form-control" required="required" ref={this.fecha} />
+                            <div className="bg-danger">
+                                {fechaError && <span className='help-block text-dark'>{fechaError}</span>}
+                            </div>
                             <br />
 
                             <label className="control-label text-center">

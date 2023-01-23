@@ -67,7 +67,8 @@ export default class JuegoApp extends Component {
             generos: array[2],
             fechaPublicacion: array[3],
             desarrolladoras: array[4],
-            plataformas: array[5]
+            plataformas: array[5],
+            slug: array[6],
         }
         this.setState(prevState => {
             const nuevaLista = [...prevState.juegos, nuevoJuego];
