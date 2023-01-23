@@ -12,3 +12,4 @@ import './styles/app.css';
 //import './bootstrap';
 //import './js/rep_log_react'
 import "./js/videojuegos"
+import "./js/juegos"

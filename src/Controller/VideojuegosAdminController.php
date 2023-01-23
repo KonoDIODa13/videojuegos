@@ -108,7 +108,12 @@ class VideojuegosAdminController extends AbstractController
                 ]
             );
         }
-
         return $this->json($juegos);
+    }
+
+    #[Route("/admin/juego/{slug}")]
+    function mostrarJuego($slug)
+    {
+        return $this->render("prueba/games.html.twig");
     }
 }

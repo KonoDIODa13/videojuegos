@@ -49,9 +49,11 @@ export default function JuegoTabla(props) {
         );
     }
 
-    function mostrarJuego(event, slug) {
+    function mostrarJuego(event, juego) {
         event.preventDefault();
-        window.location.href = "https://127.0.0.1:8000/videojuegos/juego/" + slug;
+        console.log(juego);
+        localStorage.setItem("juego", JSON.stringify(juego));
+        window.location.href = "https://127.0.0.1:8000/admin/juego/" + juego.slug;
 
     }
 
@@ -76,7 +78,7 @@ export default function JuegoTabla(props) {
             {juegos.map((juego) =>
             (
                 <tr key={juego.id}>
-                    <td className="text-center"><a onClick={(event) => mostrarJuego(event, juego.slug)} className="datos">{juego.titulo}</a></td>
+                    <td className="text-center"><a onClick={(event) => mostrarJuego(event, juego)} className="datos">{juego.titulo}</a></td>
                     {mostrarDirectores(juego.directores)}
                     {mostrarGeneros(juego.generos)}
                     <td className="text-secondary text-center">{juego.fechaPublicacion}</td>
