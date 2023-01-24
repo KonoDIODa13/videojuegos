@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import GamesDirector from "./GamesDirector";
 import GameGenero from "./GamesGenero";
 import GameDesarrolladora from "./GameDesarrolladora";
+import GamePlataforma from "./GamePlataforma";
 
 export default function GamesTemplate(props) {
     const { game } = props;
     const directores = game.directores;
     const generos = game.generos;
     const desarrolladoras = game.desarrolladoras;
+    const plataformas = game.plataformas;
 
     return (
         <div className="container bg-light">
@@ -28,6 +30,14 @@ export default function GamesTemplate(props) {
             <GameDesarrolladora
                 desarrolladoras={desarrolladoras}
             />
+
+            <GamePlataforma
+                plataformas={plataformas}
+            />
+            <div className="img-fluid">
+                <img  src=""/>
+
+            </div>
         </div>
     );
 

@@ -22,9 +22,10 @@ export default class GamesDirector extends Component {
                     {directores.map((director) => (
                         <li
                             key={director.toString()}
-                            //onClick={(event) => this.verDirector(event, director)}
                             onMouseOver={(event) => over(event)}
-                            onMouseOut={(event) => out(event)}>
+                            onMouseOut={(event) => out(event)}
+                        //onClick={(event) => this.verDirector(event, director)}
+                        >
                             {director}
                         </li>
                     ))}

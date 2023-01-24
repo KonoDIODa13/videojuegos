@@ -12,6 +12,7 @@ export default class GameGenero extends Component {
         localStorage.setItem("genero", genero)
         window.location.href = "https://127.0.0.1:8000/admin/genero/" + genero.replace(/\s+/g, "");
     }
+    
     render() {
         const generos = this.props.generos;
         return (
