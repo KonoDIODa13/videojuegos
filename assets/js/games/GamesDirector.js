@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { over, out } from "../funciones/funciones";
+import { over, out } from "../auxiliar/funciones";
 
 export default class GamesDirector extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ export default class GamesDirector extends Component {
     }
 
     render() {
-        const directores = this.props.game.directores;
+        const directores = this.props.directores;
         return (
             <div className='container'>
                 <h4>Directores:</h4>
@@ -22,7 +22,7 @@ export default class GamesDirector extends Component {
                     {directores.map((director) => (
                         <li
                             key={director.toString()}
-                            onClick={(event) => this.verDirector(event, director)}
+                            //onClick={(event) => this.verDirector(event, director)}
                             onMouseOver={(event) => over(event)}
                             onMouseOut={(event) => out(event)}>
                             {director}
@@ -35,5 +35,5 @@ export default class GamesDirector extends Component {
 }
 
 GamesDirector.propTypes = {
-    game: PropTypes.object.isRequired,
+    directores: PropTypes.array.isRequired,
 }

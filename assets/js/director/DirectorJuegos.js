@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types"
-import { over, out } from "../funciones/funciones";
+import { over, out } from "../auxiliar/funciones";
 
 export default class DirectorJuegos extends Component {
     constructor(props) {

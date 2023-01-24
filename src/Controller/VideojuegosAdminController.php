@@ -90,12 +90,6 @@ class VideojuegosAdminController extends AbstractController
             $fechaPublicacion = $juego->getFechaPublicacion();
             $slug = $juego->getSlug();
 
-            $plataformas = array();
-            foreach ($juego->getPlataforma() as $platforms) {
-                $plataforma = $platforms->getPlataforma();
-                array_push($plataformas, $plataforma);
-            }
-
             $directores = array();
             foreach ($juego->getDirector() as $directors) {
                 $director = $directors->getNombre();
@@ -112,6 +106,12 @@ class VideojuegosAdminController extends AbstractController
             foreach ($juego->getEmpresaDesarrolladora() as $developers) {
                 $desarrollador = $developers->getDesarrolladora();
                 array_push($empresaDesarrolladoras, $desarrollador);
+            }
+
+            $plataformas = array();
+            foreach ($juego->getPlataforma() as $platforms) {
+                $plataforma = $platforms->getPlataforma();
+                array_push($plataformas, $plataforma);
             }
 
             array_push(

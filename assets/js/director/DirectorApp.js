@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DirectorTemplate from "./DirectorTemplate";
-import { getDirectores, getDatos, getJuegosXDirectores } from "./DirectorApi";
+import { getDirectores, getDatos, getJuegosXDirectores } from "../auxiliar/api";
 
 export default class DirectorApp extends Component {
     constructor(props) {

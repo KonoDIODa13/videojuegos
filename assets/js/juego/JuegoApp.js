@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getData, getGeneros, getPlataformas } from "./JuegoApi";
+import { getDatos, getGeneros, getPlataformas } from "../auxiliar/api";
 //import JuegoDatatable from './JuegoDatatable';
 import JuegoTemplate from "./JuegoTemplate";
 import { v4 as uuid } from "uuid";
@@ -35,7 +35,7 @@ export default class JuegoApp extends Component {
             })
         })
 
-        getData().then((data) => {
+        getDatos().then((data) => {
             this.setState({
                 juegos: data,
                 isLoaded: true
