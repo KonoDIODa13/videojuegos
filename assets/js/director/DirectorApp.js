@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import DirectorTemplate from "./DirectorTemplate";
-import { getDirectores, getJuegosXDirectores } from "./DirectorApi";
+import { getDirectores, getDatos, getJuegosXDirectores } from "./DirectorApi";
 
 export default class DirectorApp extends Component {
     constructor(props) {
@@ -11,6 +11,7 @@ export default class DirectorApp extends Component {
             directores: [],
             juegosXdirectores: [],
             juegos: [],
+            loading: false,
         }
     }
 
@@ -26,6 +27,13 @@ export default class DirectorApp extends Component {
                 juegosXdirectores: data,
             });
         });
+
+        getDatos().then((data) => {
+            this.setState({
+                juegos: data,
+                loading: true,
+            })
+        })
     }
 
     render() {
