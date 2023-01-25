@@ -10,7 +10,7 @@ export default class GameDesarrolladora extends Component {
     verDesarrolladora(event, desarrolladora) {
         event.preventDefault();
         localStorage.setItem("desarrolladora", desarrolladora);
-        window.location.href = "https://127.0.0.1:8000/admin/desarrolladora" + desarrolladora.replace(/\s+/g, "");
+        window.location.href = "https://127.0.0.1:8000/admin/desarrolladora/" + desarrolladora.replace(/\s+/g, "");
     }
 
     render() {

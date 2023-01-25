@@ -132,7 +132,7 @@ class VideojuegosAdminController extends AbstractController
     }
 
     #[Route("/admin/juego/{slug}")]
-    function mostrarJuego($slug)
+    function mostrarJuego()
     {
         return $this->render("prueba/games.html.twig");
     }
@@ -140,5 +140,32 @@ class VideojuegosAdminController extends AbstractController
     function mostrarDirector()
     {
         return $this->render("prueba/director.html.twig");
+    }
+
+    #[Route("/admin/generos/{genero}")]
+    function mostrarGenero()
+    {
+        return $this->render("prueba/genero.html.twig");
+    }
+
+    #[Route("/admin/desarrolladoras/{desarrolladora}")]
+    function mostrarDesarrolladora()
+    {
+        return $this->render("prueba/desarrolladora.html.twig");
+    }
+
+    #[Route("/admin/plataformas/{plataforma}")]
+    function mostrarPlataforma()
+    {
+        return $this->render("prueba/plataforma.html.twig");
+    }
+
+    #[Route("/admin/foto/{foto}")]
+    function mostrarFoto($foto)
+    {
+        dd($foto);
+        return $this->render("prueba/foto.html.twig", [
+            "foto" => $foto,
+        ]);
     }
 }

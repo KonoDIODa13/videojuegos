@@ -4,6 +4,7 @@ import GamesDirector from "./GamesDirector";
 import GameGenero from "./GamesGenero";
 import GameDesarrolladora from "./GameDesarrolladora";
 import GamePlataforma from "./GamePlataforma";
+//import foto from "../../../public/fotos/horizontal";
 
 export default function GamesTemplate(props) {
     const { game } = props;
@@ -11,6 +12,9 @@ export default function GamesTemplate(props) {
     const generos = game.generos;
     const desarrolladoras = game.desarrolladoras;
     const plataformas = game.plataformas;
+
+    /*const imagen = new Image();
+    imagen.src = "C:/Users/jgonzalez/PhpstormProjects/tfg/public/fotos/horizontal/" + game.slug + ".jpeg";*/
 
     return (
         <div className="container bg-light">
@@ -34,10 +38,6 @@ export default function GamesTemplate(props) {
             <GamePlataforma
                 plataformas={plataformas}
             />
-            <div className="img-fluid">
-                <img  src=""/>
-
-            </div>
         </div>
     );
 
