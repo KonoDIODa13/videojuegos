@@ -24,7 +24,7 @@ export default class GameDesarrolladora extends Component {
                             key={desarrolladora.toString}
                             onMouseOver={(event) => over(event)}
                             onMouseOut={(event) => out(event)}
-                            onclick={(event) => this.verDesarrolladora(event, desarrolladora)}
+                            onClick={(event) => this.verDesarrolladora(event, desarrolladora)}
                         >
                             {desarrolladora}
                         </li>

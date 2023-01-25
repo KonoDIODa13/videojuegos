@@ -1,29 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { getGeneros, getJuegosXGeneros, getDatos } from "../auxiliar/api";
-import GeneroTemplate from "./GeneroTemplate";
+import { getDatos, getDesarrolladoras, getJuegosXDesarrolladoras } from "../auxiliar/api"
+import DesarrolladoraTemplate from "./DesarrolladoraTemplate";
 
-export default class GeneroApp extends Component {
+export default class DesarrolladoraApp extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            generos: [],
-            juegosXgeneros: [],
+            desarrolladoras: [],
+            juegosXdesarrolladoras: [],
             juegos: [],
         }
     }
 
     componentDidMount() {
-        getGeneros().then((data) => {
+        getDesarrolladoras().then((data) => {
             this.setState({
-                generos: data,
+                desarrolladoras: data,
             });
         });
 
-        getJuegosXGeneros().then((data) => {
+        getJuegosXDesarrolladoras().then((data) => {
             this.setState({
-                juegosXgeneros: data,
+                juegosXdesarrolladoras: data,
             });
         });
 
@@ -36,7 +36,7 @@ export default class GeneroApp extends Component {
 
     render() {
         return (
-            <GeneroTemplate
+            <DesarrolladoraTemplate
                 {...this.props}
                 {...this.state}
             />
@@ -44,6 +44,6 @@ export default class GeneroApp extends Component {
     }
 }
 
-GeneroApp.propTypes = {
-    genero: PropTypes.string.isRequired,
+DesarrolladoraApp.propTypes = {
+    desarrolladora: PropTypes.string.isRequired,
 }

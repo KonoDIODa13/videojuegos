@@ -38,6 +38,7 @@ export default function GamesTemplate(props) {
             <GamePlataforma
                 plataformas={plataformas}
             />
+            <br /><br /><br />
         </div>
     );
 
