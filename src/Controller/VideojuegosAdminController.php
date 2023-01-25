@@ -181,13 +181,4 @@ class VideojuegosAdminController extends AbstractController
     {
         return $this->render("prueba/plataforma.html.twig");
     }
-
-    #[Route("/admin/foto/{foto}")]
-    function mostrarFoto($foto)
-    {
-        dd($foto);
-        return $this->render("prueba/foto.html.twig", [
-            "foto" => $foto,
-        ]);
-    }
 }
