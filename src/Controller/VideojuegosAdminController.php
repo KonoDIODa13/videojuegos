@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\DirectorRepository;
+use App\Repository\EmpresaDesarrolladoraRepository;
 use App\Repository\GeneroRepository;
 use App\Repository\PlataformaRepository;
 use App\Repository\VideojuegoRepository;
@@ -22,12 +23,12 @@ class VideojuegosAdminController extends AbstractController
     #[Route('/datos')]
     public function getDatos()
     {
-        return $this->render("prueba/datos.json");
+        return $this->render("jsons/datos.json");
     }
     #[Route('/juegos')]
     public function getJuegos()
     {
-        return $this->render("prueba/juegos.json");
+        return $this->render("jsons/juegos.json");
     }
 
     #[Route('/directores')]
@@ -41,17 +42,27 @@ class VideojuegosAdminController extends AbstractController
         }
         return $this->json($directores);
     }
-
-    #[Route('/juegos_directores')]
-    public function getJuegosXDirectores()
+    #[Route('/generos')]
+    public function getGeneros(GeneroRepository $generoRepository)
     {
-        return $this->render("prueba/videojuego_directores.json");
+        $generos = array();
+        foreach ($generoRepository->findAll() as $array) {
+            $id = $array->getId();
+            $genero = $array->getGenero();
+            array_push($generos, ["id" => $id, "genero" => $genero]);
+        }
+        return $this->json($generos);
     }
-
-    #[Route('/juegos_plataformas')]
-    public function getJuegosXPlataformas()
+    #[Route("/desarrolladoras")]
+    public function getdesarrolladora(EmpresaDesarrolladoraRepository $empresaDesarrolladoraRepository)
     {
-        return $this->render("prueba/videojuego_plataformas.json");
+        $desarrolladoras = array();
+        foreach ($empresaDesarrolladoraRepository->findAll() as $array) {
+            $id = $array->getId();
+            $desarrolladora = $array->getDesarrolladora();
+            array_push($desarrolladoras, ["id" => $id, "desarrolladora" => $desarrolladora]);
+        }
+        return $this->json($desarrolladoras);
     }
 
     #[Route('/plataformas')]
@@ -66,18 +77,29 @@ class VideojuegosAdminController extends AbstractController
         return $this->json($plataformas);
     }
 
-    #[Route('/generos')]
-    public function getGeneros(GeneroRepository $generoRepository)
+    #[Route('/juegos_directores')]
+    public function getJuegosXDirectores()
     {
-        $generos = array();
-        foreach ($generoRepository->findAll() as $array) {
-            $id = $array->getId();
-            $genero = $array->getGenero();
-            array_push($generos, ["id" => $id, "genero" => $genero]);
-        }
-        return $this->json($generos);
+        return $this->render("jsons/videojuego_directores.json");
     }
 
+    #[Route("/juegos_generos")]
+    public function getJuegosXGeneros()
+    {
+        return $this->render("jsons/videojuego_generos.json");
+    }
+
+    #[Route("/juegos_desarrolladoras")]
+    public function getJuegosXDesarrolladoras()
+    {
+        return $this->render("jsons/videojuego_desarrolladoras.json");
+    }
+
+    #[Route('/juegos_plataformas')]
+    public function getJuegosXPlataformas()
+    {
+        return $this->render("jsons/videojuego_plataformas.json");
+    }
 
     #[Route('/mostrarDatos', name: 'uwu')]
     public function mostrarDatos(VideojuegoRepository $videojuegoRepository): Response
@@ -142,19 +164,19 @@ class VideojuegosAdminController extends AbstractController
         return $this->render("prueba/director.html.twig");
     }
 
-    #[Route("/admin/generos/{genero}")]
+    #[Route("/admin/genero/{genero}")]
     function mostrarGenero()
     {
         return $this->render("prueba/genero.html.twig");
     }
 
-    #[Route("/admin/desarrolladoras/{desarrolladora}")]
+    #[Route("/admin/desarrolladora/{desarrolladora}")]
     function mostrarDesarrolladora()
     {
         return $this->render("prueba/desarrolladora.html.twig");
     }
 
-    #[Route("/admin/plataformas/{plataforma}")]
+    #[Route("/admin/plataforma/{plataforma}")]
     function mostrarPlataforma()
     {
         return $this->render("prueba/plataforma.html.twig");

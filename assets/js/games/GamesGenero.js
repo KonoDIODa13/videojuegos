@@ -24,7 +24,7 @@ export default class GameGenero extends Component {
                             key={genero.toString()}
                             onMouseOver={(event) => over(event)}
                             onMouseOut={(event) => out(event)}
-                            //onClick={(event) => this.verGenero(event, genero)}
+                            onClick={(event) => this.verGenero(event, genero)}
                         >
                             {genero}
                         </li>

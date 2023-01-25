@@ -9,7 +9,7 @@ export default class DirectorJuegos extends Component {
 
     buscaJuegos(director, directores, juegosXdirectores, juegos) {
         let id = buscaId(director, directores);
-        let arrIdJuegos = buscarIdJuego(juegosXdirectores, id);
+        let arrIdJuegos = buscaIdJuego(juegosXdirectores, id);
         let videojuegos = buscaDatosJuego(juegos, arrIdJuegos);
         return videojuegos;
     }
@@ -50,7 +50,6 @@ export default class DirectorJuegos extends Component {
                 </ul>
             </div>
         );
-
     }
 }
 
@@ -64,7 +63,7 @@ function buscaId(director, directores) {
     return id;
 }
 
-function buscarIdJuego(juegosXdirectores, id) {
+function buscaIdJuego(juegosXdirectores, id) {
     let arrIdJuegos = new Array();
     juegosXdirectores.forEach(juegoXdirector => {
         if (juegoXdirector.director_id == id) {

@@ -14,3 +14,6 @@ import './styles/app.css';
 import "./js/videojuegos"
 import "./js/juegos"
 import "./js/director"
+import "./js/genero"
+import "./js/desarrolladora"
+import "./js/plataforma"

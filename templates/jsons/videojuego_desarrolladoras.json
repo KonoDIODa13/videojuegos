@@ -1,0 +1,78 @@
+[
+	{
+		"videojuego_id" : 5,
+		"empresa_desarrolladora_id" : 1
+	},
+	{
+		"videojuego_id" : 6,
+		"empresa_desarrolladora_id" : 2
+	},
+	{
+		"videojuego_id" : 7,
+		"empresa_desarrolladora_id" : 3
+	},
+	{
+		"videojuego_id" : 8,
+		"empresa_desarrolladora_id" : 4
+	},
+	{
+		"videojuego_id" : 9,
+		"empresa_desarrolladora_id" : 5
+	},
+	{
+		"videojuego_id" : 10,
+		"empresa_desarrolladora_id" : 6
+	},
+	{
+		"videojuego_id" : 11,
+		"empresa_desarrolladora_id" : 7
+	},
+	{
+		"videojuego_id" : 12,
+		"empresa_desarrolladora_id" : 8
+	},
+	{
+		"videojuego_id" : 12,
+		"empresa_desarrolladora_id" : 9
+	},
+	{
+		"videojuego_id" : 13,
+		"empresa_desarrolladora_id" : 10
+	},
+	{
+		"videojuego_id" : 14,
+		"empresa_desarrolladora_id" : 3
+	},
+	{
+		"videojuego_id" : 15,
+		"empresa_desarrolladora_id" : 7
+	},
+	{
+		"videojuego_id" : 16,
+		"empresa_desarrolladora_id" : 13
+	},
+	{
+		"videojuego_id" : 17,
+		"empresa_desarrolladora_id" : 14
+	},
+	{
+		"videojuego_id" : 18,
+		"empresa_desarrolladora_id" : 15
+	},
+	{
+		"videojuego_id" : 19,
+		"empresa_desarrolladora_id" : 16
+	},
+	{
+		"videojuego_id" : 20,
+		"empresa_desarrolladora_id" : 3
+	},
+	{
+		"videojuego_id" : 21,
+		"empresa_desarrolladora_id" : 17
+	},
+	{
+		"videojuego_id" : 22,
+		"empresa_desarrolladora_id" : 17
+	}
+]

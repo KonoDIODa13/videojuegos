@@ -39,6 +39,20 @@ export function getJuegosXDirectores() {
         });
 }
 
+export function getJuegosXGeneros() {
+    return fetch("/juegos_generos")
+        .then(response => {
+            return response.json();
+        });
+}
+
+export function getJuegosXDesarrolladoras() {
+    return fetch("/juegos_desarrolladoras")
+        .then(response => {
+            return response.json();
+        });
+}
+
 export function getJuegosXPlataformas() {
     return fetch('/juegos_plataformas')
         .then(response => {

@@ -24,7 +24,7 @@ export default class GamePlataforma extends Component {
                             key={plataforma.toString()}
                             onMouseOver={(event) => over(event)}
                             onMouseOut={(event) => out(event)}
-                        //onClick={(event)=> this.verPlataforma(event, plataforma)}
+                            onClick={(event) => this.verPlataforma(event, plataforma)}
                         >
                             {plataforma}
                         </li>

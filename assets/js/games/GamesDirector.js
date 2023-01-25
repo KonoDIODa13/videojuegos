@@ -24,7 +24,7 @@ export default class GamesDirector extends Component {
                             key={director.toString()}
                             onMouseOver={(event) => over(event)}
                             onMouseOut={(event) => out(event)}
-                        //onClick={(event) => this.verDirector(event, director)}
+                            onClick={(event) => this.verDirector(event, director)}
                         >
                             {director}
                         </li>
