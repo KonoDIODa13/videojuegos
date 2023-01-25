@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { over, out } from "../auxiliar/funciones";
 
-export default class DesarrolladoraJuegos extends Component {
+export default class PlataformaJuegos extends Component {
     constructor(props) {
         super(props);
     }
-
     verJuego(event, juego) {
         event.preventDefault();
         localStorage.clear();
@@ -14,27 +13,28 @@ export default class DesarrolladoraJuegos extends Component {
         window.location.href = "https://127.0.0.1:8000/admin/juego/" + juego.slug;
     }
 
-    buscaJuegos(desarrolladora, desarrolladoras, juegosXdesarrolladoras, juegos) {
-        let id = buscaId(desarrolladora, desarrolladoras);
-        let arrIdJuegos = buscaIdJuego(juegosXdesarrolladoras, id);
+    buscaJuegos(plataforma, plataformas, juegosXplataformas, juegos) {
+        let id = buscaId(plataforma, plataformas);
+        let arrIdJuegos = buscaIdJuego(juegosXplataformas, id);
         let videojuegos = buscaDatosJuego(juegos, arrIdJuegos);
         return videojuegos;
     }
 
     render() {
-        const { desarrolladora, desarrolladoras, juegosXdesarrolladoras, juegos, loading } = this.props;
-        const games = this.buscaJuegos(desarrolladora, desarrolladoras, juegosXdesarrolladoras, juegos);
+        const { plataforma, plataformas, juegosXplataformas, juegos, loading } = this.props;
+        const games = this.buscaJuegos(plataforma, plataformas, juegosXplataformas, juegos);
 
         if (!loading) {
             return (
                 <div>
-                    <p>What are U waiting for?</p>
+                    <p>What are U waiting for</p>
                 </div>
             );
         }
+
         return (
             <div className="container">
-                <p>Sus desarrollos:</p>
+                <p>Los juegos están en dicha plataforma</p>
                 <ul>
                     {games.map((game) => (
                         <li
@@ -50,22 +50,21 @@ export default class DesarrolladoraJuegos extends Component {
             </div>
         );
     }
-
 }
 
-DesarrolladoraJuegos.propTypes = {
-    desarrolladora: PropTypes.string.isRequired,
-    desarrolladoras: PropTypes.array.isRequired,
-    juegosXdesarrolladoras: PropTypes.array.isRequired,
+PlataformaJuegos.propTypes = {
+    plataforma: PropTypes.string.isRequired,
+    plataformas: PropTypes.array.isRequired,
+    juegosXplataformas: PropTypes.array.isRequired,
     juegos: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
 }
 
 function buscaId(string, array) {
     let id = 0;
-    array.forEach(desarrolladora => {
-        if (desarrolladora.desarrolladora == string) {
-            id = desarrolladora.id;
+    array.forEach(plataforma => {
+        if (plataforma.plataforma == string) {
+            id = plataforma.id;
         }
     });
     return id;
@@ -73,9 +72,9 @@ function buscaId(string, array) {
 
 function buscaIdJuego(array, int) {
     let arrIdJuegos = new Array();
-    array.forEach(juegoXdesarrolladora => {
-        if (juegoXdesarrolladora.empresa_desarrolladora_id == int) {
-            arrIdJuegos.push(juegoXdesarrolladora.videojuego_id);
+    array.forEach(juegoXplataforma => {
+        if (juegoXplataforma.plataforma_id == int) {
+            arrIdJuegos.push(juegoXplataforma.videojuego_id);
         }
     });
     return arrIdJuegos;

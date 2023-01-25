@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DesarrolladoraJuegos from "./DesarrolladoraJuegos";
 
 export default function DesarrolladoraTemplate(props) {
-    const { desarrolladora, desarrolladoras, juegosXdesarrolladoras, juegos } = props;
+    const { desarrolladora, desarrolladoras, juegosXdesarrolladoras, juegos, loading } = props;
 
     return (
         <div className="container">
@@ -13,6 +13,7 @@ export default function DesarrolladoraTemplate(props) {
                 desarrolladoras={desarrolladoras}
                 juegosXdesarrolladoras={juegosXdesarrolladoras}
                 juegos={juegos}
+                loading={loading}
             />
         </div>
     );
@@ -23,4 +24,5 @@ DesarrolladoraTemplate.propTypes = {
     desarrolladoras: PropTypes.array.isRequired,
     juegosXdesarrolladoras: PropTypes.array.isRequired,
     juegos: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
 }

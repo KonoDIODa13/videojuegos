@@ -22,8 +22,16 @@ export default class GeneroJuegos extends Component {
     }
 
     render() {
-        const { genero, generos, juegosXgeneros, juegos } = this.props;
+        const { genero, generos, juegosXgeneros, juegos, loading } = this.props;
         const games = this.buscaJuegos(genero, generos, juegosXgeneros, juegos);
+
+        if (!loading) {
+            return (
+                <div>
+                    <p> What are U waiting for?</p>
+                </div>
+            );
+        }
 
         return (
             <div className="container">
@@ -40,7 +48,6 @@ export default class GeneroJuegos extends Component {
                         </li>
                     ))}
                 </ul>
-
             </div>
         );
     }
@@ -51,6 +58,7 @@ GeneroJuegos.propType = {
     generos: PropTypes.array.isRequired,
     juegosXgeneros: PropTypes.array.isRequired,
     juegos: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
 }
 
 function buscaId(string, array) {

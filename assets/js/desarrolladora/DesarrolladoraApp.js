@@ -11,6 +11,7 @@ export default class DesarrolladoraApp extends Component {
             desarrolladoras: [],
             juegosXdesarrolladoras: [],
             juegos: [],
+            loading: false,
         }
     }
 
@@ -30,6 +31,7 @@ export default class DesarrolladoraApp extends Component {
         getDatos().then((data) => {
             this.setState({
                 juegos: data,
+                loading: true,
             });
         });
     }

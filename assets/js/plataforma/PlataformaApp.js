@@ -1,30 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { getGeneros, getJuegosXGeneros, getDatos } from "../auxiliar/api";
-import GeneroTemplate from "./GeneroTemplate";
+import { getDatos, getJuegosXPlataformas, getPlataformas } from "../auxiliar/api";
+import PlataformaTemplate from "./PlataformaTemplate";
 
-export default class GeneroApp extends Component {
+export default class PlataformaApp extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            generos: [],
-            juegosXgeneros: [],
+            plataformas: [],
+            juegosXplataformas: [],
             juegos: [],
             loading: false,
         }
     }
 
     componentDidMount() {
-        getGeneros().then((data) => {
+        getPlataformas().then((data) => {
             this.setState({
-                generos: data,
+                plataformas: data,
             });
         });
 
-        getJuegosXGeneros().then((data) => {
+        getJuegosXPlataformas().then((data) => {
             this.setState({
-                juegosXgeneros: data,
+                juegosXplataformas: data,
             });
         });
 
@@ -38,7 +38,7 @@ export default class GeneroApp extends Component {
 
     render() {
         return (
-            <GeneroTemplate
+            <PlataformaTemplate
                 {...this.props}
                 {...this.state}
             />
@@ -46,6 +46,6 @@ export default class GeneroApp extends Component {
     }
 }
 
-GeneroApp.propTypes = {
-    genero: PropTypes.string.isRequired,
+PlataformaApp.propTypes = {
+    plataforma: PropTypes.string.isRequired,
 }

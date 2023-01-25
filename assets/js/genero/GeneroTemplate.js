@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import GeneroJuegos from "./GeneroJuegos"
 
 export default function GeneroTemplate(props) {
-    const { genero, generos, juegosXgeneros, juegos } = props;
+    const { genero, generos, juegosXgeneros, juegos, loading } = props;
 
     return (
         <div className="container">
@@ -13,6 +13,7 @@ export default function GeneroTemplate(props) {
                 generos={generos}
                 juegosXgeneros={juegosXgeneros}
                 juegos={juegos}
+                loading={loading}
             />
         </div>
     );
@@ -23,4 +24,5 @@ GeneroTemplate.propTypes = {
     generos: PropTypes.array.isRequired,
     juegosXgeneros: PropTypes.array.isRequired,
     juegos: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
 }
